@@ -1,47 +1,46 @@
 flowchart TD
     subgraph Setup[Event Setup]
-        A1[Create Event] --> A2[Configure Basic Settings]
+        A1[Create Event] --> A2[Configure Basic Details]
         A2 --> A3[Set Financial Parameters]
         A3 --> A4[Define Schedule]
         A4 --> A5[Configure Access Controls]
     end
-    
-    subgraph PreEvent[Pre-Event Phase]
-        B1[Consignor Registration] --> B2[Inventory Submission]
-        B2 --> B3[Item Approval]
-        B3 --> B4[Drop-off Scheduling]
-        B4 --> B5[Volunteer Signup]
+
+    subgraph Execution[Event Execution]
+        B1[Open Registration] --> B2[Manage Consignors]
+        B2 --> B3[Process Inventory]
+        B3 --> B4[Run Sales Operations]
+        B4 --> B5[Monitor Metrics]
     end
-    
-    subgraph Event[Event Execution]
-        C1[Sales Tracking] --> C2[Inventory Management]
-        C2 --> C3[Volunteer Management]
-        C3 --> C4[Real-time Reporting]
-        C4 --> C5[Operational Adjustments]
+
+    subgraph PostEvent[Post-Event Processing]
+        C1[Close Event] --> C2[Process Returns]
+        C2 --> C3[Calculate Earnings]
+        C3 --> C4[Generate Reports]
+        C4 --> C5[Distribute Payments]
     end
-    
-    subgraph PostEvent[Post-Event Phase]
-        D1[Return Processing] --> D2[Earnings Calculation]
-        D2 --> D3[Payment Processing]
-        D3 --> D4[Final Reporting]
-        D4 --> D5[Event Analysis]
+
+    subgraph Configuration[Configuration Management]
+        D1[Base Configuration] --> D2[Client Overrides]
+        D2 --> D3[Event-Specific Settings]
     end
-    
-    Setup --> PreEvent
-    PreEvent --> Event
-    Event --> PostEvent
-    
+
+    subgraph Monitoring[Monitoring & Reporting]
+        E1[Real-Time Metrics] --> E2[Sales Tracking]
+        E1 --> E3[Inventory Levels]
+        E1 --> E4[Volunteer Coverage]
+        E1 --> E5[Financial Performance]
+    end
+
+    Setup --> Execution
+    Execution --> PostEvent
+    Configuration --> Setup
+    Configuration --> Execution
+    Monitoring --> Execution
+    Monitoring --> PostEvent
+
     style Setup fill:#f9f,stroke:#333,stroke-width:4px
-    style PreEvent fill:#bbf,stroke:#333,stroke-width:4px
-    style Event fill:#9f9,stroke:#333,stroke-width:4px
+    style Execution fill:#bbf,stroke:#333,stroke-width:4px
     style PostEvent fill:#fbb,stroke:#333,stroke-width:4px
-    
-    classDef setup fill:#f9f,stroke:#333,stroke-width:4px
-    classDef preEvent fill:#bbf,stroke:#333,stroke-width:4px
-    classDef event fill:#9f9,stroke:#333,stroke-width:4px
-    classDef postEvent fill:#fbb,stroke:#333,stroke-width:4px
-    
-    class Setup setup
-    class PreEvent preEvent
-    class Event event
-    class PostEvent postEvent
+    style Configuration fill:#9f9,stroke:#333,stroke-width:4px
+    style Monitoring fill:#ff9,stroke:#333,stroke-width:4px
