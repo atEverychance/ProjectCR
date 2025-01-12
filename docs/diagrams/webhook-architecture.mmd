@@ -1,0 +1,70 @@
+flowchart TD
+    subgraph "External Systems"
+        A[Shopify] -->|Order Webhooks| B
+        C[Clerk.dev] -->|User Webhooks| B
+    end
+    
+    subgraph "API Gateway"
+        B[Webhook Receiver] --> D{Valid Signature?}
+        D -->|Yes| E[Queue Message]
+        D -->|No| F[Reject Request]
+    end
+    
+    subgraph "Message Queue"
+        E --> G[(Webhook Queue)]
+        G --> H[Webhook Processor]
+    end
+    
+    subgraph "Processing"
+        H --> I{Valid Payload?}
+        I -->|Yes| J[Process Webhook]
+        I -->|No| K[Log Error]
+        
+        J --> L[Shopify Order]
+        J --> M[Shopify Product]
+        J --> N[Shopify Inventory]
+        J --> O[Clerk User]
+        J --> P[Clerk Session]
+        
+        L --> Q[Update Sales]
+        M --> R[Sync Products]
+        N --> S[Update Inventory]
+        O --> T[Manage Consignors]
+        P --> U[Handle Sessions]
+    end
+    
+    subgraph "Data Stores"
+        Q --> V[(Sales DB)]
+        R --> W[(Products DB)]
+        S --> X[(Inventory DB)]
+        T --> Y[(Consignors DB)]
+        U --> Z[(Sessions DB)]
+    end
+    
+    subgraph "Monitoring"
+        B --> AA[Webhook Logs]
+        H --> AA
+        J --> AA
+        AA --> AB[Prometheus]
+        AB --> AC[Grafana]
+        AA --> AD[ELK Stack]
+        AD --> AE[Kibana]
+    end
+    
+    style A fill:#f9f,stroke:#333,stroke-width:4px
+    style B fill:#bbf,stroke:#333,stroke-width:4px
+    style G fill:#9f9,stroke:#333,stroke-width:4px
+    style H fill:#f9f,stroke:#333,stroke-width:4px
+    style V fill:#fbb,stroke:#333,stroke-width:4px
+    
+    classDef external fill:#f9f,stroke:#333,stroke-width:4px
+    classDef gateway fill:#bbf,stroke:#333,stroke-width:4px
+    classDef queue fill:#9f9,stroke:#333,stroke-width:4px
+    classDef processor fill:#f9f,stroke:#333,stroke-width:4px
+    classDef database fill:#fbb,stroke:#333,stroke-width:4px
+    
+    class A external
+    class B gateway
+    class G queue
+    class H processor
+    class V database

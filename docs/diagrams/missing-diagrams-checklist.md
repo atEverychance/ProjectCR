@@ -5,7 +5,7 @@
 2. ✅ error-flow.mmd (referenced in docs/api/error-handling.md)
 3. ✅ api-architecture.mmd (referenced in docs/api/endpoints.md)
 4. ✅ pagination-flow.mmd (referenced in docs/api/pagination.md)
-5. webhook-architecture.mmd (referenced in docs/api/webhooks.md)
+5. ✅ webhook-architecture.mmd (referenced in docs/api/webhooks.md)
 
 ## Architecture Diagrams
 6. ✅ security-layers.mmd (referenced in docs/architecture/security.md)
