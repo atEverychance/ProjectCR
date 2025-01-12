@@ -1,0 +1,80 @@
+erDiagram
+    CLIENTS ||--o{ CLIENT_SHOPIFY_ACCESS : has
+    CLIENTS ||--o{ EVENTS : hosts
+    CLIENTS ||--o{ CONSIGNORS : manages
+    CLIENTS ||--o{ CATEGORY_OVERRIDES : customizes
+    CLIENTS ||--o{ SIZE_OVERRIDES : customizes
+    
+    EVENTS ||--o{ EVENT_LOCATIONS : has
+    EVENTS ||--o{ EVENT_CONSIGNORS : includes
+    EVENTS ||--o{ EVENT_DROP_OFF_SLOTS : schedules
+    EVENTS ||--o{ EVENT_VOLUNTEER_SLOTS : schedules
+    EVENTS ||--o{ SALES : contains
+    EVENTS ||--o{ REFERRALS : tracks
+    
+    EVENT_CONSIGNORS ||--o{ ITEMS : contains
+    EVENT_CONSIGNORS ||--o{ DROP_OFF_BOOKINGS : makes
+    EVENT_CONSIGNORS ||--o{ VOLUNTEER_BOOKINGS : makes
+    
+    CATEGORIES ||--o{ CATEGORY_OVERRIDES : overrides
+    CATEGORIES ||--o{ ITEMS : classifies
+    
+    SIZES ||--o{ SIZE_OVERRIDES : overrides
+    SIZES ||--o{ ITEMS : sizes
+    
+    ITEMS ||--o{ SALES : sold_as
+    ITEMS ||--o{ ITEMS : transferred_from
+    
+    CLIENTS {
+        int id PK
+        string name
+        string domain
+        datetime created_at
+        boolean active
+    }
+    
+    CLIENT_SHOPIFY_ACCESS {
+        int id PK
+        int client_id FK
+        string access_token
+        string location_id
+        string tax_collection_id
+        datetime token_created_at
+        datetime token_expires_at
+        boolean active
+    }
+    
+    EVENTS {
+        int id PK
+        int client_id FK
+        string name
+        date start_date
+        date end_date
+        date return_window_end
+        decimal regular_fee
+        decimal super_fee
+        decimal regular_base_rate
+        decimal super_base_rate
+        decimal volunteer_shift_bonus
+        decimal super_item_bonus
+        int super_item_threshold
+        boolean markdown_active
+        string status
+        datetime created_at
+    }
+    
+    EVENT_CONSIGNORS {
+        int id PK
+        int event_id FK
+        int consignor_id FK
+        string type
+        decimal base_rate
+        boolean fee_paid
+        datetime fee_paid_at
+        int volunteer_shift_count
+        decimal final_rate
+        decimal total_earnings
+        boolean is_paid
+        datetime paid_at
+        datetime created_at
+    }
