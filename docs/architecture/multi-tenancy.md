@@ -61,7 +61,7 @@ See [Configuration Management](../diagrams/architecture/configuration-management
 2. Client context resolution
 3. Authentication verification
 4. Resource access control
-See [Request Flow](../diagrams/architecture/request-flow.mmd) for details.
+See [Request Flow](../diagrams/flows/request-flow.mmd) for details.
 
 ### Data Access
 1. Automatic query filtering
