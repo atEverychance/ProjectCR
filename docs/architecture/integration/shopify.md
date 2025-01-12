@@ -1,7 +1,13 @@
 # Shopify Integration
 
 ## Overview
-Each client requires their own Shopify store integration. See [Shopify Integration](../../diagrams/shopify-integration-flow.mmd) for complete flow.
+The Shopify integration enables seamless synchronization of products, orders, and inventory between the system and Shopify stores. Each client has their own Shopify store with isolated credentials and data.
+
+Key features:
+- Real-time product synchronization
+- Order processing and inventory updates
+- Webhook handling for Shopify events
+- Multi-tenant isolation with per-client stores
 
 ## Store Configuration
 
@@ -12,9 +18,10 @@ Required configuration:
 - API version: 2024-01
 - Access scopes:
   * read_products, write_products
-  * read_orders
+  * read_orders, write_orders
   * read_inventory, write_inventory
   * read_price_rules, write_price_rules
+  * read_locations
 
 ### Store Settings
 Required settings:
@@ -59,24 +66,35 @@ Sync points:
 
 ### Critical Webhooks
 Required webhooks:
-- orders/create
-- orders/paid
-- orders/cancelled
-- products/update
+- orders/create: Triggered when new orders are created
+- orders/paid: Triggered when orders are paid
+- orders/cancelled: Triggered when orders are cancelled
+- products/update: Triggered when products are updated
+- inventory_levels/update: Triggered when inventory levels change
+
+### Webhook Processing Flow
+1. Webhook received at API endpoint
+2. Signature verification using Shopify HMAC
+3. Immediate 200 response to Shopify
+4. Message enqueued for background processing
+5. Background worker processes payload:
+   - Updates inventory
+   - Syncs order data
+   - Triggers notifications
 
 ### Reliability Strategy
-Processing approach:
-- Immediate acknowledgment
-- Queue-based processing
-- Retry mechanism
-- Manual recovery tools
+- Immediate acknowledgment with 200 response
+- Queue-based processing with retries
+- Dead-letter queue for failed messages
+- Manual recovery tools in admin dashboard
+- Webhook delivery monitoring
 
 ### Error Handling
-Recovery process:
-- Automatic retries
-- Error logging
-- Alert generation
-- Manual intervention tools
+- Automatic retries with exponential backoff
+- Detailed error logging with context
+- Real-time alerts for critical failures
+- Manual intervention tools for recovery
+- Webhook replay capability
 
 ## Safety Nets
 

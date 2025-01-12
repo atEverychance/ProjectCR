@@ -104,8 +104,32 @@ GET /api/v1/admin/reports/inventory
 
 ### Shopify Integration
 POST /api/v1/webhooks/shopify/order
-POST /api/v1/webhooks/shopify/product
+- Handles order-related webhooks (create, paid, cancelled)
+- Required headers:
+  * X-Shopify-Topic: Webhook topic
+  * X-Shopify-Hmac-Sha256: Signature verification
+- Payload: Shopify order object
+
+POST /api/v1/webhooks/shopify/product  
+- Handles product update webhooks
+- Required headers:
+  * X-Shopify-Topic: Webhook topic
+  * X-Shopify-Hmac-Sha256: Signature verification
+- Payload: Shopify product object
+
 POST /api/v1/webhooks/shopify/inventory
+- Handles inventory level updates
+- Required headers:
+  * X-Shopify-Topic: Webhook topic
+  * X-Shopify-Hmac-Sha256: Signature verification
+- Payload: Shopify inventory level object
+
+POST /api/v1/webhooks/shopify/fulfillment
+- Handles fulfillment events
+- Required headers:
+  * X-Shopify-Topic: Webhook topic
+  * X-Shopify-Hmac-Sha256: Signature verification
+- Payload: Shopify fulfillment object
 
 ### Authentication
 POST /api/v1/webhooks/clerk/user
