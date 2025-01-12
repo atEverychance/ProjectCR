@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant C as Consignor
+    participant M as Mobile UI
+    participant API as Backend
+    participant Q as Queue
+    participant S as Shopify
+    
+    C->>M: Add Item
+    M->>M: Compress Photos
+    M->>API: Submit Item
+    API->>Q: Queue Processing
+    Q->>S: Create Product
+    S-->>API: Product Created
+    API->>Q: Process Photos
+    Q->>S: Update Photos
+    API-->>M: Confirm Creation

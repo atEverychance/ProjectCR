@@ -1,0 +1,19 @@
+graph TD
+    subgraph "Item Entry"
+        A[Add Item] --> P[Photo Capture]
+        P --> D[Details Entry]
+        D --> C[Category Select]
+        C --> S[Size Select]
+    end
+    
+    subgraph "Processing"
+        P --> PC[Photo Compression]
+        PC --> PU[Photo Upload]
+        D --> V[Validation]
+    end
+    
+    subgraph "Submission"
+        PU & V --> SU[Submit]
+        SU --> Q[Queue]
+        Q --> SP[Save Product]
+    end
