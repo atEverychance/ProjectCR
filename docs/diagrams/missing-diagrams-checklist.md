@@ -23,3 +23,4 @@
 ## Testing & Monitoring Diagrams
 15. ✅ Testing Architecture (referenced in docs/development/testing.md)
 16. Monitoring System (referenced in docs/architecture/monitoring.md)
+17. ✅ No Twilio integration (intentionally excluded)
