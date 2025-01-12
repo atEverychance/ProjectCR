@@ -1,7 +1,7 @@
 # Multi-tenant Architecture
 
 ## Overview
-The system implements client isolation at every layer while maintaining efficient resource sharing. See [Multi-tenant Structure](../diagrams/multi-tenant-structure.mmd) for complete architecture.
+The system implements client isolation at every layer while maintaining efficient resource sharing. See [Multi-tenant Structure](../diagrams/architecture/multi-tenant-structure.mmd) for complete architecture.
 
 ## Client Isolation
 

@@ -1,7 +1,7 @@
 # API Endpoints
 
 ## Overview
-Complete API endpoint documentation including authentication, request/response formats, and error handling. See [API Architecture](../diagrams/api-architecture.mmd) for system structure.
+Complete API endpoint documentation including authentication, request/response formats, and error handling. See [API Architecture](../diagrams/architecture/api-architecture.mmd) for system structure.
 
 ## Authentication
 
