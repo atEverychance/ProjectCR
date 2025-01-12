@@ -1,0 +1,42 @@
+flowchart TD
+    subgraph "Client"
+        A[Request] --> B{Valid Parameters?}
+        B -->|Yes| C[Send API Request]
+        B -->|No| D[Return Validation Error]
+        C --> E[Receive Paginated Response]
+        E --> F[Render Data]
+        F --> G{More Pages?}
+        G -->|Yes| H[Request Next Page]
+        G -->|No| I[Complete]
+    end
+    
+    subgraph "API"
+        C --> J[Validate Parameters]
+        J --> K{Valid?}
+        K -->|Yes| L[Query Database]
+        K -->|No| M[Return Validation Error]
+        L --> N[Apply Filters/Sorting]
+        N --> O[Calculate Totals]
+        O --> P[Slice Results]
+        P --> Q[Format Response]
+        Q --> R[Add Pagination Metadata]
+        R --> S[Return Response]
+    end
+    
+    subgraph "Database"
+        L --> T[(Main Data)]
+        N --> U[(Indexes)]
+        O --> V[(Count Cache)]
+    end
+    
+    style A fill:#bbf,stroke:#333,stroke-width:4px
+    style J fill:#f9f,stroke:#333,stroke-width:4px
+    style T fill:#fbb,stroke:#333,stroke-width:4px
+    
+    classDef client fill:#bbf,stroke:#333,stroke-width:4px
+    classDef api fill:#f9f,stroke:#333,stroke-width:4px
+    classDef database fill:#fbb,stroke:#333,stroke-width:4px
+    
+    class A client
+    class J api
+    class T database

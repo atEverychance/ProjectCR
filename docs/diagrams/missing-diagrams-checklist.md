@@ -4,7 +4,7 @@
 1. ✅ rate-limit-architecture.mmd (referenced in docs/api/rate-limiting.md)
 2. ✅ error-flow.mmd (referenced in docs/api/error-handling.md)
 3. ✅ api-architecture.mmd (referenced in docs/api/endpoints.md)
-4. pagination-flow.mmd (referenced in docs/api/pagination.md)
+4. ✅ pagination-flow.mmd (referenced in docs/api/pagination.md)
 5. webhook-architecture.mmd (referenced in docs/api/webhooks.md)
 
 ## Architecture Diagrams
