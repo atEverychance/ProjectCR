@@ -15,7 +15,7 @@
 10. configuration-management.mmd (referenced in docs/architecture/multi-tenancy.md)
 11. request-flow.mmd (referenced in docs/architecture/multi-tenancy.md)
 12. backend-architecture.mmd (referenced in docs/architecture/overview.md)
-13. processing-flow.mmd (referenced in docs/architecture/overview.md)
+13. ✅ processing-flow.mmd (referenced in docs/architecture/overview.md)
 14. deployment-architecture.mmd (referenced in docs/development/deployment.md)
 15. testing-architecture.mmd (referenced in docs/development/testing.md)
 16. unit-test-coverage.mmd (referenced in docs/development/testing.md)

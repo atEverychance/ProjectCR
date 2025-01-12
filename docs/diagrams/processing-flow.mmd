@@ -1,0 +1,22 @@
+sequenceDiagram
+    participant API as API Server
+    participant Queue as Message Queue
+    participant Worker as Background Worker
+    participant DB as Database
+    participant Cache as Cache Layer
+    participant Ext as External Services
+    
+    API->>Queue: Enqueue Job
+    Queue->>Worker: Dequeue Job
+    Worker->>DB: Read Data
+    Worker->>Cache: Check Cache
+    Worker->>Ext: Call External API
+    Ext-->>Worker: API Response
+    Worker->>DB: Write Results
+    Worker->>Cache: Update Cache
+    Worker->>Queue: Enqueue Follow-up
+    Worker->>API: Send Notification
+    
+    Note over Worker,Ext: Error Handling & Retries
+    Note over Worker,DB: Transaction Management
+    Note over Worker,Cache: Cache Invalidation
