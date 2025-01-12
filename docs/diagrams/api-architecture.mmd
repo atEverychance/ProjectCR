@@ -4,36 +4,56 @@ graph TD
         B --> C[Rate Limiting]
         C --> D[Request Validation]
         D --> E[Routing]
+        E --> F[Error Handling]
+        F --> G[Response Formatting]
     end
     
     subgraph "Core Services"
-        E --> F[Consignor Service]
-        E --> G[Event Service]
-        E --> H[Inventory Service]
-        E --> I[Reporting Service]
+        G --> H[Consignor Service]
+        G --> I[Event Service]
+        G --> J[Inventory Service]
+        G --> K[Reporting Service]
+        G --> L[Admin Service]
+        G --> M[Webhook Service]
     end
     
     subgraph "Data Access"
-        F --> J[(Consignor DB)]
-        G --> K[(Event DB)]
-        H --> L[(Inventory DB)]
-        I --> M[(Reporting DB)]
+        H --> N[(Consignor DB)]
+        I --> O[(Event DB)]
+        J --> P[(Inventory DB)]
+        K --> Q[(Reporting DB)]
+        L --> R[(Config DB)]
+        M --> S[(Webhook Queue)]
     end
     
     subgraph "External Services"
-        F --> N[Clerk.dev]
-        G --> O[Shopify]
-        H --> O
-        I --> P[Mailchimp]
+        H --> T[Clerk.dev]
+        I --> U[Shopify]
+        J --> U
+        K --> V[Mailchimp]
+        M --> W[Shopify Webhooks]
+        M --> X[Clerk Webhooks]
     end
     
     subgraph "Monitoring"
-        Q[Prometheus] --> R[Grafana]
-        S[ELK Stack] --> T[Kibana]
-        A --> Q
-        A --> S
+        Y[Prometheus] --> Z[Grafana]
+        AA[ELK Stack] --> AB[Kibana]
+        A --> Y
+        A --> AA
+        M --> AC[Webhook Monitoring]
     end
     
     style A fill:#bbf,stroke:#333,stroke-width:4px
-    style F fill:#f9f,stroke:#333,stroke-width:4px
-    style J fill:#fbb,stroke:#333,stroke-width:4px
+    style H fill:#f9f,stroke:#333,stroke-width:4px
+    style N fill:#fbb,stroke:#333,stroke-width:4px
+    style M fill:#9f9,stroke:#333,stroke-width:4px
+    
+    classDef gateway fill:#bbf,stroke:#333,stroke-width:4px
+    classDef service fill:#f9f,stroke:#333,stroke-width:4px
+    classDef database fill:#fbb,stroke:#333,stroke-width:4px
+    classDef webhook fill:#9f9,stroke:#333,stroke-width:4px
+    
+    class A gateway
+    class H service
+    class N database
+    class M webhook
