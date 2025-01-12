@@ -1,24 +1,30 @@
 # Deployment Guide
 
 ## Overview
-Production deployment strategy and configuration management. See [Deployment Architecture](../diagrams/deployment-architecture.mmd) for complete infrastructure.
+Production deployment strategy using Netlify with GitHub Actions CI/CD. See [Deployment Architecture](../diagrams/deployment-architecture.mmd) for complete infrastructure.
+
+## CI/CD Pipeline
+
+### GitHub Actions + Netlify
+- Automatic builds on push
+- Preview deployments for PRs
+- Instant rollbacks
+- Atomic deployments
+
+### Netlify Features
+- Built-in CDN
+- Serverless functions
+- Form handling
+- Split testing
+- Instant cache invalidation
 
 ## Infrastructure Requirements
 
-### Server Requirements
-Minimum specifications:
-- Linux server (Ubuntu 22.04 LTS)
-- 4GB RAM
-- 2 CPU cores
-- 20GB SSD storage
-
-### Required Services
-Core services:
-- Redis 6+
-- SQLite 3.35+
-- Nginx
-- Supervisor
-- SSL certificates
+### Netlify Requirements
+- Node.js 18+
+- Build plugins
+- Environment variables
+- Serverless functions
 
 ## Initial Server Setup
 

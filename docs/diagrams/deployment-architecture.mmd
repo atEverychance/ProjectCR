@@ -1,42 +1,32 @@
-flowchart TD
-    subgraph Server[Production Server]
-        Web[Nginx Web Server]
-        App[FastAPI Application]
-        Worker[Background Workers]
-        Redis[Redis Cache & Queue]
-        DB[SQLite Database]
+graph TD
+    subgraph "CI/CD Pipeline"
+        A[GitHub Repo] --> B[GitHub Actions]
+        B --> C[Lint & Test]
+        C --> D[Build]
+        D --> E[Deploy to Netlify]
     end
     
-    subgraph Services[External Services]
-        Shopify[Shopify API]
-        Clerk[Clerk.dev Auth]
-        Mailchimp[Mailchimp Email]
-        Monitoring[Monitoring Tools]
+    subgraph "Netlify Infrastructure"
+        E --> F[Global CDN]
+        E --> G[Serverless Functions]
+        E --> H[Form Handling]
+        E --> I[Build Plugins]
     end
     
-    subgraph Clients[Client Applications]
-        Browser[Web Browser]
-        Mobile[Mobile App]
-        API[API Clients]
+    subgraph "External Services"
+        F --> J[Shopify API]
+        F --> K[Clerk.dev Auth]
+        F --> L[Mailchimp Email]
+        F --> M[Monitoring Tools]
     end
     
-    Browser --> Web
-    Mobile --> Web
-    API --> Web
+    subgraph "Clients"
+        N[Web Browser] --> F
+        O[Mobile App] --> F
+        P[API Clients] --> F
+    end
     
-    Web --> App
-    Web --> Redis
-    Web --> Services
-    
-    App --> Worker
-    App --> Redis
-    App --> DB
-    App --> Services
-    
-    Worker --> Redis
-    Worker --> DB
-    Worker --> Services
-    
-    style Server fill:#f9f,stroke:#333,stroke-width:4px
-    style Services fill:#bbf,stroke:#333,stroke-width:4px
-    style Clients fill:#fbb,stroke:#333,stroke-width:4px
+    style A fill:#f9f,stroke:#333,stroke-width:4px
+    style B fill:#bbf,stroke:#333,stroke-width:4px
+    style E fill:#9f9,stroke:#333,stroke-width:4px
+    style F fill:#fbb,stroke:#333,stroke-width:4px
