@@ -1,0 +1,45 @@
+flowchart TD
+    subgraph System[System Configuration]
+        BaseConfig[Base Configuration]
+        Defaults[System Defaults]
+        Templates[Email Templates]
+        Categories[Category Structure]
+        Sizes[Size Charts]
+        Rates[Commission Rules]
+    end
+    
+    subgraph Client[Client Configuration]
+        Overrides[Client Overrides]
+        CustomCategories[Custom Categories]
+        ModifiedSizes[Modified Size Charts]
+        SpecificRates[Specific Commission Rates]
+        EmailCustom[Email Customization]
+    end
+    
+    subgraph Integration[Integration Points]
+        Shopify[Shopify Integration]
+        Email[Email Configuration]
+        Auth[Authentication]
+    end
+    
+    System -->|Provides| BaseConfig
+    BaseConfig -->|Extends| Overrides
+    Overrides -->|Customizes| Client
+    
+    Client -->|Configures| Integration
+    Integration -->|Uses| System
+    
+    BaseConfig --> Defaults
+    BaseConfig --> Templates
+    BaseConfig --> Categories
+    BaseConfig --> Sizes
+    BaseConfig --> Rates
+    
+    Overrides --> CustomCategories
+    Overrides --> ModifiedSizes
+    Overrides --> SpecificRates
+    Overrides --> EmailCustom
+    
+    Integration --> Shopify
+    Integration --> Email
+    Integration --> Auth
