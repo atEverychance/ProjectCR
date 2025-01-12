@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant C as Consignor
+    participant UI as Frontend
+    participant API as Backend
+    participant DB as Database
+    participant E as Email
+
+    C->>UI: View Available Shifts
+    UI->>API: Get Shifts
+    API->>DB: Check Capacity
+    DB-->>UI: Available Slots
+    C->>UI: Select Shift
+    UI->>API: Book Shift
+    API->>DB: Record Booking
+    API->>E: Send Confirmation

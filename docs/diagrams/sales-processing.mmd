@@ -1,0 +1,19 @@
+graph TD
+    subgraph "Sales Flow"
+        O[Order] --> W[Webhook]
+        W --> Q[Queue]
+        Q --> P[Processing]
+    end
+    
+    subgraph "Calculations"
+        P --> B[Base Commission]
+        P --> V[Volunteer Bonus]
+        P --> S[Super Bonus]
+        B & V & S --> F[Final Earnings]
+    end
+    
+    subgraph "Updates"
+        F --> U[Update Records]
+        U --> I[Inventory Status]
+        U --> E[Earnings Record]
+    end

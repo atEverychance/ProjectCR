@@ -1,0 +1,17 @@
+graph TD
+    subgraph "Error Detection"
+        E[Error] --> V[Validation]
+        V --> C[Categorization]
+    end
+    
+    subgraph "Processing"
+        C --> L[Logging]
+        C --> H[Handler]
+        H --> R[Recovery]
+    end
+    
+    subgraph "Response"
+        H --> U[User Response]
+        H --> M[Monitoring]
+        M --> A[Alerts]
+    end

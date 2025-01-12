@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant C as Client
+    participant API as Backend
+    participant Q as Queue
+    participant W as Worker
+    participant S as Storage
+    
+    C->>API: Upload Images
+    API->>Q: Queue Processing
+    Q->>W: Process Image
+    W->>W: Compress
+    W->>W: Generate Thumbnails
+    W->>S: Store Variants
+    W->>API: Update Records

@@ -1,0 +1,38 @@
+graph TD
+    subgraph "Frontend"
+        A[SPA] --> B[Clerk.js]
+        B --> C[Auth Context]
+        C --> D[API Client]
+    end
+    
+    subgraph "Backend"
+        D --> E[API Gateway]
+        E --> F[Auth Middleware]
+        F --> G[Clerk Webhook]
+        F --> H[Token Validator]
+        H --> I[User Context]
+        I --> J[Tenant Context]
+    end
+    
+    subgraph "Security"
+        K[Rate Limiter] --> E
+        L[Request Validator] --> E
+        M[Session Manager] --> F
+        N[Audit Logger] --> F
+    end
+    
+    subgraph "External"
+        B --> O[Clerk.dev]
+        G --> O
+        H --> O
+    end
+    
+    subgraph "Data"
+        I --> P[(User Store)]
+        J --> Q[(Tenant Store)]
+        M --> R[(Session Store)]
+    end
+    
+    style A fill:#f9f,stroke:#333,stroke-width:4px
+    style E fill:#bbf,stroke:#333,stroke-width:4px
+    style O fill:#fbb,stroke:#333,stroke-width:4px

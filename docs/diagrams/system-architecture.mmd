@@ -1,0 +1,56 @@
+graph TD
+    subgraph "Frontend Layer"
+        A[Svelte SPA] --> B[Clerk.dev Auth]
+        A --> API[FastAPI Backend]
+        A --> C[Monitoring Dashboard]
+        A --> D[Error Reporting]
+    end
+    
+    subgraph "Backend Services"
+        API --> E[Redis Queue]
+        API --> F[(PostgreSQL)]
+        API --> G[Redis Cache]
+        API --> H[File Storage]
+        
+        E --> W1[Image Worker]
+        E --> W2[Email Worker]
+        E --> W3[Webhook Worker]
+        E --> W4[Report Worker]
+        
+        W1 & W2 & W3 & W4 --> F
+        W1 & W2 & W3 & W4 --> G
+    end
+    
+    subgraph "Security Layer"
+        I[API Gateway] --> API
+        J[Rate Limiter] --> API
+        K[Request Validator] --> API
+        L[Auth Middleware] --> API
+    end
+    
+    subgraph "Monitoring & Logging"
+        M[Prometheus] --> N[Grafana]
+        O[ELK Stack] --> P[Kibana]
+        API --> M
+        API --> O
+    end
+    
+    subgraph "External Services"
+        API --> Q[Shopify]
+        W2 --> R[Mailchimp]
+        B --> API
+        W1 --> Q
+        W3 --> Q
+        API --> S[Stripe]
+        API --> T[Twilio]
+    end
+    
+    subgraph "Multi-tenancy"
+        U[Tenant Context] --> API
+        V[Data Isolation] --> F
+        W[Client Config] --> API
+    end
+    
+    style A fill:#f9f,stroke:#333,stroke-width:4px
+    style API fill:#bbf,stroke:#333,stroke-width:4px
+    style F fill:#fbb,stroke:#333,stroke-width:4px

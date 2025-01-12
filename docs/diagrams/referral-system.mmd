@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant C1 as Referring Consignor
+    participant C2 as New Consignor
+    participant API as System
+    participant DB as Database
+    
+    C2->>API: Register
+    C2->>API: Enter Referral Code
+    API->>DB: Validate Code
+    API->>DB: Create Consignor
+    C2->>API: Pay Registration
+    API->>DB: Track Referral
+    Note over API,DB: $5 added during<br>event reconciliation
+    API->>DB: Update C1 Earnings

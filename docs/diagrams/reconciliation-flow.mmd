@@ -1,0 +1,22 @@
+sequenceDiagram
+    participant A as Admin
+    participant API as System
+    participant S as Shopify
+    participant DB as Database
+    
+    A->>API: End Event
+    API->>S: Disable Store
+    
+    rect rgb(200, 220, 240)
+        Note over A,DB: Return Processing
+        A->>API: Process Returns
+        API->>S: Update Inventory
+        API->>DB: Update Sales
+    end
+    
+    rect rgb(220, 240, 220)
+        Note over A,DB: Final Calculations
+        API->>DB: Calculate Earnings
+        API->>DB: Apply Bonuses
+        API->>DB: Process Referrals
+    end

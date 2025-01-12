@@ -1,0 +1,18 @@
+graph TD
+    subgraph "Request Flow"
+        R[Request] --> D[Domain Check]
+        D --> C[Client Context]
+        C --> A[Auth Check]
+    end
+    
+    subgraph "Data Access"
+        A --> Q[Query Filter]
+        Q --> DB[(Database)]
+        Q --> CA[Cache]
+    end
+    
+    subgraph "Resources"
+        DB --> I[Isolation]
+        CA --> I
+        I --> V[Validation]
+    end

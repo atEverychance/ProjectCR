@@ -1,0 +1,16 @@
+graph TD
+    subgraph "Backup Types"
+        D[Daily] --> I[Incremental]
+        W[Weekly] --> F[Full]
+        M[Monthly] --> A[Archive]
+    end
+    
+    subgraph "Storage"
+        I & F & A --> S[Secure Storage]
+        S --> R[Retention Policy]
+    end
+    
+    subgraph "Recovery"
+        S --> RT[Restore Test]
+        RT --> V[Validation]
+    end

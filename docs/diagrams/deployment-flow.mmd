@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant D as Developer
+    participant G as Git
+    participant CI as CI/CD
+    participant S as Server
+    
+    D->>G: Push Code
+    G->>CI: Trigger Build
+    CI->>CI: Run Tests
+    CI->>CI: Build Assets
+    CI->>S: Deploy
+    S->>S: Migrate DB
+    S->>S: Update Services
+    S-->>CI: Confirm Deploy

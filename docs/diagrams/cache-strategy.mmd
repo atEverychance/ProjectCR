@@ -1,0 +1,17 @@
+graph TD
+    subgraph "Cache Layers"
+        A[Application Cache] --> C[Client Config]
+        A --> U[User Context]
+        A --> S[Session Data]
+    end
+    
+    subgraph "Data Types"
+        C --> CC[Categories]
+        C --> SC[Sizes]
+        C --> EC[Event Config]
+    end
+    
+    subgraph "Invalidation"
+        CC & SC & EC --> I[Invalidation]
+        I --> R[Redis]
+    end

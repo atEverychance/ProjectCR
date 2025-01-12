@@ -1,0 +1,17 @@
+graph TD
+    subgraph "Security Layers"
+        A[Authentication] --> B[Authorization]
+        B --> C[Client Check]
+        C --> R[Resource Access]
+    end
+    
+    subgraph "Validation"
+        R --> V[Input Validation]
+        V --> P[Permission Check]
+        P --> E[Execution]
+    end
+    
+    subgraph "Logging"
+        E --> L[Audit Log]
+        E --> M[Monitoring]
+    end

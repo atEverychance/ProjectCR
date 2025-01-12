@@ -1,0 +1,19 @@
+graph TD
+    subgraph "Data Sources"
+        S[Sales] --> R[Reports]
+        I[Inventory] --> R
+        C[Consignors] --> R
+        V[Volunteers] --> R
+    end
+    
+    subgraph "Processing"
+        R --> A[Aggregation]
+        A --> M[Metrics]
+        M --> D[Dashboard]
+    end
+    
+    subgraph "Export"
+        D --> E[Export]
+        E --> CSV[CSV]
+        E --> PDF[PDF]
+    end

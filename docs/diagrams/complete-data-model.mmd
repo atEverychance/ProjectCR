@@ -1,0 +1,214 @@
+erDiagram
+    %% Client Management
+    CLIENTS {
+        uuid id PK
+        string name
+        string domain
+        timestamp created_at
+        boolean active
+    }
+
+    CLIENT_SHOPIFY_ACCESS {
+        uuid id PK
+        uuid client_id FK
+        string access_token
+        string location_id
+        string tax_collection_id
+        timestamp token_created_at
+        timestamp token_expires_at
+        boolean active
+    }
+
+    %% Event Management
+    EVENTS {
+        uuid id PK
+        uuid client_id FK
+        string name
+        date start_date
+        date end_date
+        date return_window_end
+        decimal regular_fee
+        decimal super_fee
+        decimal regular_base_rate
+        decimal super_base_rate
+        decimal volunteer_shift_bonus
+        decimal super_item_bonus
+        integer super_item_threshold
+        boolean markdown_active
+        string status
+        timestamp created_at
+    }
+
+    EVENT_LOCATIONS {
+        uuid id PK
+        uuid event_id FK
+        string name
+        string address
+        string city
+        string postal_code
+        string province
+        text directions
+        timestamp created_at
+    }
+
+    %% Consignment Management
+    CONSIGNORS {
+        uuid id PK
+        uuid client_id FK
+        string consignor_id
+        string email
+        string name
+        integer loyalty_count
+        timestamp created_at
+        boolean active
+    }
+
+    EVENT_CONSIGNORS {
+        uuid id PK
+        uuid event_id FK
+        uuid consignor_id FK
+        string type
+        decimal base_rate
+        boolean fee_paid
+        timestamp fee_paid_at
+        integer volunteer_shift_count
+        decimal final_rate
+        decimal total_earnings
+        boolean is_paid
+        timestamp paid_at
+        timestamp created_at
+    }
+
+    ITEMS {
+        uuid id PK
+        uuid event_consignor_id FK
+        uuid category_id FK
+        uuid size_id FK
+        string shopify_product_id
+        string title
+        decimal price
+        boolean markdown_eligible
+        string status
+        timestamp sold_at
+        decimal sold_price
+        decimal earned_amount
+        integer transfer_count
+        uuid transferred_from_item_id FK
+        timestamp created_at
+    }
+
+    %% Configuration Management
+    CATEGORIES {
+        uuid id PK
+        string category_detail
+        uuid category_type_id FK
+        boolean enabled
+        boolean is_default
+        timestamp created_at
+    }
+
+    CATEGORY_OVERRIDES {
+        uuid id PK
+        uuid client_id FK
+        uuid category_id FK
+        string category_detail
+        boolean enabled
+        timestamp created_at
+    }
+
+    SIZES {
+        uuid id PK
+        string size_value
+        string size_group
+        boolean enabled
+        boolean is_default
+        timestamp created_at
+    }
+
+    SIZE_OVERRIDES {
+        uuid id PK
+        uuid client_id FK
+        uuid size_id FK
+        string size_value
+        boolean enabled
+        timestamp created_at
+    }
+
+    %% Scheduling
+    EVENT_DROP_OFF_SLOTS {
+        uuid id PK
+        uuid event_id FK
+        uuid location_id FK
+        timestamp start_time
+        timestamp end_time
+        integer max_consignors
+        integer booked_count
+        timestamp created_at
+    }
+
+    EVENT_VOLUNTEER_SLOTS {
+        uuid id PK
+        uuid event_id FK
+        uuid location_id FK
+        uuid shift_type_id FK
+        timestamp start_time
+        timestamp end_time
+        integer max_volunteers
+        integer booked_count
+        timestamp created_at
+    }
+
+    DROP_OFF_BOOKINGS {
+        uuid id PK
+        uuid event_consignor_id FK
+        uuid drop_off_slot_id FK
+        timestamp created_at
+    }
+
+    VOLUNTEER_BOOKINGS {
+        uuid id PK
+        uuid event_consignor_id FK
+        uuid volunteer_slot_id FK
+        boolean completed
+        timestamp created_at
+    }
+
+    %% Sales & Reconciliation
+    SALES {
+        uuid id PK
+        uuid item_id FK
+        string shopify_order_id
+        decimal sale_price
+        timestamp sale_date
+        boolean is_returned
+        timestamp created_at
+    }
+
+    REFERRALS {
+        uuid id PK
+        uuid event_id FK
+        uuid referring_consignor_id FK
+        uuid new_consignor_id FK
+        decimal reward_amount
+        boolean is_paid
+        timestamp created_at
+        timestamp paid_at
+    }
+
+    %% Relationships
+    CLIENTS ||--o{ CLIENT_SHOPIFY_ACCESS : has
+    CLIENTS ||--o{ EVENTS : hosts
+    EVENTS ||--o{ EVENT_LOCATIONS : has
+    CLIENTS ||--o{ CONSIGNORS : manages
+    EVENTS ||--o{ EVENT_CONSIGNORS : includes
+    EVENT_CONSIGNORS ||--o{ ITEMS : contains
+    ITEMS }|--|| CATEGORIES : belongs_to
+    ITEMS }|--|| SIZES : has
+    CLIENTS ||--o{ CATEGORY_OVERRIDES : customizes
+    CLIENTS ||--o{ SIZE_OVERRIDES : customizes
+    EVENTS ||--o{ EVENT_DROP_OFF_SLOTS : offers
+    EVENTS ||--o{ EVENT_VOLUNTEER_SLOTS : offers
+    EVENT_CONSIGNORS ||--o{ DROP_OFF_BOOKINGS : makes
+    EVENT_CONSIGNORS ||--o{ VOLUNTEER_BOOKINGS : makes
+    ITEMS ||--o{ SALES : generates
+    EVENTS ||--o{ REFERRALS : tracks

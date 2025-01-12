@@ -1,0 +1,17 @@
+graph TD
+    subgraph "Triggers"
+        R[Registration] --> E[Email Queue]
+        V[Volunteer Shift] --> E
+        D[Drop-off Time] --> E
+        P[Payment] --> E
+    end
+    
+    subgraph "Processing"
+        E --> T[Template]
+        T --> M[Mailchimp]
+    end
+    
+    subgraph "Tracking"
+        M --> S[Send Status]
+        S --> L[Logs]
+    end

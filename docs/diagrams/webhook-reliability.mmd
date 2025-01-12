@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant S as Shopify
+    participant W as Webhook Handler
+    participant Q as Queue
+    participant P as Processor
+    participant DB as Database
+    
+    S->>W: Webhook
+    W-->>S: 200 OK
+    W->>Q: Queue Job
+    
+    loop Retry Logic
+        Q->>P: Process
+        alt Success
+            P->>DB: Update
+        else Failure
+            P->>Q: Requeue
+        end
+    end

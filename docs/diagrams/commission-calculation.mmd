@@ -1,0 +1,17 @@
+graph TD
+    subgraph "Base Rate"
+        B[Base Commission] --> R[Regular Rate]
+        B --> S[Super Rate]
+    end
+    
+    subgraph "Adjustments"
+        V[Volunteer Shifts] --> VB[Shift Bonus]
+        H[High Value Items] --> HB[Super Bonus]
+    end
+    
+    subgraph "Calculation"
+        R & S --> F[Final Rate]
+        VB --> F
+        HB --> F
+        F --> E[Earnings]
+    end

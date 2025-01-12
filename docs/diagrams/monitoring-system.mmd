@@ -1,0 +1,18 @@
+graph TD
+    subgraph "Data Collection"
+        A[API Metrics] --> M[Monitoring]
+        Q[Queue Metrics] --> M
+        D[DB Metrics] --> M
+        I[Integration Metrics] --> M
+    end
+    
+    subgraph "Processing"
+        M --> AN[Analysis]
+        AN --> AL[Alerts]
+        AN --> R[Reports]
+    end
+    
+    subgraph "Response"
+        AL --> N[Notifications]
+        R --> D[Dashboard]
+    end

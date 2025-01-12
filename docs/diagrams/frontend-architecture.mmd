@@ -1,0 +1,42 @@
+graph TD
+    subgraph "Core Framework"
+        A[Svelte] --> B[Store]
+        A --> C[Router]
+        A --> D[Components]
+    end
+    
+    subgraph "State Management"
+        B --> E[Auth Store]
+        B --> F[Tenant Store]
+        B --> G[UI Store]
+    end
+    
+    subgraph "API Integration"
+        H[API Client] --> I[Auth Service]
+        H --> J[Tenant Service]
+        H --> K[Data Service]
+        H --> L[Error Handler]
+    end
+    
+    subgraph "UI Components"
+        D --> M[Layouts]
+        D --> N[Pages]
+        D --> O[Widgets]
+        D --> P[Modals]
+    end
+    
+    subgraph "External"
+        I --> Q[Clerk.dev]
+        J --> R[Backend API]
+        K --> R
+    end
+    
+    subgraph "Utilities"
+        S[Error Boundary] --> A
+        T[Logger] --> H
+        U[Analytics] --> A
+    end
+    
+    style A fill:#f9f,stroke:#333,stroke-width:4px
+    style H fill:#bbf,stroke:#333,stroke-width:4px
+    style R fill:#fbb,stroke:#333,stroke-width:4px

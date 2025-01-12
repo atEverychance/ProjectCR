@@ -1,0 +1,15 @@
+graph TD
+    subgraph "Base Categories"
+        B[System Defaults] --> C1[Client 1]
+        B --> C2[Client 2]
+    end
+    
+    subgraph "Overrides"
+        C1 --> O1[Client 1 Overrides]
+        C2 --> O2[Client 2 Overrides]
+    end
+    
+    subgraph "Resolution"
+        O1 & O2 --> R[Runtime Resolution]
+        R --> U[UI Display]
+    end

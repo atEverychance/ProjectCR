@@ -1,0 +1,18 @@
+graph TD
+    subgraph "Client Side"
+        I[Image Capture] --> C[Compression]
+        C --> Q[Quality Check]
+        Q --> U[Upload]
+    end
+    
+    subgraph "Performance"
+        L[Lazy Loading] --> P[Progressive]
+        P --> O[Offline Storage]
+        O --> S[Sync Queue]
+    end
+    
+    subgraph "UX"
+        F[Form Cache] --> A[Auto Save]
+        A --> B[Batch Upload]
+        B --> V[Validation]
+    end

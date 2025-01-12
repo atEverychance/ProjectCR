@@ -1,0 +1,89 @@
+flowchart TD
+    subgraph Categories[Error Categories]
+        A1[Validation Errors] -->|400| A2[Invalid Input]
+        A1 -->|400| A3[Missing Fields]
+        A1 -->|400| A4[Rule Violations]
+        A5[Authentication Errors] -->|401| A6[Invalid Credentials]
+        A5 -->|401| A7[Expired Tokens]
+        A5 -->|401| A8[Missing Auth]
+        A9[Authorization Errors] -->|403| A10[Insufficient Permissions]
+        A9 -->|403| A11[Resource Denied]
+        A9 -->|403| A12[Role Restrictions]
+        A13[Resource Errors] -->|404| A14[Invalid ID]
+        A13 -->|404| A15[Deleted Resource]
+        A13 -->|404| A16[Temporary Unavailable]
+        A17[Business Logic Errors] -->|422| A18[State Conflicts]
+        A17 -->|422| A19[Rule Violations]
+        A17 -->|422| A20[Invalid Operations]
+        A21[Integration Errors] -->|502| A22[Service Failure]
+        A21 -->|502| A23[Timeout]
+        A21 -->|502| A24[Invalid Response]
+        A25[System Errors] -->|500| A26[Internal Failures]
+        A25 -->|500| A27[Database Errors]
+        A25 -->|500| A28[Resource Exhaustion]
+    end
+
+    subgraph Response[Error Response]
+        B1[Standard Format] --> B2[Status: error]
+        B1 --> B3[Error Code]
+        B1 --> B4[User-friendly Message]
+        B1 --> B5[Details]
+        B1 --> B6[Reference ID]
+        B1 --> B7[Timestamp]
+        B8[Localization] --> B9[Multiple Languages]
+        B8 --> B10[Message Keys]
+        B8 --> B11[Fallbacks]
+    end
+
+    subgraph Recovery[Recovery Procedures]
+        C1[Automatic] --> C2[Retry Mechanisms]
+        C1 --> C3[Circuit Breakers]
+        C1 --> C4[Fallback Options]
+        C1 --> C5[State Recovery]
+        C6[Manual] --> C7[Admin Dashboard]
+        C6 --> C8[Data Correction]
+        C6 --> C9[Sync Mechanisms]
+        C6 --> C10[Audit Trails]
+    end
+
+    subgraph Logging[Error Logging]
+        D1[Log Structure] --> D2[Timestamp]
+        D1 --> D3[Error Code]
+        D1 --> D4[Stack Trace]
+        D1 --> D5[Request Context]
+        D1 --> D6[User Context]
+        D1 --> D7[System State]
+        D8[Log Levels] --> D9[DEBUG]
+        D8 --> D10[INFO]
+        D8 --> D11[WARN]
+        D8 --> D12[ERROR]
+        D8 --> D13[FATAL]
+    end
+
+    subgraph Monitoring[Error Monitoring]
+        E1[Tracking] --> E2[Error Rates]
+        E1 --> E3[Error Types]
+        E1 --> E4[Recovery Success]
+        E1 --> E5[System Health]
+        E6[Alerting] --> E7[Thresholds]
+        E6 --> E8[Pattern Detection]
+        E6 --> E9[Critical Failures]
+        E6 --> E10[System Degradation]
+    end
+
+    subgraph Docs[Documentation]
+        F1[Error Catalog] --> F2[Error Codes]
+        F1 --> F3[Common Causes]
+        F1 --> F4[Resolution Steps]
+        F1 --> F5[Prevention Measures]
+        F6[Integration Guide] --> F7[Error Handling]
+        F6 --> F8[Recovery Processes]
+        F6 --> F9[Monitoring Setup]
+        F6 --> F10[Support Escalation]
+    end
+
+    Categories --> Response
+    Response --> Recovery
+    Recovery --> Logging
+    Logging --> Monitoring
+    Monitoring --> Docs

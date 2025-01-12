@@ -1,0 +1,16 @@
+graph TD
+    subgraph "Test Types"
+        U[Unit Tests] --> I[Integration Tests]
+        I --> E[E2E Tests]
+    end
+    
+    subgraph "Coverage"
+        M[Models] --> C[Coverage]
+        A[API] --> C
+        L[Logic] --> C
+    end
+    
+    subgraph "Automation"
+        C --> CI[CI Pipeline]
+        CI --> R[Reports]
+    end

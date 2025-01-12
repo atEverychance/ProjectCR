@@ -1,0 +1,11 @@
+stateDiagram-v2
+    [*] --> Draft
+    Draft --> Setup: Configure
+    Setup --> Registration: Open Registration
+    Registration --> Active: Start Event
+    Active --> Markdown: Enable Markdown
+    Markdown --> Closed: Close Event
+    Closed --> Returns: Process Returns
+    Returns --> Reconciliation: Close Returns
+    Reconciliation --> Complete: Finalize
+    Complete --> [*]

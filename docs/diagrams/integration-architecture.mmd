@@ -1,0 +1,22 @@
+sequenceDiagram
+    participant FE as Frontend
+    participant API as Backend
+    participant Auth as Clerk.dev
+    participant Shop as Shopify
+    participant Mail as Mailchimp
+    participant Q as Redis Queue
+    
+    FE->>Auth: Authenticate
+    Auth-->>FE: JWT Token
+    FE->>API: API Request + Token
+    
+    alt Create Inventory
+        API->>Shop: Create Product
+        API->>Q: Queue Image Processing
+    end
+    
+    alt Process Sale
+        Shop->>API: Order Webhook
+        API->>Q: Queue Processing
+        Q->>Mail: Send Notification
+    end

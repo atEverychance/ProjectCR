@@ -1,0 +1,24 @@
+graph TD
+    subgraph "Data Input"
+        C[Consignor] --> I[Inventory Entry]
+        I --> P[Photo Upload]
+        I --> D[Details Entry]
+    end
+    
+    subgraph "Processing"
+        P --> IP[Image Processing]
+        D --> VP[Validation]
+        IP & VP --> SP[Shopify Product]
+    end
+    
+    subgraph "Sales Flow"
+        SP --> SO[Shopify Order]
+        SO --> CP[Commission Processing]
+        CP --> EP[Earnings Calculation]
+    end
+    
+    subgraph "Reconciliation"
+        EP --> R[Returns Processing]
+        R --> F[Final Earnings]
+        F --> PO[Payout]
+    end

@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant S as System
+    participant DB as Database
+    participant B as Backup Service
+    participant ST as Storage
+    
+    S->>DB: Initiate Backup
+    DB->>B: Stream Data
+    B->>B: Compress
+    B->>B: Encrypt
+    B->>ST: Store Backup
+    ST-->>S: Confirm Storage

@@ -1,0 +1,21 @@
+sequenceDiagram
+    participant C as Consignor
+    participant S as Shopify
+    participant API as System
+    participant DB as Database
+    
+    rect rgb(200, 220, 240)
+        Note over C,DB: Registration Fee
+        C->>S: Pay Registration
+        S->>API: Payment Webhook
+        API->>DB: Record Payment
+        API->>DB: Enable Participation
+    end
+    
+    rect rgb(220, 240, 220)
+        Note over C,DB: Sales Processing
+        S->>API: Order Webhook
+        API->>DB: Record Sale
+        API->>DB: Calculate Commission
+        API->>DB: Update Earnings
+    end

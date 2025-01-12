@@ -1,0 +1,16 @@
+graph TD
+    subgraph "Size Structure"
+        G[Size Groups] --> S[Sizes]
+        S --> R[Range Values]
+    end
+    
+    subgraph "Client Config"
+        S --> CO[Client Overrides]
+        R --> RO[Range Overrides]
+    end
+    
+    subgraph "Validation"
+        CO --> V[Validation Rules]
+        RO --> V
+        V --> UI[UI Controls]
+    end

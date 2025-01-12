@@ -1,0 +1,17 @@
+graph TD
+    subgraph "Client Layer"
+        C1[Client 1] --> S1[Shopify Store 1]
+        C2[Client 2] --> S2[Shopify Store 2]
+    end
+    
+    subgraph "Data Isolation"
+        C1 --> D1[(Client 1 Data)]
+        C2 --> D2[(Client 2 Data)]
+        D1 & D2 --> B[Base Configuration]
+    end
+    
+    subgraph "Overrides"
+        C1 --> O1[Client 1 Overrides]
+        C2 --> O2[Client 2 Overrides]
+        B --> O1 & O2
+    end
