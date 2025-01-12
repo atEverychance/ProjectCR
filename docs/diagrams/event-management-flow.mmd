@@ -1,0 +1,47 @@
+flowchart TD
+    subgraph Setup[Event Setup]
+        A1[Create Event] --> A2[Configure Basic Settings]
+        A2 --> A3[Set Financial Parameters]
+        A3 --> A4[Define Schedule]
+        A4 --> A5[Configure Access Controls]
+    end
+    
+    subgraph PreEvent[Pre-Event Phase]
+        B1[Consignor Registration] --> B2[Inventory Submission]
+        B2 --> B3[Item Approval]
+        B3 --> B4[Drop-off Scheduling]
+        B4 --> B5[Volunteer Signup]
+    end
+    
+    subgraph Event[Event Execution]
+        C1[Sales Tracking] --> C2[Inventory Management]
+        C2 --> C3[Volunteer Management]
+        C3 --> C4[Real-time Reporting]
+        C4 --> C5[Operational Adjustments]
+    end
+    
+    subgraph PostEvent[Post-Event Phase]
+        D1[Return Processing] --> D2[Earnings Calculation]
+        D2 --> D3[Payment Processing]
+        D3 --> D4[Final Reporting]
+        D4 --> D5[Event Analysis]
+    end
+    
+    Setup --> PreEvent
+    PreEvent --> Event
+    Event --> PostEvent
+    
+    style Setup fill:#f9f,stroke:#333,stroke-width:4px
+    style PreEvent fill:#bbf,stroke:#333,stroke-width:4px
+    style Event fill:#9f9,stroke:#333,stroke-width:4px
+    style PostEvent fill:#fbb,stroke:#333,stroke-width:4px
+    
+    classDef setup fill:#f9f,stroke:#333,stroke-width:4px
+    classDef preEvent fill:#bbf,stroke:#333,stroke-width:4px
+    classDef event fill:#9f9,stroke:#333,stroke-width:4px
+    classDef postEvent fill:#fbb,stroke:#333,stroke-width:4px
+    
+    class Setup setup
+    class PreEvent preEvent
+    class Event event
+    class PostEvent postEvent
