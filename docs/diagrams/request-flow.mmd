@@ -1,0 +1,21 @@
+sequenceDiagram
+    participant Client as Client Application
+    participant API as API Gateway
+    participant Auth as Authentication Service
+    participant Router as Request Router
+    participant Handler as Request Handler
+    participant DB as Database
+    
+    Client->>+API: HTTP Request
+    API->>+Auth: Verify Authentication
+    Auth-->>-API: Authentication Result
+    API->>+Router: Route Request
+    Router->>+Handler: Process Request
+    Handler->>+DB: Query Data
+    DB-->>-Handler: Query Results
+    Handler-->>-Router: Response Data
+    Router-->>-API: Formatted Response
+    API-->>-Client: HTTP Response
+    
+    Note over API,Router: Multi-tenant Context
+    Note over Handler,DB: Client-specific Data Filtering
