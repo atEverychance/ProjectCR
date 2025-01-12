@@ -1,0 +1,39 @@
+graph TD
+    subgraph "API Layers"
+        A[API Gateway] --> B[Authentication]
+        B --> C[Rate Limiting]
+        C --> D[Request Validation]
+        D --> E[Routing]
+    end
+    
+    subgraph "Core Services"
+        E --> F[Consignor Service]
+        E --> G[Event Service]
+        E --> H[Inventory Service]
+        E --> I[Reporting Service]
+    end
+    
+    subgraph "Data Access"
+        F --> J[(Consignor DB)]
+        G --> K[(Event DB)]
+        H --> L[(Inventory DB)]
+        I --> M[(Reporting DB)]
+    end
+    
+    subgraph "External Services"
+        F --> N[Clerk.dev]
+        G --> O[Shopify]
+        H --> O
+        I --> P[Mailchimp]
+    end
+    
+    subgraph "Monitoring"
+        Q[Prometheus] --> R[Grafana]
+        S[ELK Stack] --> T[Kibana]
+        A --> Q
+        A --> S
+    end
+    
+    style A fill:#bbf,stroke:#333,stroke-width:4px
+    style F fill:#f9f,stroke:#333,stroke-width:4px
+    style J fill:#fbb,stroke:#333,stroke-width:4px
