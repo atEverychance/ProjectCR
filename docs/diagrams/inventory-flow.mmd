@@ -7,10 +7,33 @@ sequenceDiagram
     
     C->>M: Add Item
     M->>M: Compress Photos
+    M->>M: Show compression progress
+    M->>M: Display preview
+    M->>M: Allow quality adjustment
     M->>API: Submit Item
-    API->>Q: Queue Processing
-    Q->>S: Create Product
-    S-->>API: Product Created
-    API->>Q: Process Photos
-    Q->>S: Update Photos
-    API-->>M: Confirm Creation
+    API->>M: Validate item
+    alt Valid Item
+        API->>Q: Queue Processing
+        M->>C: Show upload progress
+        Q->>S: Create Product
+        S-->>API: Product Created
+        API->>Q: Process Photos
+        Q->>S: Update Photos
+        API-->>M: Confirm Creation
+        M->>C: Show success status
+    else Invalid Item
+        API-->>M: Show validation errors
+        M->>C: Highlight invalid fields
+        M->>C: Suggest corrections
+    end
+    
+    par Offline Mode
+        M->>M: Cache items locally
+        M->>C: Show offline status
+        M->>M: Sync when online
+    and Batch Mode
+        C->>M: Select multiple items
+        M->>M: Show batch progress
+        M->>M: Allow bulk edits
+        M->>API: Submit batch
+    end

@@ -1,19 +1,46 @@
 graph TD
     subgraph "Item Entry"
         A[Add Item] --> P[Photo Capture]
-        P --> D[Details Entry]
+        P --> PC[Photo Compression]
+        PC --> PP[Photo Preview]
+        PP --> PQ[Quality Adjustment]
+        PQ --> D[Details Entry]
         D --> C[Category Select]
         C --> S[Size Select]
+        S --> V[Validation]
     end
     
     subgraph "Processing"
-        P --> PC[Photo Compression]
-        PC --> PU[Photo Upload]
-        D --> V[Validation]
-    end
-    
-    subgraph "Submission"
-        PU & V --> SU[Submit]
+        V -->|Valid| SU[Submit]
+        V -->|Invalid| ER[Show Errors]
+        ER --> SC[Suggest Corrections]
         SU --> Q[Queue]
         Q --> SP[Save Product]
+        SP -->|Success| CF[Confirm Creation]
+        SP -->|Error| EH[Error Handling]
     end
+    
+    subgraph "Offline Support"
+        OS[Offline Storage] -->|Cache| IT[Items]
+        IT -->|Sync| SU
+        SU -->|Offline| OS
+    end
+    
+    subgraph "Batch Operations"
+        BA[Batch Add] --> BM[Batch Mode]
+        BM --> BE[Bulk Edit]
+        BE --> BS[Batch Submit]
+        BS --> Q
+    end
+    
+    subgraph "Status Feedback"
+        SF[Status Updates] -->|Progress| PG[Progress Bar]
+        SF -->|Position| QP[Queue Position]
+        SF -->|Time| ET[Estimated Time]
+    end
+    
+    style ER fill:#fbb
+    style EH fill:#fbb
+    style CF fill:#9f9
+    style OS fill:#bbf
+    style BA fill:#ff9

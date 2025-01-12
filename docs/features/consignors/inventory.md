@@ -19,20 +19,58 @@ Smart defaults:
 - Price suggestions
 - Category shortcuts
 - Recent selections
+- Auto-fill from previous items
 
 ### Photo Management
 Capabilities:
 - Multiple photo upload
-- Client-side compression
+- Client-side compression with progress
+- Photo preview with quality adjustment
 - Auto-orientation
 - Thumbnail generation
 - Batch processing
+- Offline capture and sync
+
+Photo Feedback:
+- Compression quality indicator
+- Size reduction preview
+- Format validation
+- Retake suggestions
 
 Limits:
 - Regular: 2 photos max
 - Super: 4 photos max
-- 5MB per photo
+- 5MB per photo (pre-compression)
 - Supported formats: JPG, PNG
+- Minimum resolution: 800x600px
+
+### Error Handling
+Validation:
+- Real-time field validation
+- Photo quality checks
+- Price range validation
+- Category compatibility
+- Size availability
+
+Error Recovery:
+- Clear error messages
+- Field highlighting
+- Correction suggestions
+- Save draft capability
+- Partial submission
+
+### Offline Support
+Features:
+- Local item caching
+- Offline photo capture
+- Background sync
+- Conflict resolution
+- Sync status indicator
+
+Limits:
+- Max 50 items offline
+- 24-hour sync window
+- Manual sync trigger
 
 ### Batch Operations
 Features:
