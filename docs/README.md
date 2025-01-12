@@ -4,7 +4,7 @@
 Complete documentation for a multi-tenant SaaS platform managing children's consignment events, from consignor registration through final reconciliation.
 
 ## System Overview
-See [System Architecture](./diagrams/system-architecture.mmd) for complete system design and component interaction.
+See [System Architecture](./diagrams/architecture/system-architecture.mmd) for complete system design and component interaction.
 
 ## Core Features
 
@@ -91,7 +91,7 @@ See [System Architecture](./diagrams/system-architecture.mmd) for complete syste
 
 ## Integration Points
 
-See [Integration Architecture](./diagrams/integration-architecture.mmd) for complete integration flow.
+See [Integration Architecture](./diagrams/architecture/integration-architecture.mmd) for complete integration flow.
 
 - Shopify Custom App
 - Clerk.dev Authentication
