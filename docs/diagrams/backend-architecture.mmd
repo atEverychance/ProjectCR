@@ -1,0 +1,36 @@
+flowchart TD
+    subgraph Backend[Backend Services]
+        API[API Server]
+        Workers[Background Workers]
+        Queue[Message Queue]
+        Cache[Cache Layer]
+        DB[Database]
+    end
+    
+    subgraph Frontend[Frontend Application]
+        Web[Web Interface]
+        Mobile[Mobile Interface]
+    end
+    
+    subgraph Integrations[External Services]
+        Shopify[Shopify API]
+        Clerk[Clerk.dev]
+        Email[Email Service]
+    end
+    
+    Frontend --> API
+    API --> Workers
+    API --> Queue
+    API --> Cache
+    API --> DB
+    
+    Workers --> Queue
+    Workers --> Cache
+    Workers --> DB
+    
+    API --> Integrations
+    Workers --> Integrations
+    
+    style Backend fill:#f9f,stroke:#333,stroke-width:4px
+    style Frontend fill:#bbf,stroke:#333,stroke-width:4px
+    style Integrations fill:#fbb,stroke:#333,stroke-width:4px
