@@ -3,32 +3,85 @@
 ## Overview
 Comprehensive reporting system for event management and analysis. See [Reporting Architecture](../../diagrams/reporting-architecture.mmd) for complete structure.
 
+## Sales Reports
+
+### Daily Sales
+- Total sales
+- By category
+- By consignor
+- By payment method
+
+### Event Sales
+- Event totals
+- Daily breakdown
+- Top selling items
+- Return rates
+
+### Consignor Earnings
+- Total earnings
+- Payout status
+- Commission breakdown
+- Payment history
+
+## Inventory Reports
+
+### Current Inventory
+- Total items
+- By category
+- By size
+- By price range
+
+### Sales Performance
+- Sell-through rate
+- Days to sell
+- Markdown performance
+- Return rates
+
+### Consignor Activity
+- Items listed
+- Items sold
+- Return rates
+- Earnings summary
+
 ## Event Reports
 
-### Sales Analysis
-Metrics tracked:
-- Gross sales
-- Net sales
-- Returns impact
-- Category breakdown
-- Hourly trends
-See [Sales Analysis Flow](../../diagrams/sales-analysis-flow.mmd) for details.
-
-### Inventory Reports
-Tracked items:
-- Total items
-- Items by category
-- Items by price range
-- Markdown items
-- Return rates
-
-### Participation Reports
-Metrics:
+### Event Overview
+- Total sales
 - Total consignors
-- Regular vs Super
+- Total shoppers
 - Volunteer participation
-- Drop-off compliance
-- Return rates
+
+### Schedule Performance
+- Drop-off slots
+- Volunteer shifts
+- Staffing levels
+- Attendance rates
+
+### Financial Summary
+- Total revenue
+- Expenses
+- Net profit
+- Commission payouts
+
+## User Reports
+
+### Consignor Activity
+- Registration rates
+- Inventory creation
+- Sales performance
+- Earnings summary
+
+### Shopper Activity
+- Total shoppers
+- Repeat shoppers
+- Average spend
+- Category preferences
+
+### Volunteer Participation
+- Shift coverage
+- No-show rates
+- Performance ratings
+- Retention rates
 
 ## Financial Reports
 
@@ -86,6 +139,26 @@ Metrics:
 - Markdown impact
 - Optimal pricing
 - Return correlation
+
+## System Reports
+
+### Usage Statistics
+- Active users
+- API usage
+- Feature adoption
+- Error rates
+
+### Integration Status
+- Shopify sync status
+- Email delivery rates
+- Webhook processing
+- Authentication stats
+
+### Performance Metrics
+- Response times
+- Queue status
+- Resource usage
+- Error rates
 
 ## Export Capabilities
 
