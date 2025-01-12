@@ -88,9 +88,3 @@ See [Processing Flow](../diagrams/processing-flow.mmd) for details.
 - Retry mechanisms
 - Circuit breakers
 - Fallback options
-
-### Monitoring
-- Performance metrics
-- Error tracking
-- Resource utilization
-- Integration health
