@@ -3,6 +3,26 @@
 ## Overview
 Centralized authentication and user management system. See [Auth Architecture](../../diagrams/auth-architecture.mmd) for complete structure.
 
+## Authentication Strategy
+
+### Simplified Authentication
+- Magic links as primary
+- Social login providers:
+  - Google
+  - Facebook
+  - Apple
+- No passwords
+- No MFA
+- No passkeys
+
+### Implementation
+1. Configure Clerk.dev instance
+2. Enable magic links
+3. Set up social providers
+4. Configure Apple Sign In
+5. Disable password authentication
+6. Remove MFA settings
+
 ## Implementation
 
 ### User Types

@@ -5,6 +5,26 @@ Complete registration and event participation flow for consignors. See [Registra
 
 ## Registration Process
 
+### Simplified Flow
+1. User clicks register
+2. Chooses authentication method:
+   - Magic link (enter email)
+   - Social login (Google/Facebook/Apple)
+3. Completes authentication
+4. Account created
+
+### Social Login Options
+- Google
+- Facebook
+- Apple
+
+### Benefits
+- No password management
+- Simplified user experience
+- Reduced support overhead
+- Faster onboarding
+- Privacy-focused options
+
 ### Initial Registration
 Required information:
 - Email address

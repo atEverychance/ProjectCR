@@ -50,6 +50,20 @@ Frontend settings:
 - VITE_CLERK_PUBLISHABLE_KEY
 - VITE_ENVIRONMENT=development
 
+## Apple Sign In Configuration
+
+### Requirements
+1. Apple Developer account
+2. App ID creation
+3. Service ID configuration
+4. Private key generation
+
+### Clerk.dev Setup
+1. Enable Apple Sign In
+2. Configure Service ID
+3. Add Private Key
+4. Set up Redirect URLs
+
 ## Installation Steps
 
 ### Backend Setup

@@ -7,18 +7,35 @@ sequenceDiagram
 
     U->>FE: Access Application
     FE->>C: Initialize Auth
-    C-->>FE: Auth Session
+    C-->>FE: Auth Options
 
     alt New User
-        U->>C: Register
-        C->>C: Verify Email
+        U->>C: Choose Authentication Method
+        C->>C: Present Options
+        alt Magic Link
+            U->>C: Enter Email
+            C->>C: Send Magic Link
+            U->>C: Click Magic Link
+        else Social Login
+            U->>C: Select Provider (Google/Facebook/Apple)
+            C->>C: Handle OAuth Flow
+        end
         C->>API: User Created Webhook
         API->>DB: Create Consignor Record
     else Existing User
-        U->>C: Login
-        C-->>FE: Auth Token
+        U->>C: Choose Authentication Method
+        C->>C: Present Options
+        alt Magic Link
+            U->>C: Enter Email
+            C->>C: Send Magic Link
+            U->>C: Click Magic Link
+        else Social Login
+            U->>C: Select Provider (Google/Facebook/Apple)
+            C->>C: Handle OAuth Flow
+        end
     end
 
+    C-->>FE: Auth Token
     FE->>API: API Request + Token
     API->>C: Verify Token
     C-->>API: Token Valid
