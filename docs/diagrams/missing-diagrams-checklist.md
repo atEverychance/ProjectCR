@@ -1,14 +1,14 @@
 # Missing Diagrams Checklist
 
 ## Core Architecture Diagrams
-1. ✅ API Architecture (referenced in docs/api/endpoints.md)
-2. ✅ Backend Architecture (referenced in docs/architecture/overview.md)
-3. ✅ Data Model (referenced in docs/architecture/data-model.md)
-4. ✅ Security Layers (referenced in docs/architecture/security.md)
-5. ✅ Multi-tenant Structure (referenced in docs/architecture/multi-tenancy.md)
-6. ✅ Request Flow (referenced in docs/architecture/multi-tenancy.md)
-7. ✅ Processing Flow (referenced in docs/architecture/overview.md)
-8. ✅ Deployment Architecture (referenced in docs/development/deployment.md)
+1. ✅ API Architecture (architecture/api-architecture.mmd)
+2. ✅ Backend Architecture (architecture/backend-architecture.mmd)
+3. ✅ Data Model (architecture/data-model.mmd)
+4. ✅ Security Layers (architecture/security-layers.mmd)
+5. ✅ Multi-tenant Structure (architecture/multi-tenant-structure.mmd)
+6. ✅ Request Flow (architecture/request-flow.mmd)
+7. ✅ Processing Flow (architecture/processing-flow.mmd)
+8. ✅ Deployment Architecture (architecture/deployment-architecture.mmd)
 
 ## Integration Diagrams
 9. ✅ Authentication Flow (combines frontend-auth-flow, backend-auth-flow, and registration-flow)

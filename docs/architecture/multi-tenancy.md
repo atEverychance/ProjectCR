@@ -16,7 +16,7 @@ The system implements client isolation at every layer while maintaining efficien
 - Automatic query scoping
 - Cache key separation
 - Resource isolation
-See [Client Isolation](../diagrams/client-isolation.mmd) for details.
+See [Client Isolation](../diagrams/architecture/client-isolation.mmd) for details.
 
 ## Configuration Management
 
@@ -32,7 +32,7 @@ See [Client Isolation](../diagrams/client-isolation.mmd) for details.
 - Modified size charts
 - Specific commission rates
 - Email customization
-See [Configuration Management](../diagrams/configuration-management.mmd) for details.
+See [Configuration Management](../diagrams/architecture/configuration-management.mmd) for details.
 
 ## Integration Points
 
@@ -61,7 +61,7 @@ See [Configuration Management](../diagrams/configuration-management.mmd) for det
 2. Client context resolution
 3. Authentication verification
 4. Resource access control
-See [Request Flow](../diagrams/request-flow.mmd) for details.
+See [Request Flow](../diagrams/architecture/request-flow.mmd) for details.
 
 ### Data Access
 1. Automatic query filtering
