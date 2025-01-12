@@ -78,3 +78,60 @@ erDiagram
         datetime paid_at
         datetime created_at
     }
+    
+    ITEMS {
+        int id PK
+        int event_consignor_id FK
+        int category_id FK
+        int size_id FK
+        string shopify_product_id
+        string title
+        decimal price
+        boolean markdown_eligible
+        string status
+        datetime sold_at
+        decimal sold_price
+        decimal earned_amount
+        int transfer_count
+        int transferred_from_item_id FK
+        datetime created_at
+    }
+    
+    SALES {
+        int id PK
+        int item_id FK
+        string shopify_order_id
+        decimal sale_price
+        datetime sale_date
+        boolean is_returned
+        datetime created_at
+    }
+    
+    REFERRALS {
+        int id PK
+        int event_id FK
+        int referring_consignor_id FK
+        int new_consignor_id FK
+        decimal reward_amount
+        boolean is_paid
+        datetime created_at
+        datetime paid_at
+    }
+    
+    CATEGORIES {
+        int id PK
+        string category_detail
+        int category_type_id FK
+        boolean enabled
+        boolean is_default
+        datetime created_at
+    }
+    
+    SIZES {
+        int id PK
+        string size_value
+        string size_group
+        boolean enabled
+        boolean is_default
+        datetime created_at
+    }

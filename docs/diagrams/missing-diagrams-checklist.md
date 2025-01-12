@@ -10,7 +10,7 @@
 ## Architecture Diagrams
 6. ✅ security-layers.mmd (referenced in docs/architecture/security.md)
 7. ✅ complete-data-model.mmd (referenced in docs/architecture/data-model.md)
-8. entity-relationships.mmd (referenced in docs/architecture/data-model.md)
+8. ✅ entity-relationships.mmd (referenced in docs/architecture/data-model.md)
 9. ✅ audit-schema.mmd (referenced in docs/architecture/data-model.md)
 10. configuration-management.mmd (referenced in docs/architecture/multi-tenancy.md)
 11. request-flow.mmd (referenced in docs/architecture/multi-tenancy.md)
