@@ -1,7 +1,7 @@
 # Authentication
 
 ## Overview
-Authentication implementation using Clerk.dev with JWT token validation. See [Authentication Flow](../diagrams/flows/auth-flow.mmd) for complete process.
+Authentication implementation using Clerk.dev with JWT token validation. See [Authentication Flow](../diagrams/flows/authentication-flow.mmd) for complete process.
 
 ## Authentication Flow
 

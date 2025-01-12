@@ -1,7 +1,7 @@
 # Monitoring & Observability
 
 ## Overview
-Comprehensive monitoring strategy across all system components. See [Monitoring Architecture](../diagrams/monitoring-system.mmd) for complete structure.
+Comprehensive monitoring strategy across all system components. See [Monitoring Architecture](../diagrams/architecture/monitoring-system.mmd) for complete structure.
 
 ## System Health
 
