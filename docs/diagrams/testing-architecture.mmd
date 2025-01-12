@@ -1,0 +1,42 @@
+flowchart TD
+    subgraph "Testing Layers"
+        Unit[Unit Tests] -->|Mock| Services[Service Layer]
+        Integration[Integration Tests] -->|Real| DB[Database]
+        E2E[End-to-End Tests] -->|Full Stack| API[API Layer]
+    end
+    
+    subgraph "Test Types"
+        Unit -->|Isolated| Business[Business Logic]
+        Integration -->|Connected| Data[Data Access]
+        E2E -->|Complete| Workflows[User Workflows]
+    end
+    
+    subgraph "Test Execution"
+        Local[Local Development] -->|Fast Feedback| Unit
+        CI[CI Pipeline] -->|Automated| Integration
+        Staging[Staging Environment] -->|Production-like| E2E
+    end
+    
+    subgraph "Test Management"
+        Coverage[Test Coverage] -->|Track| Metrics[Quality Metrics]
+        Reports[Test Reports] -->|Analyze| Trends[Quality Trends]
+        Alerts[Test Alerts] -->|Notify| Teams[Development Teams]
+    end
+    
+    subgraph "Test Data"
+        Fixtures[Test Fixtures] -->|Setup| Scenarios[Test Scenarios]
+        Mocks[Test Mocks] -->|Isolate| Dependencies[External Services]
+        Seeds[Test Data Seeds] -->|Initialize| DB
+    end
+    
+    style Unit fill:#f9f,stroke:#333,stroke-width:4px
+    style Integration fill:#bbf,stroke:#333,stroke-width:4px
+    style E2E fill:#fbb,stroke:#333,stroke-width:4px
+    
+    classDef unit fill:#f9f,stroke:#333,stroke-width:4px
+    classDef integration fill:#bbf,stroke:#333,stroke-width:4px
+    classDef e2e fill:#fbb,stroke:#333,stroke-width:4px
+    
+    class Unit unit
+    class Integration integration
+    class E2E e2e
