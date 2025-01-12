@@ -1,0 +1,21 @@
+flowchart TD
+    subgraph System
+        A[API Gateway] --> B[Shopify Integration Service]
+        B --> C[Product Sync]
+        B --> D[Order Processing]
+        B --> E[Inventory Sync]
+        B --> F[Webhook Handling]
+    end
+
+    subgraph Shopify
+        G[Shopify REST API] --> H[Products]
+        G --> I[Orders]
+        G --> J[Inventory]
+        K[Shopify Webhooks] --> L[Real-time Updates]
+    end
+
+    System --> Shopify
+    Shopify --> System
+
+    style A fill:#f9f,stroke:#333,stroke-width:4px
+    style G fill:#bbf,stroke:#333,stroke-width:4px

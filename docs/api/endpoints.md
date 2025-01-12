@@ -100,36 +100,76 @@ GET /api/v1/admin/reports/sales
 GET /api/v1/admin/reports/consignors
 GET /api/v1/admin/reports/inventory
 
-## Webhook Endpoints
+## Shopify Integration Endpoints
 
-### Shopify Integration
-POST /api/v1/webhooks/shopify/order
-- Handles order-related webhooks (create, paid, cancelled)
-- Required headers:
-  * X-Shopify-Topic: Webhook topic
-  * X-Shopify-Hmac-Sha256: Signature verification
-- Payload: Shopify order object
+### Sync Products to Shopify
+- **POST /api/shopify/sync-products**
+  - Syncs products from the system to Shopify.
+  - Request Body:
+    ```json
+    {
+      "event_id": "123",
+      "consignor_id": "456"
+    }
+    ```
+  - Response:
+    ```json
+    {
+      "success": true,
+      "synced_products": 10
+    }
+    ```
 
-POST /api/v1/webhooks/shopify/product  
-- Handles product update webhooks
-- Required headers:
-  * X-Shopify-Topic: Webhook topic
-  * X-Shopify-Hmac-Sha256: Signature verification
-- Payload: Shopify product object
+### Process Shopify Orders
+- **POST /api/shopify/process-order**
+  - Handles incoming Shopify orders.
+  - Request Body:
+    ```json
+    {
+      "order_id": "789",
+      "items": [
+        {
+          "product_id": "abc",
+          "quantity": 1,
+          "price": 25.00
+        }
+      ]
+    }
+    ```
+  - Response:
+    ```json
+    {
+      "success": true,
+      "order_id": "789"
+    }
+    ```
 
-POST /api/v1/webhooks/shopify/inventory
-- Handles inventory level updates
-- Required headers:
-  * X-Shopify-Topic: Webhook topic
-  * X-Shopify-Hmac-Sha256: Signature verification
-- Payload: Shopify inventory level object
-
-POST /api/v1/webhooks/shopify/fulfillment
-- Handles fulfillment events
-- Required headers:
-  * X-Shopify-Topic: Webhook topic
-  * X-Shopify-Hmac-Sha256: Signature verification
-- Payload: Shopify fulfillment object
+### Handle Shopify Webhooks
+- **POST /api/shopify/webhook**
+  - Processes Shopify webhooks for real-time updates.
+  - Request Body:
+    ```json
+    {
+      "topic": "orders/create",
+      "data": {
+        "order_id": "789",
+        "items": [
+          {
+            "product_id": "abc",
+            "quantity": 1,
+            "price": 25.00
+          }
+        ]
+      }
+    }
+    ```
+  - Response:
+    ```json
+    {
+      "success": true,
+      "processed": true
+    }
+    ```
 
 ### Authentication
 POST /api/v1/webhooks/clerk/user
