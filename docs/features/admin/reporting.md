@@ -145,11 +145,11 @@ Tracking:
 - Adjustments
 
 ### System Audit
-Monitoring:
+Tracking:
 - User actions
 - Configuration changes
 - Access attempts
-- Error logs
+- System logs
 
 ## Report Distribution
 
