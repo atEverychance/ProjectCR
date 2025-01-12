@@ -1,0 +1,42 @@
+flowchart TD
+    subgraph Server[Production Server]
+        Web[Nginx Web Server]
+        App[FastAPI Application]
+        Worker[Background Workers]
+        Redis[Redis Cache & Queue]
+        DB[SQLite Database]
+    end
+    
+    subgraph Services[External Services]
+        Shopify[Shopify API]
+        Clerk[Clerk.dev Auth]
+        Mailchimp[Mailchimp Email]
+        Monitoring[Monitoring Tools]
+    end
+    
+    subgraph Clients[Client Applications]
+        Browser[Web Browser]
+        Mobile[Mobile App]
+        API[API Clients]
+    end
+    
+    Browser --> Web
+    Mobile --> Web
+    API --> Web
+    
+    Web --> App
+    Web --> Redis
+    Web --> Services
+    
+    App --> Worker
+    App --> Redis
+    App --> DB
+    App --> Services
+    
+    Worker --> Redis
+    Worker --> DB
+    Worker --> Services
+    
+    style Server fill:#f9f,stroke:#333,stroke-width:4px
+    style Services fill:#bbf,stroke:#333,stroke-width:4px
+    style Clients fill:#fbb,stroke:#333,stroke-width:4px
