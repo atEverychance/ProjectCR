@@ -1,0 +1,37 @@
+flowchart TD
+    subgraph Local[Local Development Environment]
+        Backend[Backend Services]
+        Frontend[Frontend Application]
+        DB[SQLite Database]
+        Redis[Redis Cache & Queue]
+        Tools[Development Tools]
+    end
+
+    subgraph External[External Services]
+        Shopify[Shopify API]
+        Clerk[Clerk.dev Auth]
+        Mailchimp[Mailchimp Email]
+    end
+
+    subgraph CI[CI/CD Pipeline]
+        Build[Build & Test]
+        Deploy[Deploy to Staging]
+        Monitor[Monitor & Alert]
+    end
+
+    subgraph Staging[Staging Environment]
+        StagingBackend[Backend Services]
+        StagingFrontend[Frontend Application]
+        StagingDB[Database]
+        StagingRedis[Redis Cache & Queue]
+    end
+
+    Local -->|Sync Data| External
+    Local -->|Push Code| CI
+    CI -->|Deploy| Staging
+    Staging -->|Test & Validate| CI
+
+    style Local fill:#f9f,stroke:#333,stroke-width:4px
+    style External fill:#bbf,stroke:#333,stroke-width:4px
+    style CI fill:#fbb,stroke:#333,stroke-width:4px
+    style Staging fill:#9f9,stroke:#333,stroke-width:4px

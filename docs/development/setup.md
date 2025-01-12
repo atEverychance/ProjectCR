@@ -1,7 +1,9 @@
 # Development Environment Setup
 
 ## Overview
-Complete guide for setting up local development environment. See [Development Architecture](../diagrams/development-architecture.mmd) for system structure.
+Complete guide for setting up local development environment. The development architecture consists of local services, external integrations, and CI/CD pipelines. See the [Development Architecture](../diagrams/development-architecture.mmd) diagram for the complete system structure.
+
+![Development Architecture](../diagrams/development-architecture.mmd)
 
 ## Prerequisites
 
