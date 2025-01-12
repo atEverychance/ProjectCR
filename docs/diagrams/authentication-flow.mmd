@@ -1,0 +1,48 @@
+flowchart TD
+    subgraph Frontend[Frontend Application]
+        A1[User Interaction] --> A2[Login/Registration Form]
+        A2 --> A3[Submit Credentials]
+        A3 --> A4[Redirect to Clerk.dev]
+        A4 --> A5[Receive Auth Response]
+        A5 --> A6[Store Session Token]
+    end
+
+    subgraph Backend[Backend Services]
+        B1[API Gateway] --> B2[Validate Session Token]
+        B2 --> B3[Verify Token with Clerk.dev]
+        B3 --> B4[Check User Permissions]
+        B4 --> B5[Generate JWT]
+        B5 --> B6[Return JWT to Frontend]
+    end
+
+    subgraph External[External Services]
+        C1[Clerk.dev] --> C2[Handle Authentication]
+        C2 --> C3[Return Auth Response]
+        C3 --> C4[Provide User Metadata]
+    end
+
+    subgraph Session[Session Management]
+        D1[Frontend Storage] --> D2[Store JWT in Secure Cookie]
+        D2 --> D3[Attach JWT to API Requests]
+        D3 --> D4[Backend Token Validation]
+        D4 --> D5[Refresh Token if Needed]
+    end
+
+    subgraph Security[Security Measures]
+        E1[Token Encryption] --> E2[Secure Storage]
+        E2 --> E3[Token Expiry Handling]
+        E3 --> E4[Rate Limiting]
+        E4 --> E5[Audit Logging]
+    end
+
+    Frontend --> Backend
+    Backend --> External
+    Session --> Backend
+    Security --> Frontend
+    Security --> Backend
+
+    style Frontend fill:#f9f,stroke:#333,stroke-width:4px
+    style Backend fill:#bbf,stroke:#333,stroke-width:4px
+    style External fill:#fbb,stroke:#333,stroke-width:4px
+    style Session fill:#9f9,stroke:#333,stroke-width:4px
+    style Security fill:#ff9,stroke:#333,stroke-width:4px

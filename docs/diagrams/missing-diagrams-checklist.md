@@ -22,9 +22,7 @@
 17. development-architecture.mmd (referenced in docs/development/setup.md)
 
 ## Integration Diagrams
-18. frontend-auth-flow.mmd (referenced in docs/architecture/integration/clerk.md)
-19. backend-auth-flow.mmd (referenced in docs/architecture/integration/clerk.md)
-20. registration-flow.mmd (referenced in docs/architecture/integration/clerk.md)
+18. ✅ authentication-flow.mmd (combines frontend-auth-flow, backend-auth-flow, and registration-flow)
 21. shopify-integration-flow.mmd (referenced in docs/architecture/integration/shopify.md)
 22. shopify-product-flow.mmd (referenced in docs/architecture/integration/shopify.md)
 23. shopify-order-flow.mmd (referenced in docs/architecture/integration/shopify.md)
