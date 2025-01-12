@@ -1,0 +1,26 @@
+sequenceDiagram
+    participant U as User
+    participant FE as Frontend
+    participant C as Clerk.dev
+    participant API as Backend
+    participant DB as Database
+
+    U->>FE: Access Application
+    FE->>C: Initialize Auth
+    C-->>FE: Auth Session
+
+    alt New User
+        U->>C: Register
+        C->>C: Verify Email
+        C->>API: User Created Webhook
+        API->>DB: Create Consignor Record
+    else Existing User
+        U->>C: Login
+        C-->>FE: Auth Token
+    end
+
+    FE->>API: API Request + Token
+    API->>C: Verify Token
+    C-->>API: Token Valid
+    API->>DB: Get User Context
+    API-->>FE: Response with Context
