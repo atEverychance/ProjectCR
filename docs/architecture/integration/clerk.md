@@ -1,7 +1,7 @@
 # Authentication Integration (Clerk.dev)
 
 ## Overview
-Centralized authentication and user management system. See [Auth Architecture](../../diagrams/auth-architecture.mmd) for complete structure.
+Centralized authentication and user management system. See [Auth Architecture](../../diagrams/architecture/auth-architecture.mmd) for complete structure.
 
 ## Authentication Strategy
 
