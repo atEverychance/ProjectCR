@@ -1,7 +1,7 @@
 # Email Integration (Mailchimp Transactional)
 
 ## Overview
-Queue-based email processing system using Mailchimp Transactional API. See [Email System](../../diagrams/email-system-flow.mmd) for complete flow.
+Queue-based email processing system using Mailchimp Transactional API. See [Email System](../../diagrams/flows/notification-system.mmd) for complete flow.
 
 ## Email Types
 
