@@ -175,7 +175,6 @@ Recommended plugins:
 Tools:
 - Python debugger
 - FastAPI debug toolbar
-- Redis commander
 - SQLite browser
 
 ### Frontend Debugging
