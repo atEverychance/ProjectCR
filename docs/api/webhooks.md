@@ -1,7 +1,7 @@
 # Webhook Handlers
 
 ## Overview
-Documentation for webhook handling, processing, and reliability measures. See [Webhook Architecture](../diagrams/webhook-architecture.mmd) for complete flow.
+Documentation for webhook handling, processing, and reliability measures. See [Webhook Architecture](../diagrams/architecture/webhook-architecture.mmd) for complete flow.
 
 ## Shopify Webhooks
 
