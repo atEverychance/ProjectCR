@@ -41,13 +41,3 @@ flowchart TD
         U --> Z[(Sessions DB)]
     end
     
-    subgraph "Monitoring"
-        B --> AA[Webhook Logs]
-        H --> AA
-        J --> AA
-        AA --> AB[Prometheus]
-        AB --> AC[Grafana]
-        AA --> AD[ELK Stack]
-        AD --> AE[Kibana]
-    end
-    
