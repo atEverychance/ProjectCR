@@ -1,7 +1,7 @@
 # Testing Strategy
 
 ## Overview
-Comprehensive testing approach covering unit tests, integration tests, and end-to-end scenarios. See [Testing Architecture](../diagrams/testing-architecture.mmd) for complete structure.
+Comprehensive testing approach covering unit tests, integration tests, and end-to-end scenarios. See [Testing Architecture](/docs/diagrams/testing-architecture.mmd) for complete structure.
 
 ## Test Categories
 
