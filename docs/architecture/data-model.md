@@ -3,46 +3,69 @@
 ## Overview
 Complete database schema supporting multi-tenant operations with client isolation. See [Complete Data Model](../diagrams/complete-data-model.mmd) for the full entity relationship diagram.
 
+## Quick Reference
+| Entity               | Key Fields                          | Relationships                     |
+|----------------------|-------------------------------------|-----------------------------------|
+| Clients              | id, name, domain                   | ClientShopifyAccess, Events       |
+| ClientShopifyAccess  | client_id, access_token            | Clients                           |
+| Events               | id, client_id, name                | EventLocations, EventConsignors   |
+| Consignors           | id, client_id, consignor_id        | EventConsignors, Items            |
+| Items                | id, event_consignor_id, status     | Sales, Categories, Sizes          |
+| Categories           | id, category_detail                | Items, CategoryOverrides          |
+| Sizes                | id, size_value                     | Items, SizeOverrides              |
+| Sales                | id, item_id, shopify_order_id      | Items                             |
+
+## Field Type Reference
+| Field Type           | Description                        | Example                           |
+|----------------------|------------------------------------|-----------------------------------|
+| PK                   | Primary Key (UUID)                 | "550e8400-e29b-41d4-a716-446655440000" |
+| FK                   | Foreign Key (UUID)                 | "550e8400-e29b-41d4-a716-446655440001" |
+| String               | Text field                         | "Summer Sale 2025"                |
+| DateTime             | ISO 8601 timestamp                 | "2025-01-12T14:30:00Z"            |
+| Boolean              | True/False value                   | true                              |
+| Integer              | Whole number                       | 42                                |
+| Decimal              | Fixed precision number             | 19.99                             |
+
 ## Core Entities
 
 ### Client Management
 
 Clients
-- id (PK)
-- name
-- domain
-- created_at
-- active
+- id (PK, UUID) - Unique client identifier
+- name (String) - Client organization name
+- domain (String) - Client's primary domain (unique)
+- created_at (DateTime) - Record creation timestamp
+- active (Boolean) - Client account status
 
 ClientShopifyAccess
-- id (PK)
-- client_id (FK)
-- access_token
-- location_id
-- tax_collection_id
-- token_created_at
-- token_expires_at
-- active
+- id (PK, UUID) - Unique access record identifier
+- client_id (FK, UUID) - Reference to Clients.id
+- access_token (String) - Shopify API access token (encrypted)
+- location_id (String) - Shopify location ID
+- tax_collection_id (String) - Shopify tax collection ID
+- token_created_at (DateTime) - Token creation timestamp
+- token_expires_at (DateTime) - Token expiration timestamp
+- active (Boolean) - Access status
 
 ### Event Management
 
 Events
-- id (PK)
-- client_id (FK)
-- name
-- start_date
-- end_date
-- return_window_end
-- regular_fee
-- super_fee
-- regular_base_rate
-- super_base_rate
-- volunteer_shift_bonus
-- super_item_bonus
-- super_item_threshold
-- markdown_active
-- status
-- created_at
+- id (PK, UUID) - Unique event identifier
+- client_id (FK, UUID) - Reference to Clients.id
+- name (String) - Event name
+- start_date (DateTime) - Event start date/time
+- end_date (DateTime) - Event end date/time
+- return_window_end (DateTime) - Last date for returns
+- regular_fee (Decimal) - Regular consignor fee
+- super_fee (Decimal) - Super consignor fee
+- regular_base_rate (Decimal) - Regular consignor commission rate
+- super_base_rate (Decimal) - Super consignor commission rate
+- volunteer_shift_bonus (Decimal) - Bonus per volunteer shift
+- super_item_bonus (Decimal) - Bonus per super item
+- super_item_threshold (Integer) - Minimum items for super status
+- markdown_active (Boolean) - Markdown pricing enabled
+- status (String) - Event status (planned/active/closed)
+- created_at (DateTime) - Record creation timestamp
 
 EventLocations
 - id (PK)
