@@ -78,7 +78,6 @@ EventLocations
 - directions
 - created_at
 
-[Continue with the rest of the content in the same format...]
 ### Consignment Management
 
 Consignors
