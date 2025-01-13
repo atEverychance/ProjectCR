@@ -41,7 +41,7 @@ Processing structure:
 - Worker processes
 - Priority levels
 - Retry mechanism
-See [Email Queue Flow](../../diagrams/email-queue-flow.mmd) for details.
+See [Email Queue Flow](../../diagrams/flows/notification-system.mmd) for details.
 
 ### Template Management
 Template structure:

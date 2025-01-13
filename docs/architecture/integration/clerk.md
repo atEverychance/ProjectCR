@@ -53,7 +53,7 @@ Implementation:
 - Custom theme
 - Error handling
 - Loading states
-See [Frontend Auth Flow](../../diagrams/frontend-auth-flow.mmd) for details.
+See [Frontend Auth Flow](../../diagrams/flows/auth-flow.mmd) for details.
 
 ### Backend Integration
 Authentication flow:
@@ -61,7 +61,7 @@ Authentication flow:
 - User context resolution
 - Permission verification
 - Client association
-See [Backend Auth Flow](../../diagrams/backend-auth-flow.mmd) for details.
+See [Backend Auth Flow](../../diagrams/flows/auth-flow.mmd) for details.
 
 ## User Management
 
@@ -71,7 +71,7 @@ Process steps:
 2. Email verification
 3. Profile completion
 4. Client association
-See [Registration Flow](../../diagrams/registration-flow.mmd) for details.
+See [Registration Flow](../../diagrams/flows/auth-flow.mmd) for details.
 
 ### Profile Management
 Managed fields:
