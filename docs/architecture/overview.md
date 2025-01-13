@@ -1,7 +1,7 @@
 # Architecture Overview
 
 ## System Design
-The Online Consignment Event Platform is built on a multi-tenant architecture supporting multiple client organizations. See [System Architecture](docs/diagrams/architecture/system-architecture.mmd) for the complete system overview.
+The Online Consignment Event Platform is built on a multi-tenant architecture supporting multiple client organizations. See [System Architecture](/docs/diagrams/architecture/system-architecture.mmd) for the complete system overview.
 
 ## Core Components
 
@@ -10,20 +10,20 @@ The Online Consignment Event Platform is built on a multi-tenant architecture su
 - Mobile-first design
 - Progressive enhancement
 - Offline capabilities
-See [Frontend Architecture](docs/diagrams/architecture/frontend-architecture.mmd) for details.
+See [Frontend Architecture](/docs/diagrams/architecture/frontend-architecture.mmd) for details.
 
 ### Backend Services
 - FastAPI application server
 - SQLite database
 - Redis queue system
 - Background workers
-See [Backend Architecture](docs/diagrams/architecture/backend-architecture.mmd) for details.
+See [Backend Architecture](/docs/diagrams/architecture/backend-architecture.mmd) for details.
 
 ### External Integrations
 - Shopify Custom App (per client)
 - Clerk.dev Authentication
 - Mailchimp Transactional Email
-See [Integration Architecture](docs/diagrams/architecture/integration-architecture.mmd) for details.
+See [Integration Architecture](/docs/diagrams/architecture/integration-architecture.mmd) for details.
 
 ## Data Flow
 
@@ -32,14 +32,14 @@ See [Integration Architecture](docs/diagrams/architecture/integration-architectu
 2. Client context resolution
 3. Resource access control
 4. Data isolation
-See [Data Flow](docs/diagrams/flows/data-flow.mmd) for complete flow.
+See [Data Flow](/docs/diagrams/flows/data-flow.mmd) for complete flow.
 
 ### Background Processing
 1. Image processing
 2. Email notifications
 3. Webhook handling
 4. Report generation
-See [Processing Flow](docs/diagrams/flows/processing-flow.mmd) for details.
+See [Processing Flow](/docs/diagrams/flows/processing-flow.mmd) for details.
 
 ## Security Implementation
 
