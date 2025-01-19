@@ -68,6 +68,22 @@ Editable fields:
 - Contact preferences
 - Password
 
+### Email Management
+- Email change requires verification
+- Updates propagate to:
+  - Authentication system
+  - Mailchimp integration
+  - Shopify integration
+- Change history maintained
+- Rate limiting applied
+
+### Verification Process
+1. Initiate email change
+2. Verify new email address
+3. Update local records
+4. Sync with external systems
+5. Notify user of completion
+
 ### Participation History
 Tracked information:
 - Past events
