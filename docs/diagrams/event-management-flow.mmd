@@ -1,16 +1,28 @@
 flowchart TD
-    Start[Start Event Setup] --> BasicConfig[Basic Configuration]
-    BasicConfig --> Schedule[Schedule Setup]
-    Schedule --> Financial[Financial Settings]
-    Financial --> Access[Access Control]
-    Access --> Inventory[Inventory Setup]
-    Inventory --> Monitoring[Monitoring Configuration]
-    Monitoring --> Communication[Communication Setup]
-    Communication --> FinalReview[Final Review]
-    FinalReview --> Activate[Activate Event]
+    subgraph "Event Setup"
+        Start[Start Event Setup] --> BasicConfig[Basic Configuration]
+        BasicConfig --> Schedule[Schedule Setup]
+        Schedule --> Financial[Financial Settings]
+        Financial --> Access[Access Control]
+        Access --> Inventory[Inventory Setup]
+        Inventory --> Monitoring[Monitoring Configuration]
+        Monitoring --> Communication[Communication Setup]
+        Communication --> FinalReview[Final Review]
+        FinalReview --> Activate[Activate Event]
+    end
     
-    Activate -->|Event Active| Operations[Operational Management]
-    Operations -->|Event Complete| Reconciliation[Post-Event Processing]
+    subgraph "Event Operations"
+        Activate -->|Event Active| Participation[Participation Management]
+        Participation -->|Event Complete| Reconciliation[Post-Event Processing]
+    end
+    
+    subgraph "Participation Management"
+        Participation --> Track[Track Participation]
+        Track --> Convert[Convert Registrations]
+        Convert --> Engage[Engage Potential Participants]
+        Engage --> Report[Generate Participation Reports]
+    end
     
     style Start fill:#f9f,stroke:#333,stroke-width:4px
     style Activate fill:#bbf,stroke:#333,stroke-width:4px
+    style Participation fill:#9f9,stroke:#333,stroke-width:4px

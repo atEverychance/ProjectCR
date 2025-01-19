@@ -25,6 +25,23 @@ See [Backend Architecture](/docs/diagrams/architecture/backend-architecture.mmd)
 - Mailchimp Transactional Email
 See [Integration Architecture](/docs/diagrams/architecture/integration-architecture.mmd) for details.
 
+## Registration System
+
+### Account Management
+- Separate account registration
+- Profile management
+- Authentication options:
+  * Magic link
+  * Social login
+- Optional event participation
+
+### Event Participation
+- Multiple event participation
+- Participation fee handling
+- Referral system
+- Payment tracking
+See [Registration Flow](/docs/diagrams/registration-flow.mmd) for details.
+
 ## Data Flow
 
 ### User Operations
@@ -32,6 +49,8 @@ See [Integration Architecture](/docs/diagrams/architecture/integration-architect
 2. Client context resolution
 3. Resource access control
 4. Data isolation
+5. Registration tracking
+6. Participation management
 See [Data Flow](/docs/diagrams/flows/data-flow.mmd) for complete flow.
 
 ### Background Processing
@@ -39,6 +58,8 @@ See [Data Flow](/docs/diagrams/flows/data-flow.mmd) for complete flow.
 2. Email notifications
 3. Webhook handling
 4. Report generation
+5. Participation tracking
+6. Referral processing
 See [Processing Flow](/docs/diagrams/flows/processing-flow.mmd) for details.
 
 ## Security Implementation
