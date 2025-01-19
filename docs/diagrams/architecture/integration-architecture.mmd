@@ -3,7 +3,7 @@ sequenceDiagram
     participant API as Backend
     participant Auth as Clerk.dev
     participant Shop as Shopify
-    participant Mail as Mailchimp
+    participant MC as Mailchimp
     participant Q as Redis Queue
     
     FE->>Auth: Authenticate
@@ -19,4 +19,8 @@ sequenceDiagram
         Shop->>API: Order Webhook
         API->>Q: Queue Processing
         Q->>Mail: Send Notification
+    end
+    alt Update Consignor Email
+        API->>Q: Enqueue Mailchimp Update Job
+        Q->>MC: Update Subscriber
     end

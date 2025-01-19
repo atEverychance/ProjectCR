@@ -19,6 +19,16 @@ Template variables:
 - confirmation_details
 - action_required
 
+### Consignor Profile Updates
+Triggered when a consignor updates their profile information, including their email address. Handled via a background job.
+
+Actions:
+- Update email address in Mailchimp via `update_mailchimp_email_task`.
+
+Message variables:
+- consignor_id
+- new_email
+
 ### Admin Notifications
 Required templates:
 - New consignor registration
@@ -41,14 +51,6 @@ Processing structure:
 - Worker processes
 - Priority levels
 - Retry mechanism
-See [Email Queue Flow](../../diagrams/flows/notification-system.mmd) for details.
-
-### Template Management
-Template structure:
-- Base templates
-- Client customization
-- Merge variables
-- Dynamic content
 
 ### Processing Strategy
 Queue handling:

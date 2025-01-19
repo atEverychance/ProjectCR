@@ -22,3 +22,15 @@ graph TD
         R --> F[Final Earnings]
         F --> PO[Payout]
     end
+    
+    subgraph "Consignor Updates"
+        CU[Consignor Update]
+    end
+
+    subgraph "Mailchimp Sync"
+        CU --> MU[Mailchimp Update Job]
+    end
+
+    subgraph "Background Processing"
+        MU --> MS[Mailchimp Subscriber Update]
+    end
