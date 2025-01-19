@@ -27,142 +27,149 @@ Here's how this platform will directly benefit your consignment events:
 
 ### Consignor Inventory Management
 
-- **Source:** `docs/features/consignors/inventory.md`
-- **Dependencies:** Shopify integration
-- **Business benefit:**  Make it incredibly easy for your consignors to list their items, even from their phones.
-- **Real-world example:**  Imagine your consignors quickly snapping photos and entering details right after they pull items from their closets, reducing the time and effort it takes to get items online.
-- **How it helps other consignment sale owners:**  Simplifies the most time-consuming part of the process for consignors, encouraging more participation and a wider selection of items.
-- **Expected impact on operations:**  Faster item uploads, fewer errors, and happier consignors.
+* **Source:** `docs/features/consignors/inventory.md`
+* **Dependencies:** Shopify integration
+* **Business benefit:** Make it incredibly easy for your consignors to list their items, even from their phones. This means more items listed faster, leading to a bigger and better sale.
+* **Real-world example:** Imagine your consignors quickly snapping photos and entering details right after they pull items from their closets, no more waiting until they have time to sit down at a computer.
+* **How it helps other consignment sale owners:** Simplifies the most time-consuming part of the process for consignors, encouraging more participation and a wider selection of items for shoppers.
+* **Expected impact on operations:** Faster item uploads, fewer errors, and happier consignors, freeing up your time to focus on other important tasks.
 
-    - **Quick & Easy Item Entry:**  Consignors can quickly add items with essential details like title, category, size, and price. Smart suggestions and auto-fill options speed up the process.
-    - **Picture Perfect Photos:**  The system makes it easy to upload clear photos from phones, ensuring your listings look professional. It even helps with cropping and orientation!
-    - **Works Even Without Internet:**  Consignors can start listing items even if they don't have internet access right away, and the system will sync everything later.
-    - **Bulk Item Updates:**  Need to change prices or categories for a bunch of items at once?  No problem! This feature lets you make changes in bulk.
+    * **Quick & Easy Item Entry:** Consignors can quickly add items with essential details like title, category, size, and price. Smart suggestions and auto-fill options speed up the process.
+    * **Picture Perfect Photos:** The system makes it easy to upload clear photos from phones, ensuring your listings look professional. It even helps with cropping and orientation!
+    * **Works Even Without Internet:** Consignors can start listing items even if they don't have internet access right away, and the system will sync everything later.
+    * **Bulk Item Updates:** Need to change prices or categories for a bunch of items at once? No problem! This feature lets you make changes in bulk.
 
 ### Consignor Registration & Profile
 
-- **Source:** `docs/features/consignors/registration.md`
-- **Dependencies:** None
-- **Business benefit:**  Simplify the sign-up process for new consignors, making it a breeze for them to join your events.
-- **Real-world example:**  Think of a new consignor signing up in seconds using their Google or Facebook account, ready to start listing items almost immediately.
-- **How it helps other consignment sale owners:**  Reduces barriers to entry for new consignors, expanding your pool of participants.
-- **Expected impact on operations:**  Increased consignor sign-ups and less time spent on manual onboarding.
+* **Source:** `docs/features/consignors/registration.md`
+* **Dependencies:** None
+* **Business benefit:** Simplify the sign-up process for new consignors, making it a breeze for them to join your events.  This means more consignors and a larger selection of inventory.
+* **Real-world example:** Think of a new consignor signing up in seconds using their Google or Facebook account, ready to start listing items almost immediately.
+* **How it helps other consignment sale owners:** Reduces barriers to entry for new consignors, expanding your pool of participants and attracting more shoppers.
+* **Expected impact on operations:** Increased consignor sign-ups and less time spent on manual onboarding, allowing you to focus on growth.
 
-    - **Simple Sign-Up:** New consignors can register quickly using their email or social media accounts – no more forgotten passwords!
-    - **Clear Participation Options:**  Consignors can easily choose their participation level (like "Regular" or "Super") and understand the associated fees and benefits.
-    - **Referral Rewards:**  Encourage your consignors to spread the word! The system tracks referrals and ensures they get their rewards.
-    - **Track Their History:** Consignors can see their past events, earnings, and even their volunteer history, keeping them engaged.
+    * **Simple Sign-Up:** New consignors can register quickly using their email or social media accounts – no more forgotten passwords!
+    * **Clear Participation Options:** Consignors can easily choose their participation level (like "Regular" or "Super") and understand the associated fees and benefits.
+    * **Referral Rewards:** Encourage your consignors to spread the word! The system tracks referrals and ensures they get their rewards.
+    * **Track Their History:** Consignors can see their past events, earnings, and even their volunteer history, keeping them engaged.
 
 ### Administrative Dashboard
 
-- **Source:** `docs/features/admin/dashboard.md`
-- **Dependencies:** None
-- **Business benefit:** Get a clear overview of your event's performance at a glance, helping you make informed decisions.
-- **Real-world example:**  Imagine logging in and instantly seeing how many items have been sold, your total sales, and which categories are performing best.
-- **How it helps other consignment sale owners:** Provides essential data to understand what's working and what needs adjustment to maximize profits.
-- **Expected impact on operations:**  Better insights into event performance, leading to more effective management.
+* **Source:** `docs/features/admin/dashboard.md`
+* **Dependencies:** None
+* **Business benefit:** Get a clear overview of your event's performance at a glance, helping you make informed decisions.  This means you can quickly identify trends and make adjustments to maximize your sales.
+* **Real-world example:** Imagine logging in and instantly seeing how many items have been sold, your total sales, and which categories are performing best, all without having to dig through spreadsheets.
+* **How it helps other consignment sale owners:** Provides essential data to understand what's working and what needs adjustment to maximize profits.
+* **Expected impact on operations:** Better insights into event performance, leading to more effective management and increased profitability.
 
-    - **Key Numbers at Your Fingertips:**  See real-time updates on sales, consignor participation, and key financial metrics.
-    - **Manage Your Event Easily:**  Control event status, adjust schedules, and manage access all from one place.
-    - **Keep an Eye on Things:**  Monitor sales activity and system performance to ensure everything is running smoothly.
-    - **Financial Overview:** Track payments, fees, and commissions effortlessly.
+    * **Key Numbers at Your Fingertips:** See real-time updates on sales, consignor participation, and key financial metrics.
+    * **Manage Your Event Easily:** Control event status, adjust schedules, and manage access all from one place.
+    * **Keep an Eye on Things:** Monitor sales activity and system performance to ensure everything is running smoothly.
+    * **Financial Overview:** Track payments, fees, and commissions effortlessly.
 
 ### Earnings Management
 
-- **Source:** `docs/features/consignors/earnings.md`
-- **Dependencies:** Shopify integration
-- **Business benefit:**  Provide your consignors with clear and transparent earnings tracking, building trust and satisfaction.
-- **Real-world example:**  Consignors can easily see how much they've earned from each sale, including any bonuses they've received.
-- **How it helps other consignment sale owners:**  Reduces confusion and questions about payouts, leading to happier consignors.
-- **Expected impact on operations:**  Fewer inquiries about earnings and a more streamlined payout process.
+* **Source:** `docs/features/consignors/earnings.md`
+* **Dependencies:** Shopify integration
+* **Business benefit:** Provide your consignors with clear and transparent earnings tracking, building trust and satisfaction.  This leads to happier consignors and fewer questions about payouts.
+* **Real-world example:** Consignors can easily see how much they've earned from each sale, including any bonuses they've received, directly from their phones or computers.
+* **How it helps other consignment sale owners:** Reduces confusion and questions about payouts, leading to happier consignors and a smoother event.
+* **Expected impact on operations:** Fewer inquiries about earnings and a more streamlined payout process, saving you time and effort.
 
-    - **Know Exactly What You've Earned:** Consignors can see their current earnings, sales details, and any bonuses they've qualified for.
-    - **Clear Commission Breakdown:**  The system clearly shows how commissions are calculated, including any bonuses for volunteering or referrals.
-    - **Track Your Sales History:** Consignors can review their earnings from past events.
+    * **Know Exactly What You've Earned:** Consignors can see their current earnings, sales details, and any bonuses they've qualified for.
+    * **Clear Commission Breakdown:** The system clearly shows how commissions are calculated, including any bonuses for volunteering or referrals.
+    * **Track Your Sales History:** Consignors can review their earnings from past events.
+
 
 ### Event Reconciliation
 
-- **Source:** `docs/features/events/reconciliation.md`
-- **Dependencies:** Shopify integration, Earnings Management
-- **Business benefit:**  Simplify the post-event wrap-up, making payouts accurate and efficient.
-- **Real-world example:**  Imagine a streamlined process where all sales are tallied, returns are processed, and consignor payouts are calculated automatically.
-- **How it helps other consignment sale owners:**  Saves significant time and reduces the potential for errors in final settlements.
-- **Expected impact on operations:**  Faster and more accurate post-event payouts.
+* **Source:** `docs/features/events/reconciliation.md`
+* **Dependencies:** Shopify integration, Earnings Management
+* **Business benefit:** Simplify the post-event wrap-up, making payouts accurate and efficient. This saves you valuable time and reduces the risk of errors.
+* **Real-world example:** Imagine a streamlined process where all sales are tallied, returns are processed, and consignor payouts are calculated automatically, with just a few clicks.
+* **How it helps other consignment sale owners:** Saves significant time and reduces the potential for errors in final settlements.
+* **Expected impact on operations:** Faster and more accurate post-event payouts, allowing you to quickly wrap up the event and move on to the next one.
 
-    - **Smooth Event Closing:**  The system helps you close the event smoothly, processing final sales and preparing for returns.
-    - **Accurate Payouts:**  Calculates consignor earnings, including bonuses and deductions for returns, ensuring everyone is paid correctly.
-    - **Detailed Reports:**  Generates reports summarizing sales, commissions, and other key financial information.
+    * **Smooth Event Closing:** The system helps you close the event smoothly, processing final sales and preparing for returns.
+    * **Accurate Payouts:** Calculates consignor earnings, including bonuses and deductions for returns, ensuring everyone is paid correctly.
+    * **Detailed Reports:** Generates reports summarizing sales, commissions, and other key financial information.
 
 ### Administrative Reporting
 
-- **Source:** `docs/features/admin/reporting.md`
-- **Dependencies:** None
-- **Business benefit:**  Gain valuable insights into your event's performance with comprehensive reports.
-- **Real-world example:**  See reports on your best-selling categories, top-performing consignors, and overall financial success.
-- **How it helps other consignment sale owners:**  Provides data-driven insights to optimize future events and maximize profitability.
-- **Expected impact on operations:**  Better understanding of event performance, leading to improved strategies.
+* **Source:** `docs/features/admin/reporting.md`
+* **Dependencies:** None
+* **Business benefit:** Gain valuable insights into your event's performance with comprehensive reports. This helps you understand what's working, what's not, and how to improve future events.
+* **Real-world example:** See reports on your best-selling categories, top-performing consignors, and overall financial success, all presented in easy-to-understand dashboards and charts.
+* **How it helps other consignment sale owners:** Provides data-driven insights to optimize future events and maximize profitability.
+* **Expected impact on operations:** Better understanding of event performance, leading to improved strategies and increased success.
 
-    - **Sales Overviews:** See daily and event-level sales breakdowns, including top-selling items.
-    - **Inventory Insights:** Understand your current inventory and how quickly items are selling.
-    - **Consignor & Shopper Activity:** Track registration rates, sales performance, and shopper behavior.
-    - **Financial Deep Dives:** Analyze revenue, commissions, and fees in detail.
+    * **Sales Overviews:** See daily and event-level sales breakdowns, including top-selling items.
+    * **Inventory Insights:** Understand your current inventory and how quickly items are selling.
+    * **Consignor & Shopper Activity:** Track registration rates, sales performance, and shopper behavior.
+    * **Financial Deep Dives:** Analyze revenue, commissions, and fees in detail.
+    * **Cheque Printing:** Easily print reconciled consignor cheques.
+
 
 ### Volunteer and Drop-off Scheduling
 
-- **Source:** `docs/features/consignors/scheduling.md`
-- **Dependencies:** None
-- **Business benefit:**  Organize volunteers and item drop-offs efficiently, saving time and reducing chaos.
-- **Real-world example:**  Consignors can easily sign up for drop-off slots, and volunteers can choose their preferred shifts online.
-- **How it helps other consignment sale owners:**  Streamlines logistics and ensures you have the help you need.
-- **Expected impact on operations:**  Smoother drop-off and volunteer management.
+* **Source:** `docs/features/consignors/scheduling.md`
+* **Dependencies:** None
+* **Business benefit:** Organize volunteers and item drop-offs efficiently, saving time and reducing chaos. This makes the entire process smoother for both you and your consignors.
+* **Real-world example:** Consignors can easily sign up for drop-off slots, and volunteers can choose their preferred shifts online, eliminating the need for phone calls and emails.
+* **How it helps other consignment sale owners:** Streamlines logistics and ensures you have the help you need when you need it.
+* **Expected impact on operations:** Smoother drop-off and volunteer management, reducing stress and improving efficiency.
 
-    - **Easy Volunteer Sign-Up:** Volunteers can easily see available shifts and sign up online, and even earn bonus commission!
-    - **Organized Drop-offs:**  Schedule item drop-off appointments to avoid long lines and ensure a smooth process.
+    * **Easy Volunteer Sign-Up:** Volunteers can easily see available shifts and sign up online, and even earn bonus commission!
+    * **Organized Drop-offs:** Schedule item drop-off appointments to avoid long lines and ensure a smooth process.
+
 
 ### Event Management Tools
 
-- **Source:** `docs/features/events/management.md`
-- **Dependencies:** None
-- **Business benefit:**  Manage all aspects of your event from setup to post-event processing in one central location.
-- **Real-world example:**  Configure event dates, set commission rates, and manage access for shoppers and consignors all within the platform.
-- **How it helps other consignment sale owners:**  Provides a centralized hub for all event-related tasks.
-- **Expected impact on operations:**  More efficient event management and reduced administrative overhead.
+* **Source:** `docs/features/events/management.md`
+* **Dependencies:** None
+* **Business benefit:** Manage all aspects of your event from setup to post-event processing in one central location. This simplifies event administration and keeps everything organized.
+* **Real-world example:** Configure event dates, set commission rates, and manage access for shoppers and consignors all within the platform, without having to juggle multiple systems.
+* **How it helps other consignment sale owners:** Provides a centralized hub for all event-related tasks.
+* **Expected impact on operations:** More efficient event management and reduced administrative overhead, freeing up your time to focus on growth.
 
-    - **Simple Event Setup:**  Easily configure key event details like dates, location, and fees.
-    - **Control Access:** Manage when shoppers and consignors can access the store and inventory.
-    - **Keep Things Running Smoothly:** Monitor sales, inventory, and volunteer participation during the event.
+    * **Simple Event Setup:** Easily configure key event details like dates, location, and fees.
+    * **Control Access:** Manage when shoppers and consignors can access the store and inventory.
+    * **Keep Things Running Smoothly:** Monitor sales, inventory, and volunteer participation during the event.
+
 
 ### System Configuration
 
-- **Source:** `docs/features/admin/configuration.md`
-- **Dependencies:** Shopify integration
-- **Business benefit:** Customize the platform to fit your specific needs and preferences.
-- **Real-world example:**  Set your own commission rates, customize email templates, and manage user roles.
-- **How it helps other consignment sale owners:**  Provides flexibility and control over how the platform works.
-- **Expected impact on operations:**  Tailored platform experience to match your business model.
+* **Source:** `docs/features/admin/configuration.md`
+* **Dependencies:** Shopify integration
+* **Business benefit:** Customize the platform to fit your specific needs and preferences. This ensures the platform works exactly the way you want it to.
+* **Real-world example:** Set your own commission rates, customize email templates, and manage user roles, all without needing technical expertise.
+* **How it helps other consignment sale owners:** Provides flexibility and control over how the platform works.
+* **Expected impact on operations:** Tailored platform experience to match your business model, improving efficiency and satisfaction.
 
-    - **Customize to Your Needs:** Configure categories, sizes, commission rates, and email templates to match your business.
-    - **Manage User Roles:** Control access and permissions for different users, like admins and consignors.
+    * **Customize to Your Needs:** Configure categories, sizes, commission rates, and email templates to match your business.
+    * **Manage User Roles:** Control access and permissions for different users, like admins and consignors.
+
 
 ### Shopify Integration
 
-- **Source:** Multiple feature documents
-- **Dependencies:** Existing Shopify store.
-- **Business benefit:** Seamlessly integrate your consignment event data with your existing Shopify store, avoiding double entry and ensuring consistency.
-- **Real-world example:**  Items listed by consignors automatically appear in your Shopify store, and sales are tracked in both systems.
-- **How it helps other consignment sale owners:**  Leverages your existing investment in Shopify and streamlines data management.
-- **Expected impact on operations:**  Reduced manual data entry and improved data accuracy.
+* **Source:** Multiple feature documents
+* **Dependencies:** Existing Shopify store
+* **Business benefit:** Seamlessly integrate your consignment event data with your existing Shopify store, avoiding double entry and ensuring consistency. This saves you time and reduces the risk of errors.
+* **Real-world example:** Items listed by consignors automatically appear in your Shopify store, and sales are tracked in both systems, eliminating manual data entry and ensuring accurate reporting.
+* **How it helps other consignment sale owners:** Leverages your existing investment in Shopify and streamlines data management.
+* **Expected impact on operations:** Reduced manual data entry and improved data accuracy, freeing up your time for other important tasks.
 
-    - **Automatic Product Creation:**  Items entered by consignors can automatically be created as products in your Shopify store.
-    - **Real-time Inventory Updates:** Keep your Shopify inventory levels accurate based on consignment sales.
-    - **Order Processing:**  Streamline the order fulfillment process by integrating with Shopify's order management.
+    * **Automatic Product Creation:** Items entered by consignors can automatically be created as products in your Shopify store.
+    * **Real-time Inventory Updates:** Keep your Shopify inventory levels accurate based on consignment sales.
+    * **Order Processing:** Streamline the order fulfillment process by integrating with Shopify's order management.
+
 
 ## Investment Structure
 
 Your investment builds the bridge that helps traditional consignment sales step confidently into the digital world:
 
-### Phase 1: Core Infrastructure - $25,000
-Think of this as building your dream house's foundation - we start with rock-solid infrastructure that keeps everyone's treasures safe and organized. We're implementing secure user authentication through Clerk.dev, clever data separation that keeps each sale's information private, and an API that makes everything play nicely together. It's like having a master-planned community where every sale owner gets their own secure space to grow.
+### Phase 1: Platform Foundation (Backend & Frontend Setup) - $25,000
+Think of this as building your dream house's foundation - we start with rock-solid infrastructure that keeps everyone's treasures safe and organized. We're implementing secure user authentication through Clerk.dev, clever data separation that keeps each sale's information private, and an API that makes everything play nicely together.  We'll also set up the basic user interface for login and profile creation. It's like having a master-planned community where every sale owner gets their own secure space to grow.
 
 What you'll be able to test:
 - Log in with your email or social accounts
@@ -171,8 +178,8 @@ What you'll be able to test:
 - See how data stays separate between sales
 - Try out the basic API endpoints
 
-### Phase 2: Core Business Logic - $20,000
-Here's where your expertise starts coming to life - we're building the brain that understands how consignment sales work. The system learns your event structure, consignor relationships, and inventory rules. It's like teaching a really smart assistant everything you know about running successful sales.
+### Phase 2: Core Platform Development (Backend & Frontend Implementation) - $20,000
+Here's where your expertise starts coming to life - we're building the brain that understands how consignment sales work. The system learns your event structure, consignor relationships, and inventory rules.  We'll also develop the user interfaces for core features like event creation, consignor registration, and inventory management. It's like teaching a really smart assistant everything you know about running successful sales.
 
 What you'll be able to test:
 - Create and configure test events
@@ -181,8 +188,8 @@ What you'll be able to test:
 - Try different category structures
 - Generate basic reports
 
-### Phase 3: Shopify Integration & Financials - $20,000
-Now the magic happens - we're building the engine that handles all those tricky calculations that used to keep you up at night. The Shopify integration syncs products faster than a consignor can tag them, while the commission engine juggles regular rates, super consignor bonuses, and volunteer perks without breaking a sweat. Returns? The system handles them automatically, like a well-trained bookkeeper.
+### Phase 3: Shopify Integration & Financials (Backend & Frontend Integration) - $20,000
+Now the magic happens - we're building the engine that handles all those tricky calculations that used to keep you up at night. The Shopify integration syncs products faster than a consignor can tag them, while the commission engine juggles regular rates, super consignor bonuses, and volunteer perks without breaking a sweat.  We'll also integrate the frontend with Shopify, allowing for real-time inventory updates and order processing. Returns? The system handles them automatically, like a well-trained bookkeeper.
 
 What you'll be able to test:
 - Connect your Shopify store and watch items sync
@@ -191,8 +198,8 @@ What you'll be able to test:
 - Process test returns and see automatic adjustments
 - Track real-time financial metrics
 
-### Phase 4: Advanced Features - $12,000
-Remember all those spreadsheets and sticky notes? We're replacing them with smooth digital workflows that make running your sale feel like conducting a symphony. The volunteer system coordinates shifts and tracks bonuses, while the mobile tools keep everything running on time. Plus, everything works beautifully on phones because let's face it - that's where your consignors live.
+### Phase 4: Advanced Features (Backend & Frontend Development) - $12,000
+Remember all those spreadsheets and sticky notes? We're replacing them with smooth digital workflows that make running your sale feel like conducting a symphony. The volunteer system coordinates shifts and tracks bonuses, while the mobile tools keep everything running on time.  We'll also build the frontend interfaces for these advanced features, including volunteer scheduling, mobile inventory management, and detailed reporting. Plus, everything works beautifully on phones because let's face it - that's where your consignors live.
 
 What you'll be able to test:
 - Schedule volunteer shifts and track bonuses
@@ -201,8 +208,8 @@ What you'll be able to test:
 - Coordinate drop-off times and reminders
 - Try the complete consignor experience
 
-### Phase 5: Finalization & Deployment - $8,000
-Before opening the doors, we make sure everything's perfect - like a dress rehearsal for your biggest show. We'll test the system under heavy load (imagine Black Friday levels of excited shoppers), fine-tune the caching for lightning-fast responses, and set up monitoring that alerts us if anything needs attention.
+### Phase 5: Finalization & Deployment (Backend & Frontend) - $8,000
+Before opening the doors, we make sure everything's perfect - like a dress rehearsal for your biggest show. We'll test the system under heavy load (imagine Black Friday levels of excited shoppers), fine-tune the caching for lightning-fast responses, and set up monitoring that alerts us if anything needs attention.  We'll also finalize the frontend, ensuring a polished and user-friendly experience for all users.
 
 What you'll be able to test:
 - Run load testing scenarios
@@ -211,8 +218,8 @@ What you'll be able to test:
 - Verify security measures
 - Experience the full system at scale
 
-### Phase 6: Post-Launch Support - $5,000
-Think of this as your insurance policy - we're here to make sure everything runs smoothly after launch. We'll watch for any hiccups, make quick adjustments based on real usage, and keep everything running like a well-oiled machine.
+### Phase 6: Post-Launch Support (Backend & Frontend) - $5,000
+Think of this as your insurance policy - we're here to make sure everything runs smoothly after launch. We'll watch for any hiccups, make quick adjustments based on real usage, and keep everything running like a well-oiled machine.  We'll also provide ongoing support for both the backend and frontend, ensuring any issues are addressed promptly.
 
 What you'll be able to test:
 - Submit and track support requests
@@ -221,7 +228,9 @@ What you'll be able to test:
 - Verify backup systems
 - Experience rapid issue resolution
 
+
 Each phase captures another piece of your success story, turning your expertise into software that opens doors for others.
+
 
 ## Return on Investment
 

@@ -1,6 +1,6 @@
 # Consignment Platform Project Plan
 
-## Phase 1: Core Infrastructure (82 hrs)
+## Phase 1: Platform Foundation (Backend & Frontend Setup) (82 hrs)
 
 ### Authentication (20 hrs)
 - Set up Clerk.dev integration (8 hrs)
@@ -27,7 +27,7 @@
 - Test API endpoints (2 hrs)
 
 
-## Phase 2: Backend Development (82.5 hrs)
+## Phase 2: Core Platform Development (Backend & Frontend Implementation) (82.5 hrs)
 
 ### Core Business Logic (32.5 hrs)
 - Event Management (12.5 hrs)
@@ -72,7 +72,7 @@
     - Implement Clerk.dev webhook handlers (5 hrs)
 
 
-## Phase 3: Shopify Integration & Financials (125 hrs)
+## Phase 3: Shopify Integration & Financials (Backend & Frontend Integration) (125 hrs)
 
 ### Shopify Integration (40 hrs)
 - Set up Shopify API connection (10 hrs)
@@ -102,7 +102,7 @@
 - Design and implement PDF formatting (5 hrs)
 
 
-## Phase 4: Advanced Features (85 hrs)
+## Phase 4: Advanced Features (Backend & Frontend Development) (85 hrs)
 
 ### Volunteer Management (25 hrs)
 - Design volunteer model (6 hrs)
@@ -122,7 +122,7 @@
 - Implement pick-up scheduling (15 hrs)
 
 
-## Phase 5: Finalization & Deployment (26 hrs)
+## Phase 5: Finalization & Deployment (Backend & Frontend) (26 hrs)
 
 ### Security Enhancements (10 hrs)
 - Harden authentication (4 hrs)
@@ -138,7 +138,7 @@
 - Test deployment process (4 hrs)
 
 
-## Phase 6: Post-Launch & Maintenance (25 hrs)
+## Phase 6: Post-Launch & Maintenance (Backend & Frontend) (25 hrs)
 
 ### Bug Fixes & Hotfixes (15 hrs)
 - Resolve critical issues (8 hrs)
@@ -154,7 +154,7 @@
 - Verify backups (2 hrs)
 
 
-## Phase 7: Admin Features (50 hrs)
+## Phase 7: Admin Features (Backend & Frontend) (50 hrs)
 
 ### System Configuration (25 hrs)
 - Implement global settings configuration (15 hrs)
@@ -165,7 +165,7 @@
 - Implement administrative functions (10 hrs)
 
 
-## Phase 8: Consignor Features Refinement (40 hrs)
+## Phase 8: Consignor Features Refinement (Backend & Frontend) (40 hrs)
 
 ### Inventory Management Refinement (20 hrs)
 - Enhance mobile optimization (10 hrs)
@@ -176,7 +176,7 @@
 - Develop earnings reports (10 hrs)
 
 
-## Phase 9: Event Management Refinement (25 hrs)
+## Phase 9: Event Management Refinement (Backend & Frontend) (25 hrs)
 
 ### Event Reconciliation (25 hrs)
 - Implement event closure process (15 hrs)
