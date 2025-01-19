@@ -41,17 +41,65 @@ Your dashboard becomes your crystal ball - showing real-time sales, consignor ac
 
 Your investment builds the bridge that helps traditional consignment sales step confidently into the digital world:
 
-### Digital Foundation - $40,000
-This is where your success story becomes everyone's opportunity. We'll build the secure foundation that keeps each sale's data separate, handles user accounts, and ensures the platform can grow as more sales join the community. Think of this as laying the groundwork for something bigger than any single sale.
+### Phase 1: Core Infrastructure - $25,000
+Think of this as building your dream house's foundation - we start with rock-solid infrastructure that keeps everyone's treasures safe and organized. We're implementing secure user authentication through Clerk.dev, clever data separation that keeps each sale's information private, and an API that makes everything play nicely together. It's like having a master-planned community where every sale owner gets their own secure space to grow.
 
-### Sales & Financial Engine - $30,000
-Here's where your hard-earned expertise becomes automated magic. Seamless Shopify integration, intelligent commission calculations, and automated consignor payments transform the complex into the simple. Your proven approach to handling returns, volunteer bonuses, and consignor relationships becomes part of the platform's DNA.
+What you'll be able to test:
+- Log in with your email or social accounts
+- Set up your sale's unique profile
+- Invite test users with different roles
+- See how data stays separate between sales
+- Try out the basic API endpoints
 
-### Operational Tools - $12,000
-Say goodbye to manual tasks and hello to smooth digital workflows. From coordinating volunteer shifts to managing drop-offs and pick-ups, these features handle the logistics that keep online sales running smoothly. Includes the mobile-friendly tools your consignors will love and the automated invoice processing that keeps everything organized.
+### Phase 2: Core Business Logic - $20,000
+Here's where your expertise starts coming to life - we're building the brain that understands how consignment sales work. The system learns your event structure, consignor relationships, and inventory rules. It's like teaching a really smart assistant everything you know about running successful sales.
 
-### Launch & Optimization - $8,000
-Perfect the platform based on real-world feedback. This phase ensures everything works in harmony, performs reliably at scale, and delivers the seamless experience other sale owners need to succeed online.
+What you'll be able to test:
+- Create and configure test events
+- Set up consignor profiles
+- Enter sample inventory items
+- Try different category structures
+- Generate basic reports
+
+### Phase 3: Shopify Integration & Financials - $20,000
+Now the magic happens - we're building the engine that handles all those tricky calculations that used to keep you up at night. The Shopify integration syncs products faster than a consignor can tag them, while the commission engine juggles regular rates, super consignor bonuses, and volunteer perks without breaking a sweat. Returns? The system handles them automatically, like a well-trained bookkeeper.
+
+What you'll be able to test:
+- Connect your Shopify store and watch items sync
+- Process sample sales and watch commissions calculate
+- Try different commission rates and bonus scenarios
+- Process test returns and see automatic adjustments
+- Track real-time financial metrics
+
+### Phase 4: Advanced Features - $12,000
+Remember all those spreadsheets and sticky notes? We're replacing them with smooth digital workflows that make running your sale feel like conducting a symphony. The volunteer system coordinates shifts and tracks bonuses, while the mobile tools keep everything running on time. Plus, everything works beautifully on phones because let's face it - that's where your consignors live.
+
+What you'll be able to test:
+- Schedule volunteer shifts and track bonuses
+- Enter items from your phone, even offline
+- Upload photos and see automatic optimization
+- Coordinate drop-off times and reminders
+- Try the complete consignor experience
+
+### Phase 5: Finalization & Deployment - $8,000
+Before opening the doors, we make sure everything's perfect - like a dress rehearsal for your biggest show. We'll test the system under heavy load (imagine Black Friday levels of excited shoppers), fine-tune the caching for lightning-fast responses, and set up monitoring that alerts us if anything needs attention.
+
+What you'll be able to test:
+- Run load testing scenarios
+- Monitor system performance in real-time
+- Try out the backup and recovery process
+- Verify security measures
+- Experience the full system at scale
+
+### Phase 6: Post-Launch Support - $5,000
+Think of this as your insurance policy - we're here to make sure everything runs smoothly after launch. We'll watch for any hiccups, make quick adjustments based on real usage, and keep everything running like a well-oiled machine.
+
+What you'll be able to test:
+- Submit and track support requests
+- See real-time system health metrics
+- Try out automated maintenance processes
+- Verify backup systems
+- Experience rapid issue resolution
 
 Each phase captures another piece of your success story, turning your expertise into software that opens doors for others.
 
