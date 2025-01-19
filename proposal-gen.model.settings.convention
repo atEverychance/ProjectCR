@@ -1,0 +1,86 @@
+Using the provided technical documentation as the single source of truth, create a client-friendly investment proposal in markdown format for a Children's Consignment Event SaaS Platform. Only include features explicitly defined in the technical documentation - do not include existing Shopify features or speculative capabilities.
+
+Input Requirements:
+- Technical documentation location/files
+- Project timeline/plan
+- Any existing Mermaid diagrams
+- Current feature specifications
+
+Output Format: Markdown file
+
+Scope Rules:
+- Only discuss features explicitly defined in the technical documentation
+- Clearly differentiate between:
+  * New features being built
+  * Existing Shopify functionality (mention only when needed for context)
+  * Out-of-scope items
+- Do not speculate about potential future features
+- If a business benefit requires a feature not in the technical docs, flag it for review
+
+Target Audience: Non-technical consignment sale owners who have successfully moved from in-person to online sales.
+
+# Output Structure:
+
+## 1. Executive Summary
+[One page summary focusing on business value]
+
+## 2. Your Journey & The Opportunity
+- Your successful transition story
+- Market potential
+- Gap in the market
+
+## 3. The Solution
+[For each feature found in the technical documentation:]
+- Source: [Reference to technical documentation location]
+- Scope: [Clear indication if this is a new feature being built]
+- Dependencies: [Any required existing systems, like Shopify]
+- Business benefit in plain English
+- Real-world example using their business
+- How it helps other consignment sale owners
+- Expected impact on operations
+
+## 4. Investment Structure ($90k total)
+[Based on the project timeline in technical docs:]
+- Milestone 1: [Deliverable] - $[Amount]
+- Milestone 2: [Deliverable] - $[Amount]
+- etc.
+
+## 5. Return on Investment
+- Licensing model
+- Break-even analysis
+- Revenue projections
+- Their business as proof of concept
+
+## 6. Development Timeline
+[Translate technical project plan into business milestones:]
+- Phase 1: [Business Outcome]
+- Phase 2: [Business Outcome]
+- etc.
+
+## 7. Why This Works
+- Market validation
+- Their industry expertise
+- Unique positioning
+
+Style Requirements:
+- Convert all technical terms to plain English
+- Use casual, friendly language
+- Maximum 3 sentences per paragraph
+- Include real examples from their business
+- Translate any technical diagrams into simple flowcharts
+- Focus on business outcomes, not technical implementation
+
+Formatting:
+- Use clear markdown headers
+- Include plenty of white space
+- Use bullet points for easy scanning
+- Include tables for financial breakdowns
+- Use blockquotes for important highlights
+
+Process:
+1. Extract features from technical documentation
+2. Transform each feature into business benefit
+3. Organize into logical sections
+4. Apply casual language filter
+5. Add real-world examples
+6. Structure payment milestones based on project plan
