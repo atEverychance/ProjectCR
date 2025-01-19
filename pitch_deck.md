@@ -1,84 +1,72 @@
-# Pitch Deck
+# Pitch Deck: Online Consignment Event Platform
 
-## Slide 1: Problem Statement
+## Slide 1: The Problem We Solve
+- Running a consignment sale is overwhelming
+- Too many spreadsheets and manual processes
+- Hard to keep track of everything
+- Stressful communication with consignors
+- Limited time for what really matters
 
-Running in-person children's consignment events involves significant manual effort, leading to:
+## Slide 2: Our Solution
+- A simple, all-in-one platform
+- Designed specifically for consignment sales
+- Mobile-friendly for on-the-go management
+- Takes the stress out of running your sale
+- More time for your family and business
 
-*   **Time-Consuming Processes:** Manual inventory entry, tracking, and sales reconciliation are inefficient and prone to errors.
-*   **Limited Reach:** Relying solely on in-person sales restricts potential revenue and customer base.
-*   **Data Management Challenges:** Difficulty in tracking sales, inventory, and consignor performance hinders informed decision-making.
-*   **Scalability Issues:** Manual processes make it challenging to grow and manage larger events effectively.
+## Slide 3: Key Features - Organizer Tools
+- **Event Setup**: Create your sale in minutes with easy templates
+- **Consignor Management**: Track all consignors and their items
+- **Volunteer Scheduling**: Manage shifts and track hours
+- **Detailed Reporting**:
+  - Real-time sales analytics
+  - Consignor performance tracking
+  - Volunteer hour reports
+  - Financial summaries
+- **Earnings Calculations**:
+  - Automatic commission tracking
+  - Return handling and reconciliation
+  - Custom commission rates
+  - Final payout calculations
+- **Inventory Tracking**: Monitor items and pricing
 
-## Slide 2: Solution Overview
+## Slide 4: Key Features - Consignor Experience
+- **Item Management**: Add items with photos and prices from your phone
+- **Drop-off Scheduling**: Choose convenient times online
+- **Earnings Tracking**: See your potential earnings
+- **Volunteer Sign-ups**: Choose shifts that work for your schedule
+- **Referral Program**: Earn rewards for bringing friends
+- **Profile Management**: Update your information easily
 
-Our platform provides a comprehensive digital solution to streamline and enhance children's consignment events:
+## Slide 5: Key Features - Shopper Experience
+- **Browse Anywhere**: Shop from your phone, tablet, or computer
+- **Size Filters**: Find exactly what you need quickly
+- **Category Browsing**: Easily navigate through items
+- **Sale Updates**: Stay informed about markdowns and events
+- **Easy Pick-up**:
+  - Clear instructions and location details
+  - Organized item retrieval process
+  - Fast and efficient service
+  - Friendly volunteer assistance
+- **Return Processing**: Simple process for returning items
 
-*   **Mobile-First Inventory Management:**  Empower consignors with easy-to-use tools for listing and managing their items.
-*   **Automated Event Management:** Simplify event setup, scheduling, and consignor communication.
-*   **Seamless Online Sales Integration:** Expand reach and simplify transactions through Shopify integration.
-*   **Powerful Reporting and Analytics:** Gain valuable insights into event performance and consignor activity.
-*   **Secure and Reliable Platform:** Ensure data security and operational stability.
+## Slide 6: How It Works
+1. Set up your sale in minutes
+2. Consignors add items online
+3. Shoppers browse and buy
+4. We handle the details
+5. You enjoy a successful sale!
 
-## Slide 3: Feature Showcase - Efficient Inventory Management
+## Slide 7: Why Moms Love It
+- "Saved me 10+ hours last sale!"
+- "No more spreadsheets!"
+- "My consignors love how easy it is"
+- "Shoppers raved about the easy pick-up"
+- "More time with my family"
 
-*   **Quick Mobile Entry:**  Intuitive interface with smart defaults and shortcuts for rapid item listing.
-*   **Integrated Photo Management:** Easy photo uploads, compression, and quality checks directly from mobile devices.
-*   **Offline Capabilities:**  Consignors can start listing items even without internet access, syncing later.
-*   **Batch Operations:** Tools for bulk updates to categories, pricing, and markdown settings.
-
-## Slide 4: Feature Showcase - Streamlined Event Management
-
-*   **Centralized Event Setup:**  Manage event details, dates, fees, and location information in one place.
-*   **Automated Scheduling:**  Tools for managing volunteer and drop-off slots, optimizing resource allocation.
-*   **Consignor Management:**  Simplified registration, communication, and tracking of consignor participation.
-*   **Financial Tracking:**  Automated calculation of fees, commissions, and payouts.
-
-## Slide 5: Feature Showcase - Seamless Sales Processing
-
-*   **Shopify Integration:**  Automatic syncing of inventory to create online store listings.
-*   **Real-time Inventory Updates:**  Sales made online or in-person immediately update inventory levels.
-*   **Order Management:**  Efficient processing of online orders, with notifications and tracking.
-*   **Webhook Handling:**  Real-time updates from Shopify ensure data consistency.
-
-## Slide 6: Feature Showcase - Powerful Reporting and Analytics
-
-*   **Comprehensive Sales Reports:** Track daily, event-based, and consignor-specific sales data.
-*   **Detailed Inventory Reports:**  Analyze current inventory, sales performance, and consignor activity.
-*   **Financial Summaries:**  Get a clear overview of revenue, expenses, and profitability.
-*   **Customizable Reporting:**  Generate specific reports based on selected metrics and date ranges.
-
-## Slide 7: Business Impact - Reduce Workload
-
-*   **Automated Inventory Entry:**  Saves significant time for consignors and event organizers.
-*   **Simplified Sales Tracking:**  Eliminates manual reconciliation and reduces errors.
-*   **Efficient Communication Tools:**  Streamlines communication with consignors and volunteers.
-*   **Automated Reporting:**  Reduces the time spent compiling and analyzing event data.
-
-## Slide 8: Business Impact - Increase Revenue and Reach
-
-*   **Expanded Sales Channels:**  Shopify integration opens up online sales opportunities.
-*   **Improved Consignor Satisfaction:**  Easy-to-use tools attract and retain consignors.
-*   **Data-Driven Decisions:**  Insights from reports help optimize pricing and inventory.
-*   **Scalability:**  The platform supports growth and management of larger events.
-
-## Slide 9: Implementation & Support
-
-*   **Easy Onboarding:**  Intuitive platform design ensures a smooth transition.
-*   **Dedicated Support:**  Comprehensive documentation and responsive support team.
-*   **Integration Assistance:**  Guidance and support for connecting with Shopify.
-*   **Ongoing Updates:**  Continuous improvement and addition of new features.
-
-## Slide 10: First-to-Market Advantages
-
-*   **Comprehensive Feature Set:**  Offers a complete solution addressing all key aspects of consignment events.
-*   **Mobile-First Design:**  Optimized for the way consignors and organizers work.
-*   **Seamless Shopify Integration:**  Provides a significant advantage in expanding sales reach.
-*   **Focus on Female Entrepreneurs:**  Tailored to the specific needs of this market.
-
-## Slide 11: Call to Action
-
-Ready to transform your consignment events?
-
-*   **Schedule a Demo:** See the platform in action and explore its capabilities.
-*   **Start a Free Trial:** Experience the benefits firsthand.
-*   **Contact Us:**  Discuss your specific needs and how our platform can help you succeed.
+## Slide 8: Let's Make Your Next Sale Amazing
+- Simple pricing, no hidden fees
+- Dedicated support team
+- Proven results for moms like you
+- Ready to make your life easier?
+- Let's chat about your next sale!

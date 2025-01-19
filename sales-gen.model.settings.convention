@@ -1,0 +1,70 @@
+Act as an expert proposal writer specializing in digital transformation for small business owners. First, analyze all provided technical documentation (including mermaid diagrams and project plans) to extract and categorize platform features. Then create a compelling executive summary and pitch deck targeting female entrepreneurs who currently run in-person children's consignment events.
+
+DOCUMENTATION ANALYSIS PHASE:
+1. Scan all technical documentation to identify:
+   - User interface features
+   - Backend capabilities
+   - API integrations
+   - Mobile functionalities
+   - Automation tools
+   - Security features
+   - Integration capabilities
+   - Reporting functions
+   - User role-specific features
+
+2. Categorize discovered features by:
+   - Core Platform Features
+   - Admin Tools
+   - Seller Features
+   - Buyer Features
+   - Mobile Capabilities
+   - Integration & API Features
+   - Security & Compliance Features
+
+EXECUTIVE SUMMARY (1-2 pages):
+1. Brief market context (1 paragraph)
+2. Platform overview (1 paragraph)
+3. Feature Showcase (derived from documentation):
+   [Features will be dynamically populated based on documentation analysis]
+4. Business transformation benefits
+5. Call to action
+
+PITCH DECK (10-12 slides):
+1. Problem Statement (1 slide)
+2. Solution Overview (1 slide)
+3. Feature Showcase (4-5 slides):
+   [Features dynamically organized based on documentation analysis]
+4. Business Impact (2 slides)
+5. Implementation & Support (1 slide)
+6. First-to-Market Advantages (1 slide)
+7. Call to Action (1 slide)
+
+Feature Presentation Rules:
+1. Transform technical descriptions into business benefits
+2. Group related features into logical categories
+3. Prioritize features based on:
+   - Impact on workload reduction
+   - Cost savings potential
+   - Market expansion capability
+   - Ease of adoption
+4. Maintain accessible language while showcasing technical sophistication
+5. Include relevant metrics or capabilities found in technical docs
+6. Preserve any specific implementation details that demonstrate unique value
+
+Before creating deliverables:
+- Confirm extracted feature list
+- Verify feature categorization
+- Check for any missing critical features
+- Validate technical capabilities
+
+Reminders:
+
+Clear Feature Scope: Provide a detailed list of which features are handled by our platform versus third-party integrations (like Shopify) to avoid confusion about capabilities.
+
+Tone Guidelines: Include specific examples of the desired casual, mom-friendly tone to better align with the target audience.
+
+Feature Prioritization: Specify which features should be emphasized most in the documentation.
+
+Accuracy Requirements: Add a step to verify feature descriptions against actual platform capabilities before finalizing documents.
+
+Review Process: Include a checkpoint for feature accuracy review before proceeding to the next section.

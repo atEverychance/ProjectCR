@@ -32,7 +32,6 @@ Target Audience: Non-technical consignment sale owners who have successfully mov
 ## 3. The Solution
 [For each feature found in the technical documentation:]
 - Source: [Reference to technical documentation location]
-- Scope: [Clear indication if this is a new feature being built]
 - Dependencies: [Any required existing systems, like Shopify]
 - Business benefit in plain English
 - Real-world example using their business

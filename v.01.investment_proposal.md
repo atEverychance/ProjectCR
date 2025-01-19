@@ -13,7 +13,6 @@ Here's how this platform will directly benefit your consignment events:
 ### Consignor Inventory Management
 
 - **Source:** `docs/features/consignors/inventory.md`
-- **Scope:** New feature being built
 - **Dependencies:** Shopify integration
 - **Business benefit:**  Make it incredibly easy for your consignors to list their items, even from their phones.
 - **Real-world example:**  Imagine your consignors quickly snapping photos and entering details right after they pull items from their closets, reducing the time and effort it takes to get items online.
@@ -28,7 +27,6 @@ Here's how this platform will directly benefit your consignment events:
 ### Consignor Registration & Profile
 
 - **Source:** `docs/features/consignors/registration.md`
-- **Scope:** New feature being built
 - **Dependencies:** None
 - **Business benefit:**  Simplify the sign-up process for new consignors, making it a breeze for them to join your events.
 - **Real-world example:**  Think of a new consignor signing up in seconds using their Google or Facebook account, ready to start listing items almost immediately.
@@ -43,7 +41,6 @@ Here's how this platform will directly benefit your consignment events:
 ### Administrative Dashboard
 
 - **Source:** `docs/features/admin/dashboard.md`
-- **Scope:** New feature being built
 - **Dependencies:** None
 - **Business benefit:** Get a clear overview of your event's performance at a glance, helping you make informed decisions.
 - **Real-world example:**  Imagine logging in and instantly seeing how many items have been sold, your total sales, and which categories are performing best.
@@ -58,7 +55,6 @@ Here's how this platform will directly benefit your consignment events:
 ### Earnings Management
 
 - **Source:** `docs/features/consignors/earnings.md`
-- **Scope:** New feature being built
 - **Dependencies:** Shopify integration
 - **Business benefit:**  Provide your consignors with clear and transparent earnings tracking, building trust and satisfaction.
 - **Real-world example:**  Consignors can easily see how much they've earned from each sale, including any bonuses they've received.
@@ -72,7 +68,6 @@ Here's how this platform will directly benefit your consignment events:
 ### Event Reconciliation
 
 - **Source:** `docs/features/events/reconciliation.md`
-- **Scope:** New feature being built
 - **Dependencies:** Shopify integration, Earnings Management
 - **Business benefit:**  Simplify the post-event wrap-up, making payouts accurate and efficient.
 - **Real-world example:**  Imagine a streamlined process where all sales are tallied, returns are processed, and consignor payouts are calculated automatically.
@@ -86,7 +81,6 @@ Here's how this platform will directly benefit your consignment events:
 ### Administrative Reporting
 
 - **Source:** `docs/features/admin/reporting.md`
-- **Scope:** New feature being built
 - **Dependencies:** None
 - **Business benefit:**  Gain valuable insights into your event's performance with comprehensive reports.
 - **Real-world example:**  See reports on your best-selling categories, top-performing consignors, and overall financial success.
@@ -101,7 +95,6 @@ Here's how this platform will directly benefit your consignment events:
 ### Volunteer and Drop-off Scheduling
 
 - **Source:** `docs/features/consignors/scheduling.md`
-- **Scope:** New feature being built
 - **Dependencies:** None
 - **Business benefit:**  Organize volunteers and item drop-offs efficiently, saving time and reducing chaos.
 - **Real-world example:**  Consignors can easily sign up for drop-off slots, and volunteers can choose their preferred shifts online.
@@ -114,7 +107,6 @@ Here's how this platform will directly benefit your consignment events:
 ### Event Management Tools
 
 - **Source:** `docs/features/events/management.md`
-- **Scope:** New feature being built
 - **Dependencies:** None
 - **Business benefit:**  Manage all aspects of your event from setup to post-event processing in one central location.
 - **Real-world example:**  Configure event dates, set commission rates, and manage access for shoppers and consignors all within the platform.
@@ -128,7 +120,6 @@ Here's how this platform will directly benefit your consignment events:
 ### System Configuration
 
 - **Source:** `docs/features/admin/configuration.md`
-- **Scope:** New feature being built
 - **Dependencies:** Shopify integration
 - **Business benefit:** Customize the platform to fit your specific needs and preferences.
 - **Real-world example:**  Set your own commission rates, customize email templates, and manage user roles.
@@ -141,7 +132,6 @@ Here's how this platform will directly benefit your consignment events:
 ### Shopify Integration
 
 - **Source:** Multiple feature documents
-- **Scope:** Existing Shopify functionality leveraged and new integration points being built.
 - **Dependencies:** Existing Shopify store.
 - **Business benefit:** Seamlessly integrate your consignment event data with your existing Shopify store, avoiding double entry and ensuring consistency.
 - **Real-world example:**  Items listed by consignors automatically appear in your Shopify store, and sales are tracked in both systems.
