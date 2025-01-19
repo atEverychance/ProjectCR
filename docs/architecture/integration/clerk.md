@@ -113,6 +113,20 @@ Security measures:
 - Session management
 - Token security
 
+### Email Verification
+#### Email Change Flow
+1. Initiate email change
+2. Verify new email
+3. Update Clerk.dev record
+4. Sync with Mailchimp
+5. Update local records
+
+#### Security Considerations
+- Email verification required
+- Rate limiting
+- Audit logging
+- Change notifications
+
 ### Authorization
 Access control:
 - Role-based permissions

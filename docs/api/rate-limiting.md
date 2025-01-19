@@ -34,6 +34,17 @@ Processing limits:
 - Report generation: 5 concurrent jobs
 - Data exports: 2 per hour
 
+### Email Updates
+- 5 changes per hour per user
+- 50 changes per hour per client
+- 500 changes per hour system-wide
+
+### Email Change Rate Allocation
+- Base rate: 5/hour
+- Verified users: +2/hour
+- Super consignors: +3/hour
+- Admin override available
+
 ## Implementation
 
 ### Rate Tracking

@@ -4,6 +4,7 @@ graph TD
         Q[Queue Metrics] --> M
         D[DB Metrics] --> M
         I[Integration Metrics] --> M
+        E[Email Update Metrics] --> M
     end
     
     subgraph "Processing"
@@ -15,4 +16,5 @@ graph TD
     subgraph "Response"
         AL --> N[Notifications]
         R --> D[Dashboard]
+        AL -->|Email Updates| EU[Email Update Dashboard]
     end

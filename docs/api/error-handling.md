@@ -72,6 +72,20 @@ Response format:
 - current_state: existing state
 - allowed_states: valid states
 
+### Email Update Errors (422)
+Common causes:
+- Invalid email format
+- Email already in use
+- Verification failure
+- External system conflicts
+
+Response format:
+- error_code: EMAIL_UPDATE_ERROR
+- current_email: existing address
+- new_email: requested address
+- verification_status: current state
+- external_system_status: sync state
+
 ### Integration Errors (502)
 Common causes:
 - External service failure

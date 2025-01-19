@@ -31,6 +31,17 @@ The following entities are involved in the Shopify integration:
 - **Invalid Tokens**: Retry with a refreshed token.
 - **Rate Limits**: Implement exponential backoff.
 - **Webhook Failures**: Log errors and retry processing.
+- **Email Update Failures**: Handle inconsistent email states
+- **Recovery Procedures**: Automatic retry with manual override
+
+## Email Consistency
+### Email Synchronization
+- Email changes propagate to:
+  - Customer records
+  - Order notifications
+  - Marketing lists
+- Change history maintained
+- Conflict resolution process
 
 ## Monitoring
 - Track API usage and rate limits.
