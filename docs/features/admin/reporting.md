@@ -108,6 +108,29 @@ Tracking:
 - Payment status
 - Collection rates
 
+### Cheque Printing
+Features:
+- Print cheques for reconciled consignors
+- Three cheques per US Letter page
+- Formatted for Cheque Style #111
+- Pagination support
+
+Layout Specifications:
+- Paper: US Letter (8.5" x 11")
+- Margins: 0.25" all sides
+- Cheque spacing: Equal thirds of page
+- Font requirements: MICR encoding for routing/account numbers
+
+Access Control:
+- Limited to users with report generation permissions
+- Audit trail of all cheque generation requests
+
+Workflow:
+1. Select event from dropdown
+2. View list of reconciled consignors
+3. Generate/download cheque PDF
+4. Mark cheques as printed (optional)
+
 ## Operational Reports
 
 ### Volunteer Management

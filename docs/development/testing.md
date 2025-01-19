@@ -88,6 +88,21 @@ Test scenarios:
 - Referral rewards
 - Return processing
 
+### Cheque Printing Tests
+Test scenarios:
+- PDF generation accuracy
+- Page layout compliance
+- Amount formatting
+- Multi-page handling
+- Permission validation
+- Error handling
+
+Layout validation:
+- Margin measurements
+- Cheque positioning
+- Text alignment
+- Font specifications
+
 ### Inventory Management
 Test cases:
 - Item creation

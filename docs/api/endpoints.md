@@ -89,6 +89,16 @@ GET /api/v1/admin/clients
 POST /api/v1/admin/clients
 PUT /api/v1/admin/clients/{id}
 
+### Cheque Printing
+GET /api/v1/admin/reports/cheques/{event_id}
+Query parameters:
+- page (integer, default: 1)
+- per_page (integer, default: 3, fixed)
+Returns:
+- PDF file containing 3 cheques per page
+- Content-Type: application/pdf
+Required permissions: ADMIN_REPORTS_WRITE
+
 ### Configuration
 GET /api/v1/admin/config
 PUT /api/v1/admin/config

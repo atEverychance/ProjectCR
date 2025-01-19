@@ -45,6 +45,11 @@ Resource permissions:
 - Delete access
 - Administrative actions
 
+Report Generation:
+- ADMIN_REPORTS_READ: View report options
+- ADMIN_REPORTS_WRITE: Generate/download reports
+- ADMIN_REPORTS_CHEQUE: Generate cheque PDFs
+
 ### Multi-tenant Security
 - Client isolation
 - Resource ownership
