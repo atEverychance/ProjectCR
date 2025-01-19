@@ -26,33 +26,53 @@
 - Set up error handling (2 hrs)
 - Test API endpoints (2 hrs)
 
-## Phase 2: Core Business Logic (82 hrs)
 
-### Event Management (25 hrs)
+## Phase 2: Backend Development (82.5 hrs)
+
+### Core Business Logic (32.5 hrs)
+- Event Management (12.5 hrs)
 - Create event model (6 hrs)
-- Implement event CRUD operations (8 hrs)
-- Add event scheduling logic (6 hrs)
-- Test event workflows (5 hrs)
+- Implement event CRUD operations (4 hrs)
+- Add event scheduling logic (1.5 hrs)
+- Test event workflows (1 hr)
 
-### Consignor Management (20 hrs)
-- Design consignor model (5 hrs)
-- Implement consignor registration (6 hrs)
-- Add loyalty tracking (4 hrs)
-- Test consignor workflows (5 hrs)
+- Consignor Management (5 hrs)
+- Design consignor model (1 hr)
+- Implement consignor registration (2 hrs)
+- Add loyalty tracking (1 hr)
+- Test consignor workflows (1 hr)
 
-### Inventory System (20 hrs)
+- Inventory System (15 hrs)
 - Create item model (6 hrs)
-- Implement inventory tracking (8 hrs)
-- Add status transitions (4 hrs)
-- Test inventory workflows (2 hrs)
+- Implement inventory tracking (7 hrs)
+- Add status transitions (1 hr)
+- Test inventory workflows (1 hr)
 
-### Reporting Framework (17 hrs)
+- Reporting Framework (10 hrs)
 - Design reporting structure (5 hrs)
-- Implement basic reports (6 hrs)
-- Add export functionality (4 hrs)
-- Test reporting features (2 hrs)
+- Implement basic reports (3 hrs)
+- Add export functionality (1 hr)
+- Test reporting features (1 hr)
 
-## Phase 3: Shopify Integration & Financials (110 hrs)
+### API Development (50 hrs)
+- Endpoint Implementation (30 hrs)
+    - Consignor endpoints (7.5 hrs)
+    - Event endpoints (7.5 hrs)
+    - Administrative endpoints (7.5 hrs)
+    - Shopify integration endpoints (7.5 hrs)
+- Pagination (5 hrs)
+    - Implement pagination for list endpoints (5 hrs)
+- Rate Limiting (1 hr)
+    - Implement rate limiting across all endpoints (1 hr)
+- Error Handling (4 hrs)
+    - Implement standardized error responses (3 hrs)
+    - Test error handling scenarios (1 hr)
+- Webhook Handling (10 hrs)
+    - Implement Shopify webhook handlers (5 hrs)
+    - Implement Clerk.dev webhook handlers (5 hrs)
+
+
+## Phase 3: Shopify Integration & Financials (125 hrs)
 
 ### Shopify Integration (40 hrs)
 - Set up Shopify API connection (10 hrs)
@@ -77,7 +97,12 @@
 - Add key metrics display (5 hrs)
 - Test admin features (4 hrs)
 
-## Phase 4: Advanced Features (45 hrs)
+### Cheque Printing (15 hrs)
+- Implement cheque generation logic (10 hrs)
+- Design and implement PDF formatting (5 hrs)
+
+
+## Phase 4: Advanced Features (85 hrs)
 
 ### Volunteer Management (25 hrs)
 - Design volunteer model (6 hrs)
@@ -90,6 +115,12 @@
 - Optimize performance (6 hrs)
 - Add offline support (4 hrs)
 - Test mobile features (2 hrs)
+
+### Scheduling Features (40 hrs)
+- Design scheduling system data model (10 hrs)
+- Implement drop-off scheduling (15 hrs)
+- Implement pick-up scheduling (15 hrs)
+
 
 ## Phase 5: Finalization & Deployment (26 hrs)
 
@@ -106,6 +137,7 @@
 - Configure monitoring (5 hrs)
 - Test deployment process (4 hrs)
 
+
 ## Phase 6: Post-Launch & Maintenance (25 hrs)
 
 ### Bug Fixes & Hotfixes (15 hrs)
@@ -121,4 +153,34 @@
 - Set up scheduled tasks (3 hrs)
 - Verify backups (2 hrs)
 
-## Total Estimated Hours: 370 hrs
+
+## Phase 7: Admin Features (50 hrs)
+
+### System Configuration (25 hrs)
+- Implement global settings configuration (15 hrs)
+- Implement client-specific overrides (10 hrs)
+
+### Admin Dashboard (25 hrs)
+- Develop key metrics display (15 hrs)
+- Implement administrative functions (10 hrs)
+
+
+## Phase 8: Consignor Features Refinement (40 hrs)
+
+### Inventory Management Refinement (20 hrs)
+- Enhance mobile optimization (10 hrs)
+- Implement batch operations (10 hrs)
+
+### Earnings Management (20 hrs)
+- Implement detailed earnings tracking (10 hrs)
+- Develop earnings reports (10 hrs)
+
+
+## Phase 9: Event Management Refinement (25 hrs)
+
+### Event Reconciliation (25 hrs)
+- Implement event closure process (15 hrs)
+- Develop reconciliation tools (10 hrs)
+
+
+## Total Estimated Hours: 493.5 hrs
