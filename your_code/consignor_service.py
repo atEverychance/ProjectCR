@@ -4,7 +4,7 @@ from your_code.background_jobs import dispatch_task
 
 # ... other imports ...
 
-def update_consignor_profile(consignor_id, new_email, ...):
+def update_consignor_profile(consignor_id, new_email):
     # ... existing code ...
     consignor = Consignor.query.get(consignor_id)
     original_email = consignor.email
