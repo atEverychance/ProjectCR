@@ -1,0 +1,33 @@
+flowchart TD
+    subgraph "Test Types"
+        Unit[Unit Tests]
+        Integration[Integration Tests]
+        E2E[End-to-End Tests]
+        Performance[Performance Tests]
+        Security[Security Tests]
+    end
+    
+    subgraph "Test Execution"
+        Local[Local Development]
+        CI[CI Pipeline]
+        Staging[Staging Environment]
+    end
+    
+    subgraph "Test Management"
+        Reporting[Test Reporting]
+        Coverage[Coverage Analysis]
+        Monitoring[Test Monitoring]
+    end
+    
+    Unit --> Local
+    Integration --> CI
+    E2E --> Staging
+    Performance --> CI
+    Security --> Staging
+    
+    Local --> Reporting
+    CI --> Coverage
+    Staging --> Monitoring
+    
+    style Unit fill:#f9f,stroke:#333,stroke-width:4px
+    style Monitoring fill:#bbf,stroke:#333,stroke-width:4px

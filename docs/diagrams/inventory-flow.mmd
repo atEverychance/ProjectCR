@@ -1,0 +1,16 @@
+flowchart TD
+    Start[Start Inventory Entry] --> ItemDetails[Enter Item Details]
+    ItemDetails --> Photos[Upload Photos]
+    Photos --> Validation[Validate Item]
+    Validation -->|Valid| Submit[Submit Item]
+    Validation -->|Invalid| Error[Show Errors]
+    Error --> Correction[Make Corrections]
+    Correction --> Validation
+    
+    Submit --> Status[Set Status: Active]
+    Status -->|Item Sold| Sold[Mark as Sold]
+    Status -->|Item Returned| Returned[Process Return]
+    Status -->|Item Transferred| Transferred[Handle Transfer]
+    
+    style Start fill:#f9f,stroke:#333,stroke-width:4px
+    style Submit fill:#bbf,stroke:#333,stroke-width:4px

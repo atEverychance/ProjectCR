@@ -1,0 +1,13 @@
+flowchart TD
+    Start[API Request] --> Validate[Validate Parameters]
+    Validate -->|Valid| Query[Build Query]
+    Validate -->|Invalid| Error[Return Error]
+    
+    Query --> Count[Get Total Count]
+    Count --> Slice[Slice Results]
+    Slice --> Format[Format Response]
+    Format --> Links[Generate Pagination Links]
+    Links --> Return[Return Response]
+    
+    style Start fill:#f9f,stroke:#333,stroke-width:4px
+    style Return fill:#bbf,stroke:#333,stroke-width:4px

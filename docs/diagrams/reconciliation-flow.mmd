@@ -1,0 +1,11 @@
+flowchart TD
+    Start[Start Reconciliation] --> Close[Close Event]
+    Close --> Sales[Process Final Sales]
+    Sales --> Returns[Handle Returns]
+    Returns --> Earnings[Calculate Earnings]
+    Earnings --> Payments[Process Payments]
+    Payments --> Reports[Generate Reports]
+    Reports --> Analysis[Post-Event Analysis]
+    
+    style Start fill:#f9f,stroke:#333,stroke-width:4px
+    style Analysis fill:#bbf,stroke:#333,stroke-width:4px

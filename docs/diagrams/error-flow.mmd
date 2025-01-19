@@ -1,0 +1,19 @@
+flowchart TD
+    Start[Error Occurs] --> Detect[Detect Error]
+    Detect --> Classify[Classify Error]
+    Classify -->|Validation| Validate[Handle Validation Error]
+    Classify -->|Auth| Auth[Handle Authentication Error]
+    Classify -->|Resource| Resource[Handle Resource Error]
+    Classify -->|System| System[Handle System Error]
+    
+    Validate --> Response[Generate Error Response]
+    Auth --> Response
+    Resource --> Response
+    System --> Response
+    
+    Response --> Log[Log Error]
+    Log --> Notify[Notify Support if Needed]
+    Notify --> Recover[Attempt Recovery]
+    
+    style Start fill:#f9f,stroke:#333,stroke-width:4px
+    style Recover fill:#bbf,stroke:#333,stroke-width:4px

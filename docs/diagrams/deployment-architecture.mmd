@@ -1,0 +1,29 @@
+flowchart TD
+    subgraph Infrastructure
+        WebServer[Nginx Web Server]
+        AppServer[FastAPI Application Server]
+        Database[SQLite Database]
+        Cache[Redis Cache]
+        Workers[Celery Workers]
+    end
+
+    subgraph Containers
+        Frontend[Svelte Frontend]
+        Backend[FastAPI Backend]
+        WorkerContainer[Celery Worker]
+        RedisContainer[Redis]
+        NginxContainer[Nginx]
+    end
+
+    subgraph Orchestration
+        Docker[Docker Compose]
+        Kubernetes[Kubernetes]
+    end
+
+    Frontend --> WebServer
+    WebServer --> AppServer
+    AppServer --> Database
+    AppServer --> Cache
+    AppServer --> Workers
+
+    Containers --> Orchestration

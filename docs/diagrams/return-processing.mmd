@@ -1,0 +1,12 @@
+flowchart TD
+    Start[Start Return] --> Verify[Verify Return]
+    Verify -->|Valid| Process[Process Return]
+    Verify -->|Invalid| Reject[Reject Return]
+    
+    Process --> Inventory[Update Inventory]
+    Inventory --> Earnings[Adjust Earnings]
+    Earnings --> Record[Record Return]
+    Record --> Notify[Notify Consignor]
+    
+    style Start fill:#f9f,stroke:#333,stroke-width:4px
+    style Notify fill:#bbf,stroke:#333,stroke-width:4px

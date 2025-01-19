@@ -1,0 +1,26 @@
+flowchart TD
+    subgraph ExternalServices
+        Shopify[Shopify API]
+        Clerk[Clerk.dev]
+        Email[Email Service]
+    end
+
+    subgraph Application
+        API[API Server]
+        Workers[Background Workers]
+        Queue[Message Queue]
+        Cache[Cache Layer]
+    end
+
+    API --> Shopify
+    API --> Clerk
+    API --> Email
+
+    Workers --> Queue
+    Workers --> Cache
+
+    API --> Workers
+    Workers --> ExternalServices
+
+    style ExternalServices fill:#fbb,stroke:#333,stroke-width:4px
+    style Application fill:#bbf,stroke:#333,stroke-width:4px

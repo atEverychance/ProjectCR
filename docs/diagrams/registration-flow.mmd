@@ -1,0 +1,22 @@
+flowchart TD
+    Start[Start Registration] --> ChooseMethod[Choose Authentication Method]
+    ChooseMethod -->|Magic Link| EnterEmail[Enter Email]
+    ChooseMethod -->|Social Login| SelectProvider[Select Provider]
+    
+    EnterEmail --> SendLink[Send Magic Link]
+    SendLink --> ClickLink[Click Link in Email]
+    ClickLink --> CreateAccount[Create Account]
+    
+    SelectProvider --> AuthRedirect[Redirect to Provider]
+    AuthRedirect --> AuthCallback[Provider Callback]
+    AuthCallback --> CreateAccount
+    
+    CreateAccount --> CompleteProfile[Complete Profile]
+    CompleteProfile --> SelectEvent[Select Event]
+    SelectEvent --> ChooseType[Choose Consignor Type]
+    ChooseType --> PayFee[Pay Participation Fee]
+    PayFee --> EnterReferral[Enter Referral Info]
+    EnterReferral --> Finish[Registration Complete]
+    
+    style Start fill:#f9f,stroke:#333,stroke-width:4px
+    style Finish fill:#bbf,stroke:#333,stroke-width:4px

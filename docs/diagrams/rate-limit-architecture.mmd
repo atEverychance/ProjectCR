@@ -1,0 +1,26 @@
+flowchart TD
+    subgraph "Rate Limiting System"
+        A[API Gateway] --> B{Rate Limit Check}
+        B -->|Allowed| C[Process Request]
+        B -->|Exceeded| D[Return 429 Error]
+        
+        C --> E[Update Rate Counters]
+        E --> F[Store in Redis]
+        
+        D --> G[Add Retry Headers]
+        G --> H[Return Response]
+    end
+    
+    subgraph "Monitoring"
+        I[Track Usage] --> J[Generate Metrics]
+        J --> K[Alert on Thresholds]
+        K --> L[Adjust Limits]
+    end
+    
+    subgraph "Configuration"
+        M[Limit Policies] --> N[Apply Rules]
+        N --> O[Update Counters]
+    end
+    
+    style A fill:#f9f,stroke:#333,stroke-width:4px
+    style H fill:#bbf,stroke:#333,stroke-width:4px

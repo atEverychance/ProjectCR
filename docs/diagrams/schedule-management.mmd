@@ -1,0 +1,14 @@
+flowchart TD
+    Start[Start Schedule Setup] --> Shopping[Define Shopping Hours]
+    Shopping --> DropOff[Set Drop-off Windows]
+    DropOff --> Volunteer[Create Volunteer Shifts]
+    Volunteer --> Markdown[Configure Markdown Period]
+    Markdown --> Returns[Set Return Processing]
+    Returns --> Review[Review Schedule]
+    Review --> Finalize[Finalize Schedule]
+    
+    Finalize -->|During Event| Adjust[Adjust Schedule]
+    Adjust -->|Event Complete| Archive[Archive Schedule]
+    
+    style Start fill:#f9f,stroke:#333,stroke-width:4px
+    style Finalize fill:#bbf,stroke:#333,stroke-width:4px

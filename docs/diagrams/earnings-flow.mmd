@@ -1,0 +1,12 @@
+flowchart TD
+    Start[Start Earnings Calculation] --> Sales[Process Sales]
+    Sales --> Base[Apply Base Rate]
+    Base --> Volunteer[Add Volunteer Bonus]
+    Volunteer --> Super[Add Super Bonus]
+    Super --> Referral[Process Referrals]
+    Referral --> Returns[Adjust for Returns]
+    Returns --> Total[Calculate Final Total]
+    Total --> Payment[Process Payment]
+    
+    style Start fill:#f9f,stroke:#333,stroke-width:4px
+    style Payment fill:#bbf,stroke:#333,stroke-width:4px

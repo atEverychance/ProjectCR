@@ -1,0 +1,29 @@
+flowchart TD
+    subgraph Queues
+        Immediate[Immediate Queue]
+        Scheduled[Scheduled Queue]
+        Retry[Retry Queue]
+        DeadLetter[Dead Letter Queue]
+    end
+
+    subgraph Workers
+        Image[Image Processing]
+        Email[Email Delivery]
+        Report[Report Generation]
+        Sync[Data Synchronization]
+        Webhook[Webhook Processing]
+    end
+
+    subgraph Services
+        API[API Server]
+        Cache[Cache Layer]
+        Database[Database]
+    end
+
+    API --> Queues
+    Queues --> Workers
+    Workers --> Services
+
+    style Queues fill:#f9f,stroke:#333,stroke-width:4px
+    style Workers fill:#bbf,stroke:#333,stroke-width:4px
+    style Services fill:#fbb,stroke:#333,stroke-width:4px

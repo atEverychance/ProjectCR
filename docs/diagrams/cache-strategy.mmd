@@ -1,0 +1,22 @@
+flowchart TD
+    subgraph CacheLayers
+        Application[Application Cache]
+        Session[Session Cache]
+        Query[Query Cache]
+    end
+
+    subgraph CacheManagement
+        Invalidation[Cache Invalidation]
+        Expiration[Time-based Expiration]
+        Compression[Data Compression]
+        Monitoring[Cache Monitoring]
+    end
+
+    Application --> Invalidation
+    Session --> Expiration
+    Query --> Compression
+
+    CacheLayers --> Monitoring
+
+    style CacheLayers fill:#f9f,stroke:#333,stroke-width:4px
+    style CacheManagement fill:#bbf,stroke:#333,stroke-width:4px

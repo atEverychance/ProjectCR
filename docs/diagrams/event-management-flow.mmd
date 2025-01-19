@@ -1,0 +1,16 @@
+flowchart TD
+    Start[Start Event Setup] --> BasicConfig[Basic Configuration]
+    BasicConfig --> Schedule[Schedule Setup]
+    Schedule --> Financial[Financial Settings]
+    Financial --> Access[Access Control]
+    Access --> Inventory[Inventory Setup]
+    Inventory --> Monitoring[Monitoring Configuration]
+    Monitoring --> Communication[Communication Setup]
+    Communication --> FinalReview[Final Review]
+    FinalReview --> Activate[Activate Event]
+    
+    Activate -->|Event Active| Operations[Operational Management]
+    Operations -->|Event Complete| Reconciliation[Post-Event Processing]
+    
+    style Start fill:#f9f,stroke:#333,stroke-width:4px
+    style Activate fill:#bbf,stroke:#333,stroke-width:4px

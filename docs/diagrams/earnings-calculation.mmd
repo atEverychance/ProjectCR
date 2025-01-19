@@ -1,0 +1,10 @@
+flowchart TD
+    Start[Start Calculation] --> Base[Calculate Base Earnings]
+    Base --> Volunteer[Add Volunteer Bonuses]
+    Volunteer --> Super[Add Super Consignor Bonuses]
+    Super --> Referral[Add Referral Rewards]
+    Referral --> Returns[Adjust for Returns]
+    Returns --> Total[Calculate Final Total]
+    
+    style Start fill:#f9f,stroke:#333,stroke-width:4px
+    style Total fill:#bbf,stroke:#333,stroke-width:4px
