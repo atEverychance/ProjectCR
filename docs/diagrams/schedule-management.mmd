@@ -1,14 +1,26 @@
 flowchart TD
     Start[Start Schedule Setup] --> Shopping[Define Shopping Hours]
     Shopping --> DropOff[Set Drop-off Windows]
+    Shopping --> Pickup[Configure Pickup Slots]
     DropOff --> Volunteer[Create Volunteer Shifts]
+    Pickup --> Capacity[Set Slot Capacity]
     Volunteer --> Markdown[Configure Markdown Period]
+    Capacity --> Review[Review Schedule]
     Markdown --> Returns[Set Return Processing]
-    Returns --> Review[Review Schedule]
+    Returns --> Review
     Review --> Finalize[Finalize Schedule]
     
     Finalize -->|During Event| Adjust[Adjust Schedule]
     Adjust -->|Event Complete| Archive[Archive Schedule]
     
+    subgraph Monitoring[Schedule Monitoring]
+        Monitor[Monitor Schedules] --> CheckVolunteer[Track Volunteer Coverage]
+        Monitor --> CheckDropoff[Track Drop-off Progress]
+        Monitor --> CheckPickup[Track Pickup Slots]
+    end
+    
+    Finalize --> Monitor
+
     style Start fill:#f9f,stroke:#333,stroke-width:4px
     style Finalize fill:#bbf,stroke:#333,stroke-width:4px
+    style Monitoring fill:#bfb,stroke:#333,stroke-width:4px

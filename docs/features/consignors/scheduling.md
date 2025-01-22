@@ -1,7 +1,7 @@
-# Volunteer and Drop-off Scheduling
+# Schedule Management
 
 ## Overview
-Scheduling system for volunteer shifts and item drop-off times. See [Scheduling System](../../diagrams/scheduling-system.mmd) for complete flow.
+Comprehensive scheduling system for managing volunteer shifts, item drop-off times, and shopper pickup slots. See [Schedule Management](../../diagrams/schedule-management.mmd) for complete flow.
 
 ## Volunteer Management
 
@@ -24,7 +24,7 @@ Process:
 - Check capacity
 - Select time slot
 - Receive confirmation
-See [Volunteer Flow](../../diagrams/volunteer-flow.mmd) for details.
+See [Volunteer Flow](../../diagrams/flows/volunteer-flow.mmd) for details.
 
 ### Earnings Impact
 Bonus structure:
@@ -55,6 +55,29 @@ Features:
 - Rescheduling tools
 - Capacity tracking
 
+## Pickup Management
+
+### Time Slots
+Configuration:
+- Customizable duration
+- Capacity limits per slot
+- Multiple location support
+- Event-specific settings
+
+Selection process:
+- Browse available slots
+- Enter email and invoice
+- Book up to 3 slots
+- Receive confirmation
+See [Pickup Flow](../../diagrams/flows/pickup-schedule-flow.mmd) for details.
+
+### Schedule Features
+Options:
+- Easy cancellation
+- Automatic slot recovery
+- Capacity monitoring
+- Invoice verification
+
 ## Completion Tracking
 
 ### Volunteer Shifts
@@ -71,14 +94,23 @@ Monitoring:
 - Completion record
 - Schedule adherence
 
+### Pickup Windows
+Monitoring:
+- Arrival verification
+- Invoice matching
+- Completion status
+- No-show tracking
+
 ## Communication
 
 ### Confirmations
 Email notifications:
 - Shift booking
 - Drop-off scheduling
+- Pickup slot reservation
 - Reminder messages
 - Change notifications
+- Cancellation updates
 
 ### Reminders
 Timing:
@@ -86,6 +118,7 @@ Timing:
 - Day-of reminder
 - Schedule changes
 - Important updates
+- Pickup instructions
 
 ## Administrative Tools
 
@@ -95,6 +128,7 @@ Controls:
 - Schedule modification
 - Override capability
 - Emergency changes
+- Slot allocation
 
 ### Volunteer Management
 Features:
@@ -102,6 +136,13 @@ Features:
 - Completion tracking
 - Bonus verification
 - Performance notes
+
+### Pickup Management
+Features:
+- Slot configuration
+- Capacity control
+- Invoice validation
+- Exception handling
 
 ## Reporting
 
@@ -111,6 +152,7 @@ Metrics:
 - Show-up rates
 - Completion rates
 - Capacity utilization
+- Pickup efficiency
 
 ### Volunteer Reports
 Analysis:
@@ -118,6 +160,13 @@ Analysis:
 - Bonus earnings
 - Performance tracking
 - History records
+
+### Pickup Reports
+Analysis:
+- Slot utilization
+- Cancellation rates
+- Peak time analysis
+- No-show tracking
 
 ## User Interface
 
@@ -127,6 +176,7 @@ Components:
 - Time slot display
 - Capacity indicators
 - Booking controls
+- Invoice verification
 
 ### Management Interface
 Features:
@@ -134,3 +184,4 @@ Features:
 - Assignment tracking
 - Status updates
 - Report generation
+- Real-time monitoring
