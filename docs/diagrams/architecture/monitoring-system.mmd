@@ -1,20 +1,64 @@
 graph TD
-    subgraph "Data Collection"
-        A[API Metrics] --> M[Monitoring]
-        Q[Queue Metrics] --> M
-        D[DB Metrics] --> M
-        I[Integration Metrics] --> M
-        E[Email Update Metrics] --> M
+    subgraph "Edge Metrics Collection"
+        W[Worker Metrics] --> CF[Cloudflare Analytics]
+        P[Pages Metrics] --> CF
+        D1[D1 Database Metrics] --> CF
+        KV[Workers KV Metrics] --> CF
+        Q[Queue Metrics] --> CF
+        WAF[WAF Events] --> CF
     end
     
-    subgraph "Processing"
-        M --> AN[Analysis]
-        AN --> AL[Alerts]
-        AN --> R[Reports]
+    subgraph "Performance Metrics"
+        W --> PM[Performance Monitor]
+        PM --> CPU[CPU Time]
+        PM --> MEM[Memory Usage]
+        PM --> DUR[Duration]
+        PM --> SUC[Success Rate]
     end
     
-    subgraph "Response"
-        AL --> N[Notifications]
-        R --> D[Dashboard]
-        AL -->|Email Updates| EU[Email Update Dashboard]
+    subgraph "Resource Metrics"
+        D1 --> RM[Resource Monitor]
+        RM --> CONN[Connections]
+        RM --> QPS[Queries/Sec]
+        RM --> LAT[Latency]
+        RM --> ERR[Error Rate]
     end
+    
+    subgraph "Edge Analytics"
+        CF --> REQ[Request Analytics]
+        REQ --> GEO[Geographic Data]
+        REQ --> STATUS[Status Codes]
+        REQ --> CACHE[Cache Performance]
+        
+        CF --> SEC[Security Analytics]
+        SEC --> THREATS[Threat Detection]
+        SEC --> BOT[Bot Management]
+        SEC --> DDOS[DDoS Protection]
+    end
+    
+    subgraph "Logging & Debugging"
+        W --> LOG[Worker Logs]
+        LOG --> TRACE[Request Tracing]
+        LOG --> ERR2[Error Tracking]
+        LOG --> PERF[Performance Logs]
+    end
+    
+    subgraph "Alerting System"
+        CF --> ALERT[Alert Engine]
+        ALERT --> EMAIL[Email Alerts]
+        ALERT --> DASH[Dashboard Alerts]
+        ALERT --> PG[PagerDuty]
+    end
+    
+    subgraph "Visualization"
+        CF --> DASHBOARD[Cloudflare Dashboard]
+        DASHBOARD --> REAL[Real-time Metrics]
+        DASHBOARD --> HIST[Historical Data]
+        DASHBOARD --> CUSTOM[Custom Reports]
+    end
+
+    style CF fill:#f9f,stroke:#333,stroke-width:4px
+    style W fill:#bbf,stroke:#333,stroke-width:4px
+    style D1 fill:#fbb,stroke:#333,stroke-width:4px
+    style KV fill:#bfb,stroke:#333,stroke-width:4px
+    style DASHBOARD fill:#fbf,stroke:#333,stroke-width:4px

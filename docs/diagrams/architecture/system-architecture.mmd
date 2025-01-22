@@ -1,56 +1,63 @@
 graph TD
     subgraph "Frontend Layer"
-        A[Svelte SPA] --> B[Clerk.dev Auth]
-        A --> API[FastAPI Backend]
+        A[React + TypeScript SPA] --> B[Clerk.dev Auth]
+        A --> CF[Cloudflare Pages]
         A --> C[Monitoring Dashboard]
         A --> D[Error Reporting]
     end
     
-    subgraph "Backend Services"
-        API --> E[Redis Queue]
-        API --> F[(PostgreSQL)]
-        API --> G[Redis Cache]
-        API --> H[File Storage]
+    subgraph "Edge Computing Layer"
+        CF --> Workers[Cloudflare Workers]
+        Workers --> KV[Workers KV]
+        Workers --> D1[(Cloudflare D1)]
+        Workers --> CQ[Cloudflare Queues]
         
-        E --> W1[Image Worker]
-        E --> W2[Email Worker]
-        E --> W3[Webhook Worker]
-        E --> W4[Report Worker]
+        CQ --> W1[Image Processing Worker]
+        CQ --> W2[Email Worker]
+        CQ --> W3[Webhook Worker]
+        CQ --> W4[Report Worker]
         
-        W1 & W2 & W3 & W4 --> F
-        W1 & W2 & W3 & W4 --> G
+        W1 & W2 & W3 & W4 --> D1
+        W1 & W2 & W3 & W4 --> KV
     end
     
     subgraph "Security Layer"
-        I[API Gateway] --> API
-        J[Rate Limiter] --> API
-        K[Request Validator] --> API
-        L[Auth Middleware] --> API
+        I[WAF] --> Workers
+        J[DDoS Protection] --> Workers
+        K[Edge Rate Limiter] --> Workers
+        L[Edge Authentication] --> Workers
     end
     
-    subgraph "Monitoring & Logging"
-        M[Prometheus] --> N[Grafana]
-        O[ELK Stack] --> P[Kibana]
-        API --> M
-        API --> O
+    subgraph "Monitoring & Analytics"
+        M[Cloudflare Analytics] --> N[Dashboard]
+        O[Worker Logs] --> P[Error Tracking]
+        Workers --> M
+        Workers --> O
     end
     
     subgraph "External Services"
-        API --> Q[Shopify]
+        Workers --> Q[Shopify]
         W2 --> R[Mailchimp]
-        B --> API
+        B --> Workers
         W1 --> Q
         W3 --> Q
-        API --> S[Stripe]
-        API --> T[Twilio]
     end
     
     subgraph "Multi-tenancy"
-        U[Tenant Context] --> API
-        V[Data Isolation] --> F
-        W[Client Config] --> API
+        U[Edge Tenant Context] --> Workers
+        V[D1 Data Isolation] --> D1
+        W[KV Client Config] --> Workers
     end
     
+    subgraph "Edge Features"
+        X[Global CDN]
+        Y[SSL/TLS]
+        Z[Edge Caching]
+        
+        X & Y & Z --> CF
+    end
+
     style A fill:#f9f,stroke:#333,stroke-width:4px
-    style API fill:#bbf,stroke:#333,stroke-width:4px
-    style F fill:#fbb,stroke:#333,stroke-width:4px
+    style Workers fill:#bbf,stroke:#333,stroke-width:4px
+    style D1 fill:#fbb,stroke:#333,stroke-width:4px
+    style CF fill:#bfb,stroke:#333,stroke-width:4px

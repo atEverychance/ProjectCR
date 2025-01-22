@@ -2,31 +2,56 @@ graph TD
     subgraph "CI/CD Pipeline"
         A[GitHub Repo] --> B[GitHub Actions]
         B --> C[Lint & Test]
-        C --> D[Build]
-        D --> E[Deploy to Netlify]
+        C --> D[Build TypeScript]
+        D --> E[Deploy to Cloudflare]
     end
     
-    subgraph "Netlify Infrastructure"
-        E --> F[Global CDN]
-        E --> G[Serverless Functions]
-        E --> H[Form Handling]
-        E --> I[Build Plugins]
+    subgraph "Cloudflare Infrastructure"
+        E --> F[Cloudflare Pages]
+        E --> G[Cloudflare Workers]
+        E --> H[D1 Database]
+        E --> I[Workers KV]
+        E --> J[Cloudflare Queues]
+        
+        subgraph "Edge Deployment"
+            F --> K[Global CDN]
+            G --> L[Edge Functions]
+            H --> M[Edge Database]
+            I --> N[Edge KV Storage]
+            J --> O[Edge Queue Processing]
+        end
+    end
+    
+    subgraph "Deployment Tools"
+        P[Wrangler CLI] --> Q[Worker Deployment]
+        P --> R[D1 Migrations]
+        P --> S[KV Management]
+        P --> T[Queue Setup]
     end
     
     subgraph "External Services"
-        F --> J[Shopify API]
-        F --> K[Clerk.dev Auth]
-        F --> L[Mailchimp Email]
-        F --> M[Monitoring Tools]
+        G --> U[Shopify API]
+        G --> V[Clerk.dev Auth]
+        G --> W[Mailchimp Email]
+        G --> X[Cloudflare Analytics]
     end
     
     subgraph "Clients"
-        N[Web Browser] --> F
-        O[Mobile App] --> F
-        P[API Clients] --> F
+        Y[Web Browser] --> K
+        Z[Mobile App] --> K
+        AA[API Clients] --> L
     end
     
+    subgraph "Security & Performance"
+        AB[WAF] --> K
+        AC[DDoS Protection] --> K
+        AD[SSL/TLS] --> K
+        AE[Edge Caching] --> K
+    end
+
     style A fill:#f9f,stroke:#333,stroke-width:4px
     style B fill:#bbf,stroke:#333,stroke-width:4px
     style E fill:#9f9,stroke:#333,stroke-width:4px
     style F fill:#fbb,stroke:#333,stroke-width:4px
+    style G fill:#bfb,stroke:#333,stroke-width:4px
+    style H fill:#fbf,stroke:#333,stroke-width:4px

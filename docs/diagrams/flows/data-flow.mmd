@@ -1,36 +1,67 @@
 graph TD
-    subgraph "Data Input"
+    subgraph "Client Input"
         C[Consignor] --> I[Inventory Entry]
         I --> P[Photo Upload]
         I --> D[Details Entry]
     end
     
-    subgraph "Processing"
-        P --> IP[Image Processing]
-        D --> VP[Validation]
-        IP & VP --> SP[Shopify Product]
+    subgraph "Edge Processing"
+        P --> W1[Image Processing Worker]
+        D --> W2[Validation Worker]
+        
+        W1 --> KV1[Workers KV Image Cache]
+        W2 --> D1A[D1 Database]
+        
+        W1 & W2 --> Q1[Cloudflare Queue]
+        Q1 --> W3[Shopify Sync Worker]
     end
     
-    subgraph "Sales Flow"
+    subgraph "External Integration"
+        W3 --> SP[Shopify Product]
         SP --> SO[Shopify Order]
-        SO --> CP[Commission Processing]
-        CP --> EP[Earnings Calculation]
+        SO --> Q2[Order Processing Queue]
+        Q2 --> W4[Commission Worker]
     end
     
-    subgraph "Reconciliation"
-        EP --> R[Returns Processing]
-        R --> F[Final Earnings]
-        F --> PO[Payout]
+    subgraph "Financial Processing"
+        W4 --> D1B[D1 Database]
+        D1B --> W5[Earnings Worker]
+        W5 --> KV2[Workers KV Cache]
+        
+        subgraph "Reconciliation"
+            W5 --> Q3[Reconciliation Queue]
+            Q3 --> W6[Returns Worker]
+            W6 --> D1C[D1 Database]
+            D1C --> W7[Payout Worker]
+        end
     end
     
-    subgraph "Consignor Updates"
-        CU[Consignor Update]
+    subgraph "Profile Updates"
+        CU[Consignor Update] --> W8[Profile Worker]
+        W8 --> D1D[D1 Database]
+        W8 --> Q4[Email Queue]
     end
 
-    subgraph "Mailchimp Sync"
-        CU --> MU[Mailchimp Update Job]
+    subgraph "Email Integration"
+        Q4 --> W9[Email Worker]
+        W9 --> MC[Mailchimp API]
+        W9 --> KV3[Workers KV Email Cache]
+    end
+    
+    subgraph "Edge Caching"
+        KV1 --> CDN[Edge CDN]
+        KV2 --> CDN
+        KV3 --> CDN
+    end
+    
+    subgraph "Error Handling"
+        Q5[Dead Letter Queue] --> W10[Error Handler Worker]
+        W10 --> D1E[Error Logs in D1]
+        W10 --> KV4[Error Cache in KV]
     end
 
-    subgraph "Background Processing"
-        MU --> MS[Mailchimp Subscriber Update]
-    end
+    style W1 fill:#f9f,stroke:#333,stroke-width:4px
+    style D1A fill:#bbf,stroke:#333,stroke-width:4px
+    style KV1 fill:#bfb,stroke:#333,stroke-width:4px
+    style Q1 fill:#fbf,stroke:#333,stroke-width:4px
+    style CDN fill:#fbb,stroke:#333,stroke-width:4px

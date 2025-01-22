@@ -1,26 +1,51 @@
 sequenceDiagram
-    participant FE as Frontend
-    participant API as Backend
+    participant FE as React SPA
+    participant Pages as Cloudflare Pages
+    participant Workers as Cloudflare Workers
+    participant KV as Workers KV
+    participant Queue as Cloudflare Queue
     participant Auth as Clerk.dev
     participant Shop as Shopify
     participant MC as Mailchimp
-    participant Q as Redis Queue
     
     FE->>Auth: Authenticate
     Auth-->>FE: JWT Token
-    FE->>API: API Request + Token
+    FE->>Pages: Route Request
+    Pages->>Workers: API Request + Token
+    Workers->>KV: Validate Session
     
     alt Create Inventory
-        API->>Shop: Create Product
-        API->>Q: Queue Image Processing
+        Workers->>Shop: Create Product via REST
+        Workers->>Queue: Queue Image Processing
+        Queue->>Workers: Process Image at Edge
+        Workers->>KV: Cache Product Data
     end
     
     alt Process Sale
-        Shop->>API: Order Webhook
-        API->>Q: Queue Processing
-        Q->>Mail: Send Notification
+        Shop->>Workers: Order Webhook
+        Workers->>Queue: Queue Order Processing
+        Queue->>Workers: Process Order
+        Workers->>KV: Update Order Status
+        Workers->>Queue: Queue Email Job
+        Queue->>Workers: Send Email via Mailchimp
     end
+
     alt Update Consignor Email
-        API->>Q: Enqueue Mailchimp Update Job
-        Q->>MC: Update Subscriber
+        Workers->>Queue: Queue Email Update
+        Queue->>Workers: Process Email Update
+        Workers->>MC: Update Subscriber
+        Workers->>KV: Cache Updated Profile
+    end
+
+    alt Error Handling
+        Workers->>Queue: Queue to Dead Letter
+        Queue->>Workers: Retry with Backoff
+        Workers->>KV: Cache Error State
+    end
+
+    alt Edge Caching
+        Workers->>KV: Cache API Response
+        KV-->>Workers: Serve Cached Data
+        Workers-->>Pages: Cached Response
+        Pages-->>FE: Render Data
     end

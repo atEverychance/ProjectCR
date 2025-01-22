@@ -1,24 +1,35 @@
 graph TD
     subgraph "Frontend"
-        A[SPA] --> B[Clerk.js]
+        A[React SPA] --> B[Clerk.js]
         B --> C[Auth Context]
         C --> D[API Client]
+        A --> Pages[Cloudflare Pages]
     end
     
-    subgraph "Backend"
-        D --> E[API Gateway]
+    subgraph "Edge Computing"
+        D --> E[Cloudflare Workers]
         E --> F[Auth Middleware]
-        F --> G[Clerk Webhook]
-        F --> H[Token Validator]
+        F --> G[Clerk Webhook Handler]
+        F --> H[JWT Validator]
         H --> I[User Context]
         I --> J[Tenant Context]
+        
+        subgraph "Edge Storage"
+            KV[Workers KV]
+            D1[D1 Database]
+            DO[Durable Objects]
+        end
+        
+        I --> KV
+        J --> D1
+        F --> DO
     end
     
-    subgraph "Security"
-        K[Rate Limiter] --> E
-        L[Request Validator] --> E
-        M[Session Manager] --> F
-        N[Audit Logger] --> F
+    subgraph "Edge Security"
+        K[WAF] --> E
+        L[DDoS Protection] --> E
+        M[Edge Rate Limiting] --> E
+        N[Edge Authentication] --> F
     end
     
     subgraph "External"
@@ -27,12 +38,22 @@ graph TD
         H --> O
     end
     
-    subgraph "Data"
-        I --> P[(User Store)]
-        J --> Q[(Tenant Store)]
-        M --> R[(Session Store)]
+    subgraph "Session Management"
+        P[Session Worker] --> KV
+        P --> DO
+        P --> Q[Session Invalidation]
+        Q --> R[Edge Cache Clear]
     end
     
+    subgraph "Monitoring"
+        S[Cloudflare Analytics] --> T[Auth Metrics]
+        U[Worker Logs] --> V[Auth Events]
+        W[Security Events] --> X[Alert System]
+    end
+
     style A fill:#f9f,stroke:#333,stroke-width:4px
     style E fill:#bbf,stroke:#333,stroke-width:4px
     style O fill:#fbb,stroke:#333,stroke-width:4px
+    style Pages fill:#bfb,stroke:#333,stroke-width:4px
+    style KV fill:#fbf,stroke:#333,stroke-width:4px
+    style D1 fill:#fbf,stroke:#333,stroke-width:4px

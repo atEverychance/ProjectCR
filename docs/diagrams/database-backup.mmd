@@ -1,12 +1,37 @@
 sequenceDiagram
-    participant S as System
-    participant DB as Database
-    participant B as Backup Service
-    participant ST as Storage
+    participant W as Wrangler CLI
+    participant D1 as D1 Database
+    participant CF as Cloudflare
+    participant R as R2 Storage
     
-    S->>DB: Initiate Backup
-    DB->>B: Stream Data
-    B->>B: Compress
-    B->>B: Encrypt
-    B->>ST: Store Backup
-    ST-->>S: Confirm Storage
+    Note over W,R: Automated Daily Backup Process
+    
+    W->>D1: wrangler d1 backup create
+    D1->>CF: Stream Database State
+    CF->>CF: Create Point-in-Time Snapshot
+    CF->>R: Store Encrypted Backup
+    R-->>W: Confirm Backup Success
+    
+    Note over W,R: Manual Backup Process
+    
+    W->>D1: wrangler d1 backup list
+    D1-->>W: Show Available Backups
+    W->>D1: wrangler d1 backup create --name custom
+    D1->>CF: Stream Database State
+    CF->>CF: Create Named Snapshot
+    CF->>R: Store Encrypted Backup
+    R-->>W: Confirm Backup Success
+    
+    Note over W,R: Restore Process
+    
+    W->>R: wrangler d1 backup restore
+    R->>CF: Retrieve Backup
+    CF->>CF: Validate Backup
+    CF->>D1: Restore Database State
+    D1-->>W: Confirm Restore Success
+    
+    Note over W,R: Backup Retention
+    
+    CF->>CF: Retain 30 Days of Backups
+    CF->>CF: Auto-prune Old Backups
+    CF->>R: Archive Critical Backups

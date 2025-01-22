@@ -1,36 +1,59 @@
 flowchart TD
-    subgraph Backend[Backend Services]
-        API[API Server]
-        Workers[Background Workers]
-        Queue[Message Queue]
-        Cache[Cache Layer]
-        DB[Database]
+    subgraph Edge[Edge Computing Layer]
+        Workers[Cloudflare Workers]
+        D1[D1 Database]
+        KV[Workers KV]
+        Queues[Cloudflare Queues]
+        DO[Durable Objects]
     end
     
     subgraph Frontend[Frontend Application]
-        Web[Web Interface]
+        Pages[Cloudflare Pages]
+        Web[React + TypeScript SPA]
         Mobile[Mobile Interface]
+    end
+    
+    subgraph Processing[Background Processing]
+        ImageWorker[Image Processing Worker]
+        EmailWorker[Email Worker]
+        WebhookWorker[Webhook Worker]
+        ReportWorker[Report Worker]
     end
     
     subgraph Integrations[External Services]
         Shopify[Shopify API]
         Clerk[Clerk.dev]
-        Email[Email Service]
+        Email[Mailchimp]
     end
     
-    Frontend --> API
-    API --> Workers
-    API --> Queue
-    API --> Cache
-    API --> DB
+    subgraph Security[Edge Security]
+        WAF[Web Application Firewall]
+        DDoS[DDoS Protection]
+        SSL[SSL/TLS]
+        RateLimit[Rate Limiting]
+    end
+
+    Frontend --> Security
+    Security --> Workers
     
-    Workers --> Queue
-    Workers --> Cache
-    Workers --> DB
+    Workers --> D1
+    Workers --> KV
+    Workers --> Queues
+    Workers --> DO
     
-    API --> Integrations
+    Queues --> ImageWorker
+    Queues --> EmailWorker
+    Queues --> WebhookWorker
+    Queues --> ReportWorker
+    
+    ImageWorker & EmailWorker & WebhookWorker & ReportWorker --> D1
+    ImageWorker & EmailWorker & WebhookWorker & ReportWorker --> KV
+    
     Workers --> Integrations
+    Processing --> Integrations
     
-    style Backend fill:#f9f,stroke:#333,stroke-width:4px
+    style Edge fill:#f9f,stroke:#333,stroke-width:4px
     style Frontend fill:#bbf,stroke:#333,stroke-width:4px
+    style Processing fill:#bfb,stroke:#333,stroke-width:4px
     style Integrations fill:#fbb,stroke:#333,stroke-width:4px
+    style Security fill:#fbf,stroke:#333,stroke-width:4px

@@ -1,21 +1,51 @@
 sequenceDiagram
-    participant Client as Client Application
-    participant API as API Gateway
-    participant Auth as Authentication Service
-    participant Router as Request Router
-    participant Handler as Request Handler
-    participant DB as Database
+    participant Client as React SPA
+    participant Pages as Cloudflare Pages
+    participant Edge as Edge Network
+    participant Worker as Cloudflare Worker
+    participant Auth as Clerk.dev
+    participant KV as Workers KV
+    participant D1 as D1 Database
+    participant Cache as Edge Cache
     
-    Client->>+API: HTTP Request
-    API->>+Auth: Verify Authentication
-    Auth-->>-API: Authentication Result
-    API->>+Router: Route Request
-    Router->>+Handler: Process Request
-    Handler->>+DB: Query Data
-    DB-->>-Handler: Query Results
-    Handler-->>-Router: Response Data
-    Router-->>-API: Formatted Response
-    API-->>-Client: HTTP Response
+    Client->>+Pages: HTTP Request
+    Pages->>+Edge: Route to Edge Network
     
-    Note over API,Router: Multi-tenant Context
-    Note over Handler,DB: Client-specific Data Filtering
+    Edge->>+Worker: Execute Worker
+    
+    Worker->>+Auth: Verify JWT
+    Auth-->>-Worker: Token Valid
+    
+    Worker->>+KV: Check Cache
+    alt Cache Hit
+        KV-->>Worker: Cached Response
+        Worker-->>Edge: Return Cached Data
+    else Cache Miss
+        KV-->>Worker: Cache Miss
+        Worker->>+D1: Query Database
+        D1-->>-Worker: Query Results
+        Worker->>KV: Cache Response
+        Worker-->>Edge: Return Fresh Data
+    end
+    
+    Edge->>Cache: Store in Edge Cache
+    Edge-->>-Pages: Response
+    Pages-->>-Client: HTTP Response
+    
+    Note over Edge,Worker: WAF & DDoS Protection
+    Note over Worker,D1: Multi-tenant Context
+    Note over Worker,KV: Client-specific Caching
+    
+    alt Error Handling
+        Worker->>Worker: Catch Error
+        Worker->>KV: Log Error
+        Worker-->>Edge: Error Response
+        Edge-->>Pages: Error Status
+        Pages-->>Client: Error Display
+    end
+    
+    alt Rate Limiting
+        Edge->>Edge: Check Rate Limits
+        Edge-->>Pages: 429 Too Many Requests
+        Pages-->>Client: Rate Limit Error
+    end

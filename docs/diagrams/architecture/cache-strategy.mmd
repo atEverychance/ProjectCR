@@ -1,17 +1,54 @@
 graph TD
-    subgraph "Cache Layers"
-        A[Application Cache] --> C[Client Config]
+    subgraph "Edge Cache Layers"
+        A[Workers KV] --> C[Client Config]
         A --> U[User Context]
         A --> S[Session Data]
+        
+        E[Edge Cache] --> H[HTML]
+        E --> J[JavaScript]
+        E --> CS[CSS]
+        E --> I[Images]
     end
     
     subgraph "Data Types"
         C --> CC[Categories]
         C --> SC[Sizes]
         C --> EC[Event Config]
+        
+        U --> UT[User Tokens]
+        U --> UP[User Preferences]
+        
+        S --> ST[Session State]
+        S --> SC2[Shopping Cart]
+    end
+    
+    subgraph "Cache Strategies"
+        CC & SC & EC --> G[Global Cache]
+        UT & UP --> T[Tenant-specific Cache]
+        ST & SC2 --> L[Local Cache]
+        
+        G --> KV1[Workers KV]
+        T --> KV2[Workers KV]
+        L --> DO[Durable Objects]
     end
     
     subgraph "Invalidation"
-        CC & SC & EC --> I[Invalidation]
-        I --> R[Redis]
+        KV1 & KV2 --> IV[Invalidation]
+        IV --> P1[Purge by Key]
+        IV --> P2[Purge by Tag]
+        IV --> P3[Purge by Prefix]
     end
+    
+    subgraph "Performance Features"
+        E --> CDN[Global CDN]
+        CDN --> CF1[Auto Minification]
+        CDN --> CF2[Brotli Compression]
+        CDN --> CF3[HTTP/3]
+    end
+
+    style A fill:#f9f,stroke:#333,stroke-width:4px
+    style E fill:#bbf,stroke:#333,stroke-width:4px
+    style KV1 fill:#bfb,stroke:#333,stroke-width:4px
+    style KV2 fill:#bfb,stroke:#333,stroke-width:4px
+    style DO fill:#fbf,stroke:#333,stroke-width:4px
+    style CDN fill:#fbb,stroke:#333,stroke-width:4px

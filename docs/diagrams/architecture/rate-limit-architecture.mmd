@@ -1,8 +1,8 @@
 flowchart TD
-    subgraph API[API Endpoints]
-        A1[Public API] -->|100 req/min| A2[IP Tracking]
-        A1 -->|1000 req/hr| A3[Client Tracking]
-        A1 -->|50 concurrent| A4[Concurrency Control]
+    subgraph EdgeEndpoints[Edge Endpoints]
+        A1[Cloudflare Workers] -->|100k req/day| A2[Worker Limits]
+        A1 -->|Free Tier| A3[Account Limits]
+        A1 -->|Per Worker| A4[CPU Time Limits]
         A5[Special Endpoints] --> A6[Image Upload: 10/min]
         A5 --> A7[Inventory: 50/min]
         A5 --> A8[Reports: 5/min]
@@ -17,26 +17,26 @@ flowchart TD
         B5 --> B7[Users: 50/min]
     end
 
-    subgraph Jobs[Background Jobs]
-        C1[Image Processing] -->|10 concurrent| C2[Queue]
-        C3[Email Sending] -->|50/min| C4[Queue]
-        C5[Report Generation] -->|5 concurrent| C6[Queue]
-        C7[Data Exports] -->|2/hr| C8[Queue]
+    subgraph EdgeJobs[Edge Processing]
+        C1[Image Processing] -->|10 concurrent| C2[Cloudflare Queue]
+        C3[Email Sending] -->|50/min| C4[Cloudflare Queue]
+        C5[Report Generation] -->|5 concurrent| C6[Cloudflare Queue]
+        C7[Data Exports] -->|2/hr| C8[Cloudflare Queue]
     end
 
-    subgraph Tracking[Rate Tracking]
-        D1[Redis Counters] --> D2[Rolling Window]
+    subgraph EdgeTracking[Edge Rate Tracking]
+        D1[Workers KV] --> D2[Rolling Window]
         D2 --> D3[Client Tracking]
         D2 --> D4[IP Tracking]
     end
 
-    subgraph Enforcement[Limit Enforcement]
-        E1[Token Bucket] --> E2[Sliding Window]
-        E2 --> E3[Circuit Breaker]
+    subgraph EdgeEnforcement[Edge Enforcement]
+        E1[WAF Rules] --> E2[Rate Rules]
+        E2 --> E3[DDoS Protection]
         E3 --> E4[Graceful Degradation]
     end
 
-    subgraph Monitoring[Monitoring & Alerts]
+    subgraph EdgeMonitoring[Edge Analytics]
         F1[Usage Metrics] --> F2[Request Rates]
         F1 --> F3[Limit Hits]
         F1 --> F4[Recovery Times]
@@ -47,20 +47,26 @@ flowchart TD
         F6 --> F10[System Stress]
     end
 
-    subgraph Security[Security & Controls]
-        G1[Abuse Prevention] --> G2[IP Tracking]
-        G1 --> G3[Pattern Detection]
+    subgraph EdgeSecurity[Edge Security]
+        G1[Abuse Prevention] --> G2[IP Reputation]
+        G1 --> G3[Bot Management]
         G1 --> G4[Account Limits]
-        G1 --> G5[Blocking Rules]
+        G1 --> G5[Firewall Rules]
         G6[Override System] --> G7[Manual Overrides]
         G6 --> G8[Temporary Increases]
         G6 --> G9[Emergency Bypass]
         G6 --> G10[Audit Logging]
     end
 
-    API --> Tracking
-    External --> Tracking
-    Jobs --> Tracking
-    Tracking --> Enforcement
-    Enforcement --> Monitoring
-    Monitoring --> Security
+    EdgeEndpoints --> EdgeTracking
+    External --> EdgeTracking
+    EdgeJobs --> EdgeTracking
+    EdgeTracking --> EdgeEnforcement
+    EdgeEnforcement --> EdgeMonitoring
+    EdgeMonitoring --> EdgeSecurity
+
+    style EdgeEndpoints fill:#f9f,stroke:#333,stroke-width:4px
+    style EdgeTracking fill:#bbf,stroke:#333,stroke-width:4px
+    style EdgeEnforcement fill:#bfb,stroke:#333,stroke-width:4px
+    style EdgeMonitoring fill:#fbf,stroke:#333,stroke-width:4px
+    style EdgeSecurity fill:#fbb,stroke:#333,stroke-width:4px
