@@ -1,170 +1,177 @@
-# Webhook Handlers
+# Webhooks
 
 ## Overview
-Documentation for webhook handling, processing, and reliability measures. See [Webhook Architecture](../diagrams/architecture/webhook-architecture.mmd) for complete flow.
+Event-driven webhook system for real-time integrations. See [Webhook Architecture](../diagrams/architecture/webhook-architecture.mmd) for system design.
 
-## Shopify Webhooks
+## Event Types
 
-### Order Processing
-Endpoint: /webhooks/shopify/order
-Method: POST
+### Profile Events
 
-Payload processing:
-- order_id (string)
-- line_items (array)
-- customer_info (object)
-- payment_status (string)
-- created_at (datetime)
+#### email.updated
+Triggered when a consignor's email address is updated.
 
-Processing steps:
-1. Immediate acknowledgment
-2. Queue job for processing
-3. Update inventory status
-4. Calculate earnings
-5. Send notifications
+Payload:
+```json
+{
+  "event": "email.updated",
+  "timestamp": "2025-01-21T22:20:56Z",
+  "data": {
+    "consignor_id": "uuid",
+    "old_email": "old@example.com",
+    "new_email": "new@example.com",
+    "sync_status": "pending|completed|failed",
+    "sync_error": "error message if failed"
+  }
+}
+```
 
-### Order Cancellation
-Endpoint: /webhooks/shopify/order/cancelled
-Method: POST
+#### profile.created
+Triggered when a new consignor profile is created.
 
-Processing steps:
-1. Verify order exists
-2. Revert inventory status
-3. Adjust earnings calculations
-4. Update reports
+Payload:
+```json
+{
+  "event": "profile.created",
+  "timestamp": "2025-01-21T22:20:56Z",
+  "data": {
+    "consignor_id": "uuid",
+    "email": "example@domain.com",
+    "name": "John Doe"
+  }
+}
+```
 
-### Inventory Updates
-Endpoint: /webhooks/shopify/inventory
-Method: POST
+### Event Registration
 
-Processing steps:
-1. Verify product exists
-2. Update local inventory
-3. Sync status changes
-4. Update availability
+#### event.registered
+Triggered when a consignor registers for an event.
 
-## Clerk.dev Webhooks
+Payload:
+```json
+{
+  "event": "event.registered",
+  "timestamp": "2025-01-21T22:20:56Z",
+  "data": {
+    "event_id": "uuid",
+    "consignor_id": "uuid",
+    "type": "regular|super",
+    "fee_paid": true
+  }
+}
+```
 
-### User Creation
-Endpoint: /webhooks/clerk/user
-Method: POST
+### Inventory Events
 
-Processing steps:
-1. Create consignor record
-2. Associate with client
-3. Send welcome email
-4. Initialize profile
+#### item.created
+Triggered when a new item is created.
 
-### User Updates
-Endpoint: /webhooks/clerk/user/updated
-Method: POST
+Payload:
+```json
+{
+  "event": "item.created",
+  "timestamp": "2025-01-21T22:20:56Z",
+  "data": {
+    "item_id": "uuid",
+    "consignor_id": "uuid",
+    "event_id": "uuid",
+    "title": "string",
+    "price": "decimal"
+  }
+}
+```
 
-Processing steps:
-1. Update consignor record
-2. Sync changed fields
-3. Validate changes
-4. Update related records
+#### item.sold
+Triggered when an item is sold.
 
-## Reliability Measures
+Payload:
+```json
+{
+  "event": "item.sold",
+  "timestamp": "2025-01-21T22:20:56Z",
+  "data": {
+    "item_id": "uuid",
+    "sale_price": "decimal",
+    "sale_date": "timestamp"
+  }
+}
+```
 
-### Queue Management
-Processing approach:
-1. Immediate queue insertion
-2. Background processing
-3. Retry mechanism
-4. Error logging
-5. Manual recovery tools
+## Webhook Management
 
-### Verification
-Safety checks:
-1. Webhook signature validation
-2. Request body validation
-3. Idempotency checking
-4. State verification
-5. Conflict resolution
+### Registration
+Endpoint: `POST /api/v1/webhooks`
+
+Request:
+```json
+{
+  "url": "https://your-domain.com/webhook",
+  "events": ["email.updated", "profile.created"],
+  "secret": "your-secret-key"
+}
+```
+
+### Security
+- HMAC signature validation
+- Secret key management
+- IP whitelisting
+- Rate limiting
+
+### Delivery
+- Retry policy (3 attempts)
+- Exponential backoff
+- Success acknowledgment
+- Failure handling
+
+## Best Practices
+
+### Implementation
+1. Verify signatures
+2. Process asynchronously
+3. Return 200 quickly
+4. Handle duplicates
+5. Log responses
 
 ### Error Handling
-Recovery process:
-1. Automatic retries (3 attempts)
-2. Error categorization
-3. Alert generation
-4. Manual intervention tools
-5. Audit logging
+1. Monitor failures
+2. Track retry status
+3. Alert on patterns
+4. Maintain audit log
 
-## Security
+### Performance
+1. Quick acknowledgment
+2. Async processing
+3. Resource management
+4. Queue monitoring
 
-### Authentication
-Security measures:
+## Testing
+
+### Webhook Tester
+Endpoint: `POST /api/v1/webhooks/test`
+
+Request:
+```json
+{
+  "event": "email.updated",
+  "url": "https://your-domain.com/webhook"
+}
+```
+
+### Validation
 - Signature verification
-- API key validation
-- IP whitelisting
-- Request timing validation
-
-### Data Protection
-Protection methods:
-- Payload encryption
-- Secure transmission
-- Data validation
-- Access logging
+- Payload format
+- Response timing
+- Error scenarios
 
 ## Monitoring
 
-### Performance Metrics
-Tracked metrics:
-- Delivery success rate
-- Processing time
-- Error frequency
-- Queue length
+### Metrics
+- Delivery rate
+- Response time
+- Error rate
+- Retry count
 
-### Health Checks
-Monitoring points:
-- Queue status
-- Processing status
-- Error rates
+### Alerts
+- Delivery failures
+- Response patterns
+- Error thresholds
 - System health
-
-### Alerting
-Alert conditions:
-- Processing failures
-- Queue backup
-- Error threshold
-- System issues
-
-## Recovery Tools
-
-### Manual Processing
-Tools available:
-- Webhook replay
-- Status check
-- Force processing
-- Data correction
-
-### Reconciliation
-Features:
-- Missing order detection
-- Data comparison
-- Manual sync
-- Audit tools
-
-## Documentation
-
-### Payload Examples
-Provided for:
-- Order creation
-- Order cancellation
-- Inventory updates
-- User events
-
-### Integration Guide
-Instructions for:
-- Webhook setup
-- Security configuration
-- Error handling
-- Monitoring setup
-
-### Troubleshooting
-Guidance for:
-- Common issues
-- Error resolution
-- Recovery procedures
-- Support escalation

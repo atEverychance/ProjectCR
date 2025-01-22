@@ -1,0 +1,33 @@
+sequenceDiagram
+    participant C as Consignor
+    participant API as API Server
+    participant Q as Job Queue
+    participant W as Worker
+    participant S as Shopify
+    participant M as Mailchimp
+    participant DB as Database
+
+    C->>API: Update Email Address
+    API->>DB: Update Consignor Record
+    Note over DB: Set email_updated_at timestamp
+    API->>Q: Queue Email Sync Job
+    API-->>C: Return Success
+
+    Q->>W: Process Email Sync
+    
+    par Parallel Updates
+        W->>S: Update Shopify Customer
+        W->>M: Update Mailchimp Subscriber
+    end
+
+    alt Success
+        W->>DB: Update sync_status = "completed"
+        W->>DB: Clear sync_error
+    else Failure
+        W->>DB: Update sync_status = "failed"
+        W->>DB: Set sync_error message
+        W->>Q: Requeue for retry
+    end
+
+    Note over W: Max 3 retry attempts
+    Note over W: Exponential backoff

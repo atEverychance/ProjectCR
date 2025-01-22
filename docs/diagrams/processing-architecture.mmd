@@ -12,6 +12,7 @@ flowchart TD
         Report[Report Generation]
         Sync[Data Synchronization]
         Webhook[Webhook Processing]
+        EmailSync[Email Sync Worker]
     end
 
     subgraph Services
@@ -20,10 +21,21 @@ flowchart TD
         Database[Database]
     end
 
+    subgraph ExternalServices
+        Shopify[Shopify API]
+        Mailchimp[Mailchimp API]
+    end
+
     API --> Queues
     Queues --> Workers
     Workers --> Services
+    
+    EmailSync --> Shopify
+    EmailSync --> Mailchimp
+    EmailSync --> Retry
+    Retry --> EmailSync
 
     style Queues fill:#f9f,stroke:#333,stroke-width:4px
     style Workers fill:#bbf,stroke:#333,stroke-width:4px
     style Services fill:#fbb,stroke:#333,stroke-width:4px
+    style ExternalServices fill:#bfb,stroke:#333,stroke-width:4px

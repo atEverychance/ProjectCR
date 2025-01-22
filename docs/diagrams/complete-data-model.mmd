@@ -61,6 +61,10 @@ erDiagram
         integer loyalty_count
         timestamp created_at
         boolean active
+        timestamp email_updated_at
+        string sync_status
+        timestamp last_sync_attempt
+        text sync_error
     }
 
     EVENT_CONSIGNORS {

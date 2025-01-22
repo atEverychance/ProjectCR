@@ -69,20 +69,35 @@ Editable fields:
 - Password
 
 ### Email Management
+Email updates:
 - Email change requires verification
+- Changes processed through background job system
 - Updates propagate to:
-  - Authentication system
-  - Mailchimp integration
-  - Shopify integration
+  * Authentication system
+  * Mailchimp subscriber list
+  * Shopify customer profile
+- Sync status tracking:
+  * In Progress
+  * Completed
+  * Failed (with retry)
+- Error handling:
+  * Automatic retries (max 3 attempts)
+  * Exponential backoff
+  * Admin notifications for failures
 - Change history maintained
 - Rate limiting applied
+
+See [Email Sync Flow](../../diagrams/flows/email-sync-flow.mmd) for technical details.
 
 ### Verification Process
 1. Initiate email change
 2. Verify new email address
 3. Update local records
-4. Sync with external systems
-5. Notify user of completion
+4. Queue sync job for external systems:
+   - Shopify customer update
+   - Mailchimp subscriber update
+5. Monitor sync status
+6. Notify user of completion/failure
 
 ### Participation History
 Tracked information:
@@ -177,3 +192,5 @@ Features:
 - History viewing
 - Status checking
 - Settings management
+- Sync status monitoring
+- Error notifications

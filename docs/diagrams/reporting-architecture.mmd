@@ -1,0 +1,64 @@
+flowchart TD
+    subgraph DataSources[Data Sources]
+        Sales[(Sales Data)]
+        Inventory[(Inventory Data)]
+        Events[(Event Data)]
+        Users[(User Data)]
+        Financial[(Financial Data)]
+    end
+
+    subgraph ProcessingLayer[Processing Layer]
+        DataCollection[Data Collection Service]
+        Aggregation[Data Aggregation]
+        Calculation[Calculations Engine]
+        Generation[Report Generation]
+    end
+
+    subgraph ReportTypes[Report Types]
+        SalesReports[Sales Reports]
+        InventoryReports[Inventory Reports]
+        EventReports[Event Reports]
+        FinancialReports[Financial Reports]
+        OperationalReports[Operational Reports]
+        SystemReports[System Reports]
+    end
+
+    subgraph OutputHandlers[Output Handlers]
+        PDFGenerator[PDF Generator]
+        CSVExport[CSV Export]
+        ExcelExport[Excel Export]
+        JSONExport[JSON Export]
+        ChequeFormat[Cheque Formatter]
+    end
+
+    subgraph DeliveryLayer[Delivery Layer]
+        EmailDelivery[Email Delivery]
+        APIAccess[API Access]
+        WebInterface[Web Interface]
+        DownloadCenter[Download Center]
+        PrintQueue[Print Queue]
+    end
+
+    %% Data Flow
+    Sales & Inventory & Events & Users & Financial --> DataCollection
+    DataCollection --> Aggregation
+    Aggregation --> Calculation
+    Calculation --> Generation
+
+    %% Report Generation Flow
+    Generation --> SalesReports & InventoryReports & EventReports & FinancialReports & OperationalReports & SystemReports
+
+    %% Output Processing
+    SalesReports & InventoryReports & EventReports & OperationalReports & SystemReports --> PDFGenerator & CSVExport & ExcelExport & JSONExport
+    FinancialReports --> PDFGenerator & CSVExport & ExcelExport & JSONExport & ChequeFormat
+
+    %% Delivery Flow
+    PDFGenerator & CSVExport & ExcelExport & JSONExport --> EmailDelivery & APIAccess & WebInterface & DownloadCenter
+    ChequeFormat --> PrintQueue
+
+    %% Styling
+    style DataSources fill:#f9f,stroke:#333,stroke-width:2px
+    style ProcessingLayer fill:#bbf,stroke:#333,stroke-width:2px
+    style ReportTypes fill:#bfb,stroke:#333,stroke-width:2px
+    style OutputHandlers fill:#fbb,stroke:#333,stroke-width:2px
+    style DeliveryLayer fill:#ffb,stroke:#333,stroke-width:2px
