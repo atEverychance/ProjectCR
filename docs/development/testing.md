@@ -1,7 +1,7 @@
 # Testing Strategy
 
 ## Overview
-Comprehensive testing approach covering unit tests, integration tests, and end-to-end scenarios. See [Testing Architecture](/docs/diagrams/testing-architecture.mmd) for complete structure.
+Comprehensive testing approach covering unit tests, integration tests, and end-to-end scenarios for our Cloudflare-first architecture. See [Testing Architecture](/docs/diagrams/testing-architecture.mmd) for complete structure.
 
 ## Test Categories
 
@@ -15,11 +15,12 @@ See [Unit Test Coverage](../diagrams/unit-test-coverage.mmd) for details.
 
 ### Integration Tests
 Service integration:
-- API endpoints
+- Worker endpoints
 - Shopify integration
 - Email processing
 - Authentication flow
-- Cache operations
+- KV operations
+- D1 database operations
 
 ### End-to-End Tests
 Critical paths:
@@ -32,19 +33,19 @@ Critical paths:
 ## Test Implementation
 
 ### Backend Testing
-Framework: pytest
+Framework: Vitest
 
 Key test areas:
-- Models and database operations
-- API endpoints
-- Background tasks
-- Cache operations
+- Worker functions and middleware
+- D1 database operations
+- KV operations
+- Queue processing
 - External integrations
 
 Required coverage:
-- Models: 90%
+- Workers: 90%
 - Business logic: 90%
-- API endpoints: 85%
+- Database operations: 85%
 - Integration points: 80%
 
 ### Frontend Testing
@@ -70,9 +71,14 @@ Standard fixtures:
 - Sample users
 - Test inventory
 - Event templates
+- D1 database seeds
 
 ### Mocking Strategy
 Mock implementations:
+- Cloudflare Worker environment
+- D1 database responses
+- KV store operations
+- Queue operations
 - External API responses
 - Webhook payloads
 - Email services
@@ -88,7 +94,7 @@ Test scenarios:
 - Referral rewards
 - Return processing
 
-### Cheque Printing Tests
+### Payment Processing Tests
 Test scenarios:
 - PDF generation accuracy
 - Page layout compliance
@@ -99,7 +105,7 @@ Test scenarios:
 
 Layout validation:
 - Margin measurements
-- Cheque positioning
+- Payment positioning
 - Text alignment
 - Font specifications
 
@@ -123,14 +129,18 @@ Scenarios:
 
 ### Load Testing
 Test areas:
-- API endpoints
-- Background jobs
+- Worker endpoints
+- D1 database operations
+- KV store operations
+- Queue processing
 - Image processing
 - Webhook handling
 
 Metrics:
-- Response times
-- Throughput
+- Edge response times
+- Worker CPU usage
+- D1 query performance
+- KV operation latency
 - Error rates
 - Resource usage
 
@@ -139,16 +149,17 @@ Scenarios:
 - Peak load handling
 - Concurrent users
 - Queue processing
-- Cache performance
+- KV performance
+- D1 connection limits
 
 ## Security Testing
 
 ### Authentication Tests
 Coverage:
-- Login flows
+- Clerk.dev integration
 - Token validation
 - Permission checks
-- Session management
+- Session management in KV
 
 ### Authorization Tests
 Verification:
@@ -156,6 +167,7 @@ Verification:
 - Resource permissions
 - Client isolation
 - Data protection
+- Edge security
 
 ## Test Automation
 
@@ -165,11 +177,14 @@ Integration:
 - Build verification
 - Test execution
 - Coverage reports
+- Wrangler deployment tests
 
 ### Test Environment
 Setup:
-- Isolated database
-- Redis instance
+- Local D1 database
+- Miniflare for Workers
+- KV namespace
+- Queue system
 - Mock services
 - Test configuration
 
@@ -181,6 +196,8 @@ Output:
 - Performance stats
 - Error logs
 - Trend analysis
+- Worker CPU usage
+- D1 query performance
 
 ### Quality Metrics
 Tracking:
@@ -188,6 +205,7 @@ Tracking:
 - Test reliability
 - Execution time
 - Bug detection
+- Edge performance
 
 ## Documentation
 
@@ -197,6 +215,7 @@ Requirements:
 - Setup instructions
 - Data requirements
 - Expected results
+- Worker environment setup
 
 ### Maintenance
 Procedures:
@@ -204,3 +223,4 @@ Procedures:
 - Review cycle
 - Cleanup tasks
 - Documentation updates
+- Worker version management

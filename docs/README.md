@@ -29,10 +29,10 @@ See [System Architecture](./diagrams/architecture/system-architecture.mmd) for c
 
 ## Tech Stack
 
-- Frontend: Svelte
-- Backend: FastAPI
-- Database: SQLite
-- Queue: Redis
+- Frontend: React + TypeScript
+- Backend: Cloudflare Workers (TypeScript)
+- Database: Cloudflare D1
+- Queue: Cloudflare Queues
 - Authentication: Clerk.dev
 - E-commerce: Shopify
 - Email: Mailchimp Transactional
@@ -77,9 +77,9 @@ See [System Architecture](./diagrams/architecture/system-architecture.mmd) for c
 ## Getting Started
 
 1. **Prerequisites**
-   - Python 3.9+
-   - Node.js 16+
-   - Redis
+   - Node.js 18+
+   - Cloudflare account
+   - Wrangler CLI
    - Shopify Partner Account
    - Clerk.dev Account
    - Mailchimp Transactional Account
@@ -96,4 +96,4 @@ See [Integration Architecture](./diagrams/architecture/integration-architecture.
 - Shopify Custom App
 - Clerk.dev Authentication
 - Mailchimp Transactional Email
-- Redis Queue Processing
+- Cloudflare Queues

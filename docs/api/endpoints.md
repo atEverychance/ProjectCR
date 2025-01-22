@@ -1,7 +1,7 @@
 # API Endpoints
 
 ## Overview
-Complete API endpoint documentation including authentication, request/response formats, and error handling. See [API Architecture](../diagrams/architecture/api-architecture.mmd) for system structure.
+Complete API endpoint documentation including authentication, request/response formats, and error handling. All endpoints are implemented as Cloudflare Workers running at the edge. See [API Architecture](../diagrams/architecture/api-architecture.mmd) for system structure.
 
 ## Authentication
 
@@ -12,11 +12,19 @@ Required headers:
 - Content-Type: application/json
 
 ### Response Format
-Standard response structure:
-- status: success|error
-- data: response payload
-- error: error details when applicable
-- request_id: unique identifier
+TypeScript interface for standard response structure:
+```typescript
+interface ApiResponse<T> {
+  status: 'success' | 'error';
+  data?: T;
+  error?: {
+    code: string;
+    message: string;
+    details?: unknown;
+  };
+  request_id: string;
+}
+```
 
 ## Consignor Endpoints
 
@@ -89,13 +97,13 @@ GET /api/v1/admin/clients
 POST /api/v1/admin/clients
 PUT /api/v1/admin/clients/{id}
 
-### Cheque Printing
-GET /api/v1/admin/reports/cheques/{event_id}
+### Payment Processing
+GET /api/v1/admin/reports/payments/{event_id}
 Query parameters:
 - page (integer, default: 1)
 - per_page (integer, default: 3, fixed)
 Returns:
-- PDF file containing 3 cheques per page
+- PDF file containing 3 payments per page
 - Content-Type: application/pdf
 Required permissions: ADMIN_REPORTS_WRITE
 
@@ -116,17 +124,17 @@ GET /api/v1/admin/reports/inventory
 - **POST /api/shopify/sync-products**
   - Syncs products from the system to Shopify.
   - Request Body:
-    ```json
-    {
-      "event_id": "123",
-      "consignor_id": "456"
+    ```typescript
+    interface SyncProductsRequest {
+      event_id: string;
+      consignor_id: string;
     }
     ```
   - Response:
-    ```json
-    {
-      "success": true,
-      "synced_products": 10
+    ```typescript
+    interface SyncProductsResponse {
+      success: boolean;
+      synced_products: number;
     }
     ```
 
@@ -134,23 +142,21 @@ GET /api/v1/admin/reports/inventory
 - **POST /api/shopify/process-order**
   - Handles incoming Shopify orders.
   - Request Body:
-    ```json
-    {
-      "order_id": "789",
-      "items": [
-        {
-          "product_id": "abc",
-          "quantity": 1,
-          "price": 25.00
-        }
-      ]
+    ```typescript
+    interface ProcessOrderRequest {
+      order_id: string;
+      items: Array<{
+        product_id: string;
+        quantity: number;
+        price: number;
+      }>;
     }
     ```
   - Response:
-    ```json
-    {
-      "success": true,
-      "order_id": "789"
+    ```typescript
+    interface ProcessOrderResponse {
+      success: boolean;
+      order_id: string;
     }
     ```
 
@@ -158,26 +164,24 @@ GET /api/v1/admin/reports/inventory
 - **POST /api/shopify/webhook**
   - Processes Shopify webhooks for real-time updates.
   - Request Body:
-    ```json
-    {
-      "topic": "orders/create",
-      "data": {
-        "order_id": "789",
-        "items": [
-          {
-            "product_id": "abc",
-            "quantity": 1,
-            "price": 25.00
-          }
-        ]
-      }
+    ```typescript
+    interface WebhookRequest {
+      topic: string;
+      data: {
+        order_id: string;
+        items: Array<{
+          product_id: string;
+          quantity: number;
+          price: number;
+        }>;
+      };
     }
     ```
   - Response:
-    ```json
-    {
-      "success": true,
-      "processed": true
+    ```typescript
+    interface WebhookResponse {
+      success: boolean;
+      processed: boolean;
     }
     ```
 
@@ -202,14 +206,14 @@ POST /api/v1/webhooks/clerk/session
 
 ## Rate Limiting
 
-### Limits
-Standard limits:
-- 100 requests per minute per IP
-- 1000 requests per hour per client
-- 50 concurrent requests per client
+### Cloudflare Workers Rate Limiting
+Rate limiting is implemented at the edge using Cloudflare Workers:
+- 100,000 requests per day per Worker (Free tier)
+- Custom rate limits per route configurable in worker code
+- Automatic DDoS protection
 
 ### Headers
 Response headers:
-- X-RateLimit-Limit
-- X-RateLimit-Remaining
-- X-RateLimit-Reset
+- CF-RateLimit-Limit
+- CF-RateLimit-Remaining
+- CF-RateLimit-Reset
