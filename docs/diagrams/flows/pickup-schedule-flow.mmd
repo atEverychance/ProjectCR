@@ -1,0 +1,40 @@
+flowchart TD
+    subgraph Admin[Admin Setup]
+        A1[Configure Event Pickup Schedule] --> A2[Define Time Slots]
+        A2 --> A3[Set Slot Capacity]
+        A3 --> A4[Review Schedule]
+        A4 --> A5[Publish Schedule]
+    end
+
+    subgraph Shopper[Shopper Flow]
+        B1[View Event Details] --> B2[Browse Available Slots]
+        B2 --> B3[Select Pickup Time]
+        B3 --> B4[Enter Email & Invoice]
+        B4 --> B5{Validation}
+        B5 -->|Valid| B6[Confirm Booking]
+        B5 -->|Invalid| B2
+        B6 --> B7[Receive Confirmation]
+    end
+
+    subgraph System[System Processing]
+        C1[Check Slot Availability] --> C2[Verify Booking Limit]
+        C2 -->|Under Limit| C3[Create Booking]
+        C2 -->|Over Limit| C7[Return Error]
+        C3 --> C4[Update Slot Capacity]
+        C4 --> C5[Send Confirmation]
+        C4 --> C6[Schedule Reminder]
+    end
+
+    subgraph Notifications[Email System]
+        D1[Booking Confirmation] --> D2[24h Reminder]
+        D3[Cancellation Notice] --> D4[Rebooking Options]
+    end
+
+    A5 --> B1
+    B5 --> C1
+    C5 --> D1
+    
+    style Admin fill:#f9f,stroke:#333,stroke-width:4px
+    style Shopper fill:#bbf,stroke:#333,stroke-width:4px
+    style System fill:#bfb,stroke:#333,stroke-width:4px
+    style Notifications fill:#fbf,stroke:#333,stroke-width:4px

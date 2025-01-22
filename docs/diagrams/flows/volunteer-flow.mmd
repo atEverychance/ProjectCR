@@ -1,0 +1,49 @@
+flowchart TD
+    subgraph Admin[Admin Setup]
+        A1[Configure Event Shifts] --> A2[Define Shift Types]
+        A2 --> A3[Set Shift Times]
+        A3 --> A4[Assign Locations]
+        A4 --> A5[Set Capacities]
+        A5 --> A6[Publish Schedule]
+    end
+
+    subgraph Consignor[Consignor Flow]
+        B1[View Available Shifts] --> B2[Check Bonus Status]
+        B2 --> B3[Select Shift]
+        B3 --> B4{Validation}
+        B4 -->|Valid| B5[Confirm Assignment]
+        B4 -->|Invalid| B1
+        B5 --> B6[Receive Instructions]
+    end
+
+    subgraph Event[Event Day]
+        C1[Check In] --> C2[Receive Assignment]
+        C2 --> C3[Complete Shift]
+        C3 --> C4[Check Out]
+        C4 --> C5[Record Completion]
+    end
+
+    subgraph System[System Processing]
+        D1[Verify Shift Limits] --> D2[Check Availability]
+        D2 -->|Available| D3[Create Assignment]
+        D2 -->|Full| D7[Return Error]
+        D3 --> D4[Update Capacity]
+        D4 --> D5[Calculate Bonus]
+        D5 --> D6[Send Confirmation]
+    end
+
+    subgraph Notifications[Email System]
+        E1[Assignment Confirmation] --> E2[24h Reminder]
+        E3[Completion Confirmation] --> E4[Bonus Update]
+    end
+
+    A6 --> B1
+    B4 --> D1
+    D6 --> E1
+    C5 --> E3
+    
+    style Admin fill:#f9f,stroke:#333,stroke-width:4px
+    style Consignor fill:#bbf,stroke:#333,stroke-width:4px
+    style Event fill:#bfb,stroke:#333,stroke-width:4px
+    style System fill:#fbb,stroke:#333,stroke-width:4px
+    style Notifications fill:#fbf,stroke:#333,stroke-width:4px

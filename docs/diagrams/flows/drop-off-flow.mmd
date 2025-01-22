@@ -1,0 +1,49 @@
+flowchart TD
+    subgraph Admin[Admin Setup]
+        A1[Configure Drop-off Schedule] --> A2[Define Time Slots]
+        A2 --> A3[Set Location Zones]
+        A3 --> A4[Configure Capacity]
+        A4 --> A5[Set Processing Rules]
+        A5 --> A6[Publish Schedule]
+    end
+
+    subgraph Consignor[Consignor Flow]
+        B1[View Available Slots] --> B2[Estimate Item Count]
+        B2 --> B3[Select Time Slot]
+        B3 --> B4{Validation}
+        B4 -->|Valid| B5[Confirm Booking]
+        B4 -->|Invalid| B1
+        B5 --> B6[Receive Instructions]
+    end
+
+    subgraph Processing[Drop-off Processing]
+        C1[Check In] --> C2[Item Count]
+        C2 --> C3[Quality Check]
+        C3 --> C4[Sorting]
+        C4 --> C5[Record Completion]
+    end
+
+    subgraph System[System Processing]
+        D1[Verify No Conflicts] --> D2[Check Availability]
+        D2 -->|Available| D3[Create Booking]
+        D2 -->|Full| D7[Return Error]
+        D3 --> D4[Update Capacity]
+        D4 --> D5[Track Item Count]
+        D5 --> D6[Send Confirmation]
+    end
+
+    subgraph Notifications[Email System]
+        E1[Booking Confirmation] --> E2[24h Reminder]
+        E3[Processing Complete] --> E4[Next Steps]
+    end
+
+    A6 --> B1
+    B4 --> D1
+    D6 --> E1
+    C5 --> E3
+    
+    style Admin fill:#f9f,stroke:#333,stroke-width:4px
+    style Consignor fill:#bbf,stroke:#333,stroke-width:4px
+    style Processing fill:#bfb,stroke:#333,stroke-width:4px
+    style System fill:#fbb,stroke:#333,stroke-width:4px
+    style Notifications fill:#fbf,stroke:#333,stroke-width:4px
