@@ -36,6 +36,8 @@ yarn-error.log*
 *.sublime-project
 .aider.*
 *.model.*
+.prettierrc
+.eslintrc.json
 
 # OS
 docs/project-plan.md
