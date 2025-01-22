@@ -1,8 +1,15 @@
 graph TD
     subgraph "Sales Flow"
         O[Order] --> W[Webhook]
-        W --> Q[Queue]
+        W --> SC[Generate Shopper Code]
+        SC --> Q[Queue]
         Q --> P[Processing]
+    end
+    
+    subgraph "Shopper Code Generation"
+        SC --> EI[Extract Customer Info]
+        EI --> GC[Generate Code FFF-LLL-PPP]
+        GC --> SS[Store Shopper Code]
     end
     
     subgraph "Calculations"
@@ -16,4 +23,5 @@ graph TD
         F --> U[Update Records]
         U --> I[Inventory Status]
         U --> E[Earnings Record]
+        U --> SR[Sales Record with Shopper Code]
     end

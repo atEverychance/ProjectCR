@@ -12,7 +12,6 @@ Base settings:
 - Commission rates
 - Fee structures
 - Email templates
-See [Default Config](../../diagrams/default-config-flow.mmd) for details.
 
 ### System Parameters
 Core settings:
@@ -21,6 +20,7 @@ Core settings:
 - Image requirements
 - Payment settings
 - Security controls
+- Site name/branding
 
 ## Client Management
 
@@ -31,13 +31,13 @@ Required setup:
 - Tax configuration
 - Payment methods
 - Access controls
-
 ### Client Overrides
 Customizable elements:
 - Categories
 - Size charts
 - Commission rates
-- Email templates
+- Fee structures
+- Branding configuration
 - Fee structures
 
 ## Category Management
@@ -95,18 +95,18 @@ Controls:
 
 ### Template Management
 Features:
-- Base templates
-- Client customization
-- Variable system
-- Format controls
-- Preview tools
+- Required templates:
+  * Consignor communications (welcome, confirmations)
+  * Admin notifications
+- Template variables (*|SITE_NAME|*, *|EVENT_NAME|*, etc.)
+- Queue-based delivery system
 
 ### Distribution Rules
 Settings:
-- Trigger events
-- Timing rules
-- Recipient groups
-- Priority levels
+- Trigger events (registration, confirmations)
+- Queue priority levels
+- Retry handling
+- Error monitoring
 
 ## Access Control
 

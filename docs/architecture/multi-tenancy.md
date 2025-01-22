@@ -16,7 +16,6 @@ The system implements client isolation at every layer while maintaining efficien
 - Automatic query scoping
 - Cache key separation
 - Resource isolation
-See [Client Isolation](../diagrams/architecture/client-isolation.mmd) for details.
 
 ## Configuration Management
 

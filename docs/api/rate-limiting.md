@@ -32,7 +32,6 @@ Processing limits:
 - Image processing: 10 concurrent jobs
 - Email sending: 50 per minute
 - Report generation: 5 concurrent jobs
-- Data exports: 2 per hour
 
 ### Email Updates
 - 5 changes per hour per user

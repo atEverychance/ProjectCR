@@ -25,6 +25,8 @@ erDiagram
     ITEMS ||--o{ SALES : sold_as
     ITEMS ||--o{ ITEMS : transferred_from
     
+    SHOPPER_CODES ||--o{ SALES : purchased_by
+    
     CLIENTS {
         int id PK
         string name
@@ -100,10 +102,21 @@ erDiagram
     SALES {
         int id PK
         int item_id FK
+        int shopper_code_id FK
         string shopify_order_id
         decimal sale_price
         datetime sale_date
         boolean is_returned
+        datetime created_at
+    }
+    
+    SHOPPER_CODES {
+        int id PK
+        string code
+        string first_name
+        string last_name
+        string postal_code
+        string email
         datetime created_at
     }
     

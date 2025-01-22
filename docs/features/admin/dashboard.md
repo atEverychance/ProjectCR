@@ -1,7 +1,7 @@
 # Administrative Dashboard
 
 ## Overview
-Centralized management interface for event operations and monitoring. See [Dashboard Architecture](../../diagrams/dashboard-architecture.mmd) for complete structure.
+Centralized management interface for event operations and monitoring. 
 
 ## Key Metrics Display
 
@@ -41,8 +41,6 @@ Controls:
 - Event status
 - Schedule adjustments
 - Access management
-- Store controls
-See [Event Controls](../../diagrams/event-controls.mmd) for details.
 
 ### Consignor Management
 Features:
@@ -57,8 +55,6 @@ Features:
 Tracking:
 - Active users
 - Sales activity
-- System performance
-- Error conditions
 
 ### Historical Analysis
 Views:
@@ -92,29 +88,6 @@ Settings:
 - Fee structures
 - System defaults
 
-### Access Control
-Management:
-- User permissions
-- Role assignment
-- Feature access
-- Security settings
-
-## Support Tools
-
-### Issue Management
-Features:
-- Problem tracking
-- Resolution tools
-- Communication system
-- Status monitoring
-
-### User Support
-Tools:
-- Account management
-- Password reset
-- Profile updates
-- Access control
-
 ## Reporting Suite
 
 ### Standard Reports
@@ -129,23 +102,6 @@ Options:
 - Date range selection
 - Metric selection
 - Format options
-- Export capabilities
-
-## Communication Center
-
-### Notification Management
-Features:
-- Email templates
-- Bulk messaging
-- Status updates
-- Alert system
-
-### Message Center
-Tools:
-- Announcement creation
-- Update distribution
-- Response tracking
-- History logging
 
 ## Data Management
 
@@ -154,7 +110,6 @@ Features:
 - Search functionality
 - Filter options
 - Sort capabilities
-- Export tools
 
 ### Data Integrity
 Tools:

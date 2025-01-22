@@ -110,17 +110,36 @@ Here's how this platform will directly benefit your consignment events:
     * **Cheque Printing:** Easily print reconciled consignor cheques.
 
 
-### Volunteer and Drop-off Scheduling
+### Schedule Management
 
 * **Source:** `docs/features/consignors/scheduling.md`
 * **Dependencies:** None
-* **Business benefit:** Organize volunteers and item drop-offs efficiently, saving time and reducing chaos. This makes the entire process smoother for both you and your consignors.
-* **Real-world example:** Consignors can easily sign up for drop-off slots, and volunteers can choose their preferred shifts online, eliminating the need for phone calls and emails.
-* **How it helps other consignment sale owners:** Streamlines logistics and ensures you have the help you need when you need it.
-* **Expected impact on operations:** Smoother drop-off and volunteer management, reducing stress and improving efficiency.
+* **Business benefit:** Efficiently manage all scheduling aspects of your event - volunteer shifts, item drop-offs, and shopper pickups. This creates a smooth, organized experience for everyone involved.
+* **Real-world example:** Imagine a perfectly orchestrated event where volunteers show up on time, consignors drop off items in orderly waves, and shoppers pick up their purchases in scheduled slots - all managed automatically through one system.
+* **How it helps other consignment sale owners:** Eliminates scheduling chaos and ensures proper staffing, smooth item intake, and organized pickup process.
+* **Expected impact on operations:** Dramatically reduced scheduling overhead and improved event flow, leading to better experiences for volunteers, consignors, and shoppers.
 
-    * **Easy Volunteer Sign-Up:** Volunteers can easily see available shifts and sign up online, and even earn bonus commission!
-    * **Organized Drop-offs:** Schedule item drop-off appointments to avoid long lines and ensure a smooth process.
+    * **Volunteer Management:**
+        * Easy online shift sign-up with automatic bonus tracking
+        * Multiple role types (sorting, organization, shopper assistance)
+        * Automated reminders and confirmation emails
+        * Real-time coverage monitoring
+        * Bonus commission calculation (5% per shift, up to 15%)
+
+    * **Drop-off Coordination:**
+        * Flexible 15-minute appointment slots
+        * Capacity management by location zone
+        * Easy rescheduling options
+        * Automated reminder system
+        * Processing status tracking
+
+    * **Pickup Scheduling:**
+        * Shopper-friendly time slot selection
+        * Capacity limits per slot
+        * Multiple slots per shopper (up to 3)
+        * Invoice verification system
+        * Automated confirmation and reminder emails
+        * Easy cancellation with automatic slot recovery
 
 
 ### Event Management Tools

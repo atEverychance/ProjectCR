@@ -22,7 +22,7 @@ Structure:
 - +5% per completed shift
 - Maximum 3 shifts
 - Maximum +15% bonus
-- Applied to all sales
+- Applied to all sales with a volunteer shift
 
 ### Referral Rewards
 Program:
@@ -113,7 +113,6 @@ Display:
 Features:
 - Detailed breakdowns
 - Historical view
-- Export options
 - Print formatting
 
 ## Notifications

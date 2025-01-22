@@ -3,7 +3,8 @@ flowchart TD
         A1[Create Event] --> A2[Configure Basic Details]
         A2 --> A3[Set Financial Parameters]
         A3 --> A4[Define Schedule]
-        A4 --> A5[Configure Access Controls]
+        A4 --> A5[Configure Pickup Schedule]
+        A5 --> A6[Configure Access Controls]
     end
 
     subgraph Execution[Event Execution]
@@ -11,6 +12,7 @@ flowchart TD
         B2 --> B3[Process Inventory]
         B3 --> B4[Run Sales Operations]
         B4 --> B5[Monitor Metrics]
+        B4 --> B6[Manage Pickup Schedule]
     end
 
     subgraph PostEvent[Post-Event Processing]
@@ -30,6 +32,7 @@ flowchart TD
         E1 --> E3[Inventory Levels]
         E1 --> E4[Volunteer Coverage]
         E1 --> E5[Financial Performance]
+        E1 --> E6[Pickup Schedule Status]
     end
 
     Setup --> Execution

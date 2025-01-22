@@ -13,7 +13,8 @@ Complete database schema supporting multi-tenant operations with client isolatio
 | Items                | id, event_consignor_id, status     | Sales, Categories, Sizes          |
 | Categories           | id, category_detail                | Items, CategoryOverrides          |
 | Sizes                | id, size_value                     | Items, SizeOverrides              |
-| Sales                | id, item_id, shopify_order_id      | Items                             |
+| Sales                | id, item_id, shopify_order_id      | Items, ShopperCodes               |
+| ShopperCodes         | id, code, first_name, last_name    | Sales                             |
 
 ## Field Type Reference
 | Field Type           | Description                        | Example                           |
@@ -194,9 +195,19 @@ VolunteerBookings
 
 ### Sales & Reconciliation
 
+ShopperCodes
+- id (PK, UUID) - Unique shopper code identifier
+- code (String) - Generated shopper code (FFF-LLL-PPP format)
+- first_name (String) - Shopper's first name
+- last_name (String) - Shopper's last name
+- postal_code (String) - Shopper's postal code
+- email (String) - Shopper's email address
+- created_at (DateTime) - Record creation timestamp
+
 Sales
 - id (PK)
 - item_id (FK)
+- shopper_code_id (FK) - Reference to ShopperCodes.id
 - shopify_order_id
 - sale_price
 - sale_date
@@ -222,12 +233,16 @@ See [Entity Relationships](../diagrams/entity-relationships.mmd) for complete re
 - consignor_id for human-readable searches
 - event dates for range queries
 - status fields for filtered queries
+- shopper_code for quick lookups
+- shopper_code_id for relationship queries
 
 ## Constraints
 - Foreign key relationships
 - Unique constraints on business keys
 - Check constraints on status fields
 - Validation rules on numerical fields
+- Unique constraint on shopper_code
+- Format validation on shopper_code (FFF-LLL-PPP)
 
 ## Audit Trail
 See [Audit Schema](../diagrams/audit-schema.mmd) for complete audit structure.

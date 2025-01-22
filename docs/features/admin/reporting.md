@@ -128,7 +128,7 @@ Access Control:
 Workflow:
 1. Select event from dropdown
 2. View list of reconciled consignors
-3. Generate/download cheque PDF
+3. Generate cheque PDF
 4. Mark cheques as printed (optional)
 
 ## Operational Reports
@@ -167,37 +167,14 @@ Metrics:
 
 ### Usage Statistics
 - Active users
-- API usage
 - Feature adoption
 - Error rates
-
-### Integration Status
-- Shopify sync status
-- Email delivery rates
-- Webhook processing
-- Authentication stats
 
 ### Performance Metrics
 - Response times
 - Queue status
 - Resource usage
 - Error rates
-
-## Export Capabilities
-
-### Data Formats
-Available formats:
-- CSV
-- Excel
-- PDF
-- JSON
-
-### Scheduling
-Options:
-- On-demand
-- Scheduled exports
-- Email delivery
-- Archive access
 
 ## Custom Reporting
 
@@ -206,13 +183,10 @@ Features:
 - Metric selection
 - Date ranges
 - Filter options
-- Format selection
 
 ### Saved Reports
 Management:
 - Template saving
-- Schedule setting
-- Distribution lists
 - Access control
 
 ## Historical Analysis
@@ -246,35 +220,3 @@ Tracking:
 - Configuration changes
 - Access attempts
 - System logs
-
-## Report Distribution
-
-### Delivery Methods
-Options:
-- Email delivery
-- Download center
-- API access
-- Automated distribution
-
-### Access Control
-Management:
-- User permissions
-- Report access
-- Data visibility
-- Export rights
-
-## Report Storage
-
-### Archive Management
-Features:
-- Report retention
-- Version control
-- Access logging
-- Storage optimization
-
-### Data Security
-Protection:
-- Access control
-- Encryption
-- Audit trails
-- Compliance
