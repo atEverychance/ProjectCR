@@ -1,185 +1,214 @@
-# Development Environment Setup
-
-## Overview
-Complete guide for setting up local development environment. The development architecture consists of local services, external integrations, and CI/CD pipelines. See the [Development Architecture](/docs/diagrams/architecture/development-architecture.mmd) diagram for the complete system structure.
-
-![Development Architecture](/docs/diagrams/architecture/development-architecture.mmd)
+# Development Setup Guide
 
 ## Prerequisites
 
-### System Requirements
-Required software:
-- Python 3.9+
-- Node.js 16+
-- Redis
-- SQLite
-- Git
+1. Node.js 18+ and npm
+2. Cloudflare account
+3. Wrangler CLI (`npm install -g wrangler`)
+4. Git
+5. GitHub account
+6. VS Code (recommended)
 
-### External Services
-Required accounts:
-- Shopify Partner Account
-- Clerk.dev Account
-- Mailchimp Account
+## Initial Setup
 
-## Local Environment
+### 1. Cloudflare Configuration
 
-### Directory Structure
-Project organization:
-/project_root
-├── backend/
-│   ├── app/
-│   ├── tests/
-│   └── requirements.txt
-├── frontend/
-│   ├── src/
-│   ├── tests/
-│   └── package.json
-└── docs/
-### Environment Variables
-Required variables:
+```bash
+# Login to Cloudflare
+wrangler login
 
-Backend settings:
-- DATABASE_URL
-- REDIS_URL
-- CLERK_SECRET_KEY
-- MAILCHIMP_API_KEY
-- ENVIRONMENT=development
+# Create D1 database
+wrangler d1 create consignment-retail
+# Note the database_id from output
 
-Frontend settings:
-- VITE_API_URL
-- VITE_CLERK_PUBLISHABLE_KEY
-- VITE_ENVIRONMENT=development
+# Create KV namespace
+wrangler kv:namespace create CACHE
+# Note the id from output
 
-## Apple Sign In Configuration
+# Create Queue
+wrangler queues create jobs-queue
+```
 
-### Requirements
-1. Apple Developer account
-2. App ID creation
-3. Service ID configuration
-4. Private key generation
+### 2. Environment Setup
 
-### Clerk.dev Setup
-1. Enable Apple Sign In
-2. Configure Service ID
-3. Add Private Key
-4. Set up Redirect URLs
+Create necessary secrets in Cloudflare:
 
-## Installation Steps
+```bash
+wrangler secret put CLERK_API_KEY
+wrangler secret put SHOPIFY_API_KEY
+wrangler secret put SHOPIFY_API_SECRET
+wrangler secret put EMAIL_API_KEY
+```
 
-### Backend Setup
-Create virtual environment:
-- python -m venv venv
-- source venv/bin/activate  # or venv\Scripts\activate on Windows
+### 3. Local Development
 
-Install dependencies:
-- pip install -r requirements.txt
+```bash
+# Clone repository
+git clone [repository-url]
+cd ProjectCR
 
-Configure environment:
-- cp .env.example .env
-- Edit .env with your configuration
+# Install dependencies
+npm install
 
-### Frontend Setup
-Install dependencies:
-- cd frontend
-- npm install
-
-Configure environment:
-- cp .env.example .env
-- Edit .env with your configuration
-
-### Database Setup
-Initialize database:
-- python manage.py init_db
-
-Load sample data (optional):
-- python manage.py load_sample_data
-
-### Redis Setup
-Start Redis:
-- redis-server
+# Start local development
+npm run dev
+```
 
 ## Development Workflow
 
-### Running Services
-Start backend:
-- python manage.py run
+### Database Management
 
-Start frontend:
-- cd frontend
-- npm run dev
+```bash
+# Create new migration
+wrangler d1 migrations create [migration-name]
 
-### Testing
-Backend tests:
-- pytest
+# Apply migrations locally
+wrangler d1 migrations apply --local
 
-Frontend tests:
-- npm test
+# Apply migrations to production
+wrangler d1 migrations apply
+```
 
-## Code Standards
+### Local Testing
 
-### Python Standards
-Style guide:
-- Black formatting
-- Flake8 linting
-- Type hints
-- Docstrings
+```bash
+# Run tests
+npm test
 
-### JavaScript Standards
-Style guide:
-- ESLint configuration
-- Prettier formatting
-- TypeScript types
-- JSDoc comments
+# Run type checking
+npm run typecheck
+```
 
-## Version Control
+### Deployment
 
-### Git Configuration
-Repository setup:
-- git init
-- git remote add origin [repository-url]
-- git flow init
+```bash
+# Deploy to production
+npm run deploy
+```
 
-### Branch Strategy
-Workflow:
-- main: production code
-- develop: integration branch
-- feature/*: new features
-- fix/*: bug fixes
+## Project Structure
 
-## IDE Setup
+```
+/
+├── src/                    # TypeScript source code
+│   ├── routes/            # API route handlers
+│   ├── models/            # Data models and types
+│   └── workers/           # Worker implementations
+├── migrations/            # D1 database migrations
+├── public/               # Static assets
+└── tests/                # Test files
+```
 
-### VS Code
-Recommended extensions:
-- Python
-- Svelte
+## TypeScript Configuration
+
+The project uses strict TypeScript configuration for maximum type safety. Key settings:
+
+- Strict mode enabled
+- ESNext target
+- Module resolution: Node
+- Cloudflare Workers types included
+
+## Development Tools
+
+### VS Code Extensions
+
 - ESLint
 - Prettier
-- GitLens
+- TypeScript and JavaScript Language Features
+- Cloudflare Workers
+- Mermaid Preview (for architecture diagrams)
 
-Settings:
-- Format on save
-- Auto-import
-- Type checking
-- Linting
+### Code Quality
 
-### PyCharm
-Recommended plugins:
-- Svelte
-- Database tools
-- Git integration
-- Environment management
+- ESLint for linting
+- Prettier for formatting
+- TypeScript for type checking
+- Vitest for testing
+
+## Local Development Features
+
+### Hot Reload
+
+The development server supports hot reloading for:
+- Worker changes
+- Frontend changes
+- Database schema changes
+
+### Local Database
+
+D1 provides a local SQLite database for development that mirrors the production environment.
+
+### Local KV Storage
+
+Wrangler emulates Workers KV locally for development.
 
 ## Debugging
 
-### Backend Debugging
-Tools:
-- Python debugger
-- FastAPI debug toolbar
-- SQLite browser
+### Worker Debugging
 
-### Frontend Debugging
-Tools:
-- Vue devtools
-- Browser devtools
-- Network inspector
-- State management
+1. Use `console.log()` in development
+2. Check Worker logs in Cloudflare dashboard
+3. Use `wrangler tail` for real-time logs
+
+### Database Debugging
+
+1. Use D1 local dashboard
+2. Execute queries via Wrangler CLI
+3. Monitor query performance in Cloudflare dashboard
+
+## Common Issues
+
+### CORS in Development
+
+Add local origins to `wrangler.toml`:
+
+```toml
+[env.development]
+cors = ["http://localhost:3000"]
+```
+
+### Type Errors
+
+Ensure types are properly imported:
+
+```typescript
+import type { Env } from '../types';
+```
+
+### D1 Connection Issues
+
+Check database binding in `wrangler.toml`:
+
+```toml
+[[d1_databases]]
+binding = "DB"
+database_name = "consignment-retail"
+database_id = "your-database-id"
+```
+
+## Best Practices
+
+1. **Type Safety**
+   - Use TypeScript strict mode
+   - Define interfaces for all data structures
+   - Avoid `any` types
+
+2. **Error Handling**
+   - Use typed error responses
+   - Implement proper error boundaries
+   - Log errors appropriately
+
+3. **Testing**
+   - Write unit tests for Workers
+   - Test database migrations
+   - Validate types during testing
+
+4. **Security**
+   - Use environment variables for secrets
+   - Implement proper authentication
+   - Validate all inputs
+
+5. **Performance**
+   - Use appropriate caching strategies
+   - Optimize database queries
+   - Monitor Worker CPU usage

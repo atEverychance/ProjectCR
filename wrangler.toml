@@ -1,0 +1,57 @@
+name = "consignment-retail"
+main = "src/worker.ts"
+compatibility_date = "2024-01-22"
+node_compat = true
+
+# D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "consignment_retail"
+database_id = ""  # Will be filled after creation with: wrangler d1 create consignment-retail
+
+# KV Store for caching and sessions
+[[kv_namespaces]]
+binding = "CACHE"
+id = ""  # Will be filled after creation with: wrangler kv:namespace create CACHE
+
+# Queue for background jobs
+[[queues.producers]]
+binding = "JOBS_QUEUE"
+queue = "jobs-queue"
+
+[[queues.consumers]]
+queue = "jobs-queue"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 3
+dead_letter_queue = "jobs-dlq"
+
+# Environment variables
+[vars]
+ENV = "development"
+
+# Development environment
+[env.development]
+name = "consignment-retail-dev"
+# Local development settings
+vars = { ENV = "development" }
+# CORS for local development
+cors = ["http://localhost:3000"]
+
+# Production environment
+[env.production]
+name = "consignment-retail"
+# Production settings
+vars = { ENV = "production" }
+# Production CORS (update with actual domains)
+cors = []
+
+# Routes for Cloudflare Pages integration
+[routes]
+# Static assets and frontend routes
+"/*" = { pattern = "/*", zone_name = "" }  # Will be filled with your domain
+
+# Build configuration for Pages
+[build]
+command = "npm run build"
+output_directory = "dist"

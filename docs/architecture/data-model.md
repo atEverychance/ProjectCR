@@ -1,248 +1,254 @@
-# Data Model
+# Data Architecture
 
 ## Overview
-Complete database schema supporting multi-tenant operations with client isolation. See [Complete Data Model](../diagrams/complete-data-model.mmd) for the full entity relationship diagram.
 
-## Quick Reference
-| Entity               | Key Fields                          | Relationships                     |
-|----------------------|-------------------------------------|-----------------------------------|
-| Clients              | id, name, domain                   | ClientShopifyAccess, Events       |
-| ClientShopifyAccess  | client_id, access_token            | Clients                           |
-| Events               | id, client_id, name                | EventLocations, EventConsignors   |
-| Consignors           | id, client_id, consignor_id        | EventConsignors, Items            |
-| Items                | id, event_consignor_id, status     | Sales, Categories, Sizes          |
-| Categories           | id, category_detail                | Items, CategoryOverrides          |
-| Sizes                | id, size_value                     | Items, SizeOverrides              |
-| Sales                | id, item_id, shopify_order_id      | Items, ShopperCodes               |
-| ShopperCodes         | id, code, first_name, last_name    | Sales                             |
+The application uses Cloudflare D1, a serverless SQLite database running at the edge. All database interactions are strongly typed using TypeScript.
 
-## Field Type Reference
-| Field Type           | Description                        | Example                           |
-|----------------------|------------------------------------|-----------------------------------|
-| PK                   | Primary Key (UUID)                 | "550e8400-e29b-41d4-a716-446655440000" |
-| FK                   | Foreign Key (UUID)                 | "550e8400-e29b-41d4-a716-446655440001" |
-| String               | Text field                         | "Summer Sale 2025"                |
-| DateTime             | ISO 8601 timestamp                 | "2025-01-12T14:30:00Z"            |
-| Boolean              | True/False value                   | true                              |
-| Integer              | Whole number                       | 42                                |
-| Decimal              | Fixed precision number             | 19.99                             |
+## Database Design
 
-## Core Entities
+### Core Tables
 
-### Client Management
+```typescript
+// TypeScript type definitions matching D1 schema
 
-Clients
-- id (PK, UUID) - Unique client identifier
-- name (String) - Client organization name
-- domain (String) - Client's primary domain (unique)
-- created_at (DateTime) - Record creation timestamp
-- active (Boolean) - Client account status
+interface Consignor {
+  id: number;
+  user_id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  address?: string;
+  preferred_contact?: 'email' | 'phone';
+  created_at: string;
+  updated_at: string;
+}
 
-ClientShopifyAccess
-- id (PK, UUID) - Unique access record identifier
-- client_id (FK, UUID) - Reference to Clients.id
-- access_token (String) - Shopify API access token (encrypted)
-- location_id (String) - Shopify location ID
-- tax_collection_id (String) - Shopify tax collection ID
-- token_created_at (DateTime) - Token creation timestamp
-- token_expires_at (DateTime) - Token expiration timestamp
-- active (Boolean) - Access status
+interface Event {
+  id: number;
+  name: string;
+  description?: string;
+  start_date: string;
+  end_date: string;
+  location: string;
+  max_consignors: number;
+  drop_off_start: string;
+  drop_off_end: string;
+  pick_up_start: string;
+  pick_up_end: string;
+  status: 'draft' | 'published' | 'cancelled' | 'completed';
+  created_at: string;
+  updated_at: string;
+}
 
-### Event Management
+interface InventoryItem {
+  id: number;
+  user_id: string;
+  event_id: number;
+  name: string;
+  description?: string;
+  category: string;
+  size?: string;
+  price: number;
+  condition: 'new' | 'like_new' | 'good' | 'fair';
+  status: 'pending' | 'approved' | 'rejected' | 'sold' | 'returned';
+  barcode?: string;
+  created_at: string;
+  updated_at: string;
+}
+```
 
-Events
-- id (PK, UUID) - Unique event identifier
-- client_id (FK, UUID) - Reference to Clients.id
-- name (String) - Event name
-- start_date (DateTime) - Event start date/time
-- end_date (DateTime) - Event end date/time
-- return_window_end (DateTime) - Last date for returns
-- regular_fee (Decimal) - Regular consignor fee
-- super_fee (Decimal) - Super consignor fee
-- regular_base_rate (Decimal) - Regular consignor commission rate
-- super_base_rate (Decimal) - Super consignor commission rate
-- volunteer_shift_bonus (Decimal) - Bonus per volunteer shift
-- super_item_bonus (Decimal) - Bonus per super item
-- super_item_threshold (Integer) - Minimum items for super status
-- markdown_active (Boolean) - Markdown pricing enabled
-- status (String) - Event status (planned/active/closed)
-- created_at (DateTime) - Record creation timestamp
+## Edge Database Architecture
 
-EventLocations
-- id (PK)
-- event_id (FK)
-- name
-- address
-- city
-- postal_code
-- province
-- directions
-- created_at
+### D1 Features Used
 
-### Consignment Management
+1. **SQLite at Edge**
+   - Zero latency database access
+   - Automatic replication
+   - ACID compliance
 
-Consignors
-- id (PK)
-- client_id (FK)
-- consignor_id (human readable)
-- email
-- name
-- loyalty_count
-- created_at
-- active
+2. **Prepared Statements**
+   - Type-safe queries
+   - SQL injection prevention
+   - Query optimization
 
-EventConsignors
-- id (PK)
-- event_id (FK)
-- consignor_id (FK)
-- type (regular/super)
-- base_rate
-- fee_paid
-- fee_paid_at
-- volunteer_shift_count
-- final_rate
-- total_earnings
-- is_paid
-- paid_at
-- created_at
+3. **Migrations**
+   - Version controlled schema
+   - Automated deployment
+   - Rollback support
 
-Items
-- id (PK)
-- event_consignor_id (FK)
-- category_id (FK)
-- size_id (FK)
-- shopify_product_id
-- title
-- price
-- markdown_eligible
-- status
-- sold_at
-- sold_price
-- earned_amount
-- transfer_count
-- transferred_from_item_id (FK)
-- created_at
+### Performance Optimization
 
-### Configuration Management
+1. **Indexing Strategy**
+   - Primary keys
+   - Foreign key relationships
+   - Common query paths
+   - Full-text search indexes
 
-Categories
-- id (PK)
-- category_detail
-- category_type_id (FK)
-- enabled
-- is_default
-- created_at
+2. **Query Optimization**
+   - Prepared statements
+   - Efficient joins
+   - Proper indexing
+   - Query planning
 
-CategoryOverrides
-- id (PK)
-- client_id (FK)
-- category_id (FK)
-- category_detail
-- enabled
-- created_at
+3. **Caching Layer**
+   - Workers KV for frequent reads
+   - Cache invalidation strategy
+   - Cache-aside pattern
+   - TTL management
 
-Sizes
-- id (PK)
-- size_value
-- size_group
-- enabled
-- is_default
-- created_at
+## Data Access Patterns
 
-SizeOverrides
-- id (PK)
-- client_id (FK)
-- size_id (FK)
-- size_value
-- enabled
-- created_at
+### Type-Safe Queries
 
-### Scheduling
+```typescript
+// Example of type-safe D1 query
+async function getConsignor(db: D1Database, userId: string): Promise<Consignor | null> {
+  return await db
+    .prepare('SELECT * FROM consignors WHERE user_id = ?')
+    .bind(userId)
+    .first<Consignor>();
+}
+```
 
-EventDropOffSlots
-- id (PK)
-- event_id (FK)
-- location_id (FK)
-- start_time
-- end_time
-- max_consignors
-- booked_count
-- created_at
+### Transaction Handling
 
-EventVolunteerSlots
-- id (PK)
-- event_id (FK)
-- location_id (FK)
-- shift_type_id (FK)
-- start_time
-- end_time
-- max_volunteers
-- booked_count
-- created_at
+```typescript
+// Example of D1 transaction
+async function createInventoryItem(
+  db: D1Database,
+  item: Omit<InventoryItem, 'id' | 'created_at' | 'updated_at'>
+): Promise<number> {
+  const stmt = db.prepare(`
+    INSERT INTO inventory_items (
+      user_id, event_id, name, description, category,
+      size, price, condition, status
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    RETURNING id
+  `);
+  
+  const result = await stmt
+    .bind(
+      item.user_id,
+      item.event_id,
+      item.name,
+      item.description,
+      item.category,
+      item.size,
+      item.price,
+      item.condition,
+      item.status
+    )
+    .first<{ id: number }>();
+    
+  return result?.id;
+}
+```
 
-DropOffBookings
-- id (PK)
-- event_consignor_id (FK)
-- drop_off_slot_id (FK)
-- created_at
+## Data Migration Strategy
 
-VolunteerBookings
-- id (PK)
-- event_consignor_id (FK)
-- volunteer_slot_id (FK)
-- completed
-- created_at
+### Migration Process
 
-### Sales & Reconciliation
+1. **Create Migration**
+   ```bash
+   wrangler d1 migrations create [name]
+   ```
 
-ShopperCodes
-- id (PK, UUID) - Unique shopper code identifier
-- code (String) - Generated shopper code (FFF-LLL-PPP format)
-- first_name (String) - Shopper's first name
-- last_name (String) - Shopper's last name
-- postal_code (String) - Shopper's postal code
-- email (String) - Shopper's email address
-- created_at (DateTime) - Record creation timestamp
+2. **Test Locally**
+   ```bash
+   wrangler d1 migrations apply --local
+   ```
 
-Sales
-- id (PK)
-- item_id (FK)
-- shopper_code_id (FK) - Reference to ShopperCodes.id
-- shopify_order_id
-- sale_price
-- sale_date
-- is_returned
-- created_at
+3. **Deploy to Production**
+   ```bash
+   wrangler d1 migrations apply
+   ```
 
-Referrals
-- id (PK)
-- event_id (FK)
-- referring_consignor_id (FK)
-- new_consignor_id (FK)
-- reward_amount
-- is_paid
-- created_at
-- paid_at
+### Rollback Strategy
 
-## Relationships
-See [Entity Relationships](../diagrams/entity-relationships.mmd) for complete relationship diagram.
+1. **Automatic Rollbacks**
+   - Transaction failure handling
+   - Schema version control
+   - Data integrity checks
 
-## Indexes
-- client_id on all relevant tables
-- shopify_product_id for quick lookups
-- consignor_id for human-readable searches
-- event dates for range queries
-- status fields for filtered queries
-- shopper_code for quick lookups
-- shopper_code_id for relationship queries
+2. **Manual Intervention**
+   - Emergency rollback procedures
+   - Data recovery process
+   - Integrity verification
 
-## Constraints
-- Foreign key relationships
-- Unique constraints on business keys
-- Check constraints on status fields
-- Validation rules on numerical fields
-- Unique constraint on shopper_code
-- Format validation on shopper_code (FFF-LLL-PPP)
+## Data Backup and Recovery
 
-## Audit Trail
-See [Audit Schema](../diagrams/audit-schema.mmd) for complete audit structure.
+### Backup Strategy
+
+1. **Automated Backups**
+   - Daily incremental backups
+   - Weekly full backups
+   - Point-in-time recovery
+
+2. **Backup Verification**
+   - Integrity checks
+   - Recovery testing
+   - Backup rotation
+
+### Recovery Procedures
+
+1. **Data Recovery**
+   - Point-in-time restoration
+   - Partial data recovery
+   - Integrity verification
+
+2. **Business Continuity**
+   - Recovery time objectives
+   - Recovery point objectives
+   - Service level agreements
+
+## Security Measures
+
+### Data Protection
+
+1. **Access Control**
+   - Row-level security
+   - Column encryption
+   - Access logging
+
+2. **Edge Security**
+   - TLS encryption
+   - WAF protection
+   - DDoS mitigation
+
+### Compliance
+
+1. **Data Privacy**
+   - GDPR compliance
+   - Data retention
+   - Data minimization
+
+2. **Audit Trail**
+   - Change tracking
+   - Access logging
+   - Compliance reporting
+
+## Monitoring and Maintenance
+
+### Performance Monitoring
+
+1. **Metrics Collection**
+   - Query performance
+   - Cache hit rates
+   - Error rates
+
+2. **Alerting**
+   - Performance thresholds
+   - Error conditions
+   - Capacity planning
+
+### Maintenance Tasks
+
+1. **Regular Maintenance**
+   - Index optimization
+   - Query analysis
+   - Schema updates
+
+2. **Health Checks**
+   - Database connectivity
+   - Query performance
+   - Data integrity

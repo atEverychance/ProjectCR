@@ -1,29 +1,39 @@
 flowchart TD
-    subgraph Infrastructure
-        WebServer[Nginx Web Server]
-        AppServer[FastAPI Application Server]
-        Database[SQLite Database]
-        Cache[Redis Cache]
-        Workers[Celery Workers]
+    subgraph Edge["Cloudflare Edge Network"]
+        Workers["TypeScript Workers"]
+        D1["D1 Database (SQLite)"]
+        KV["Workers KV"]
+        Queues["Cloudflare Queues"]
+        Pages["Cloudflare Pages"]
     end
 
-    subgraph Containers
-        Frontend[Svelte Frontend]
-        Backend[FastAPI Backend]
-        WorkerContainer[Celery Worker]
-        RedisContainer[Redis]
-        NginxContainer[Nginx]
+    subgraph External["External Services"]
+        Clerk["Clerk.dev Auth"]
+        Shopify["Shopify API"]
+        Email["Email Service"]
     end
 
-    subgraph Orchestration
-        Docker[Docker Compose]
-        Kubernetes[Kubernetes]
+    subgraph Frontend["Frontend Application"]
+        React["React + TypeScript"]
+        Assets["Static Assets"]
     end
 
-    Frontend --> WebServer
-    WebServer --> AppServer
-    AppServer --> Database
-    AppServer --> Cache
-    AppServer --> Workers
+    Frontend --> Pages
+    Pages --> Workers
+    Workers --> D1
+    Workers --> KV
+    Workers --> Queues
+    Workers --> External
 
-    Containers --> Orchestration
+    subgraph Development["Development Tools"]
+        Wrangler["Wrangler CLI"]
+        TypeScript["TypeScript Compiler"]
+        Git["Git + GitHub"]
+    end
+
+    Development --> Edge
+
+    style Edge fill:#bbf,stroke:#333,stroke-width:4px
+    style External fill:#fbb,stroke:#333,stroke-width:4px
+    style Frontend fill:#bfb,stroke:#333,stroke-width:4px
+    style Development fill:#fbf,stroke:#333,stroke-width:4px
