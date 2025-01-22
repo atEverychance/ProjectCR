@@ -19,7 +19,11 @@ See [Frontend Architecture](/docs/diagrams/architecture/frontend-architecture.mm
 - Workers KV for caching
 - Cloudflare Queues for background jobs
 - Edge function deployment
-See [Backend Architecture](/docs/diagrams/architecture/backend-architecture.mmd) for details.
+- Durable Objects for state management:
+  * Sale Session management
+  * Inventory reconciliation
+  * Real-time commission calculations
+See [Backend Architecture](/docs/diagrams/architecture/backend-architecture.mmd) and [Durable Objects Architecture](/docs/diagrams/architecture/durable-objects-architecture.mmd) for details.
 
 ### External Integrations
 - Shopify Custom App (per client)
@@ -42,7 +46,7 @@ See [Integration Architecture](/docs/diagrams/architecture/integration-architect
 - Participation fee handling
 - Referral system
 - Payment tracking
-See [Registration Flow](/docs/diagrams/registration-flow.mmd) for details.
+See [Registration Flow](/docs/diagrams/flows/registration-flow.mmd) for details.
 
 ## Data Flow
 
@@ -106,17 +110,27 @@ See [Processing Flow](/docs/diagrams/flows/processing-flow.mmd) for details.
 
 ### Data Integrity
 - D1 transaction management
-- Consistent state handling
-- Audit logging
+- Strong consistency via Durable Objects:
+  * Atomic sale operations
+  * Real-time inventory tracking
+  * Transactional state management
+  * Concurrent access control
+- State persistence and recovery
+- Audit logging and versioning
 - Backup strategy via Wrangler
-- Durable Objects for consistency
+- Cross-system reconciliation
 
 ### Error Handling
 - Structured error responses
-- Retry mechanisms
-- Circuit breakers
-- Fallback options
+- Durable Objects error handling:
+  * State conflict resolution
+  * Atomic operation retries
+  * Instance recovery procedures
+  * Concurrent access handling
+- Circuit breakers and rate limiting
+- Fallback options with data consistency
 - Edge-based error recovery
+- Cross-system reconciliation
 
 ## Edge Computing Benefits
 

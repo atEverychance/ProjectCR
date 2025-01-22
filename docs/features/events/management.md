@@ -1,7 +1,7 @@
 # Event Management
 
 ## Overview
-Comprehensive event setup and management system. See [Event Management Flow](../../diagrams/event-management-flow.mmd) for complete process.
+Comprehensive event setup and management system. See [Event Management Flow](../../diagrams/flows/event-management-flow.mmd) for complete process.
 
 ## Event Setup
 
@@ -56,11 +56,20 @@ Features:
 - Item approval
 
 ### Stock Management
-Tracking:
-- Active items
-- Sold items
-- Returns
-- Transfers
+Tracking through Inventory Reconciliation DO:
+- Active items with real-time status
+- Sold items with atomic updates
+- Returns processing with state transitions
+- Transfers with consistency guarantees
+
+Key features:
+- Automatic reconciliation with Shopify every 5 minutes
+- Conflict resolution (most recent change wins)
+- Item locking during active sales
+- State transition management
+- Batch operation support
+
+See [Durable Objects Data Model](../../architecture/durable-objects-data-model.md) for implementation details.
 
 ## Operational Management
 
@@ -105,10 +114,26 @@ Tracking:
 
 ### Sales Tracking
 Monitoring:
-- Real-time sales
-- Category performance
-- Return rates
-- Final reconciliation
+- Real-time sales through Sale Session DO
+  * Atomic transaction processing
+  * Strong consistency guarantees
+  * Immediate commission calculations
+- Category performance tracking
+- Return rates monitoring
+- Final reconciliation with D1 persistence
+
+### State Management
+Durable Objects provide:
+- Atomic sales operations
+- Real-time inventory status
+- Concurrent access control
+- Consistent commission calculations
+
+Implementation details:
+- Sale Session DO for active sales
+- Inventory Reconciliation DO for stock management
+- Commission Calculation DO for real-time earnings
+See [Durable Objects Architecture](../../architecture/durable-objects.md) for details.
 
 ## Reporting
 
@@ -120,11 +145,23 @@ Metrics:
 - Category breakdown
 
 ### Financial Reports
-Analysis:
-- Gross sales
-- Commission breakdown
-- Fee collection
-- Net proceeds
+Analysis through Commission Calculation DO:
+- Real-time gross sales tracking
+- Immediate commission calculations
+  * Base commission rates
+  * Volunteer bonus processing
+  * Super consignor adjustments
+- Automated fee collection tracking
+- Live net proceeds calculation
+
+Key features:
+- Atomic transaction processing
+- Real-time commission updates
+- Error handling with retry capability
+- Persistent state management
+- Historical data in D1
+
+See [Durable Objects Implementation Guide](../../architecture/durable-objects-implementation-guide.md) for complete details.
 
 ## Administrative Tools
 

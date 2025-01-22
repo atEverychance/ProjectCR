@@ -1,7 +1,7 @@
 # Rate Limiting
 
 ## Overview
-Implementation of rate limiting across API endpoints and external service interactions. See [Rate Limit Architecture](../diagrams/rate-limit-architecture.mmd) for complete system.
+Implementation of rate limiting across API endpoints and external service interactions. See [Rate Limit Architecture](../diagrams/architecture/rate-limit-architecture.mmd) for complete system.
 
 ## Rate Limit Structure
 

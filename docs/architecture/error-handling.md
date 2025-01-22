@@ -1,7 +1,7 @@
 # Error Handling
 
 ## Overview
-Comprehensive error handling strategy for system reliability and recovery. See [Error Flow](../diagrams/error-flow.mmd) for detailed process.
+Comprehensive error handling strategy for system reliability and recovery. See [Error Flow](../diagrams/flows/error-flow.mmd) for detailed process.
 
 ## Error Categories
 

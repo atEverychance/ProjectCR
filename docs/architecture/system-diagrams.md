@@ -51,6 +51,6 @@ Comprehensive collection of system diagrams providing visual representation of a
 
 ### Documentation Links
 - [Complete Data Model](../diagrams/complete-data-model.mmd)
-- [Unit Test Coverage](../diagrams/unit-test-coverage.mmd)
-- [Cache Strategy](../diagrams/cache-strategy.mmd)
-- [Integration Architecture](../diagrams/integration-architecture.mmd)
+- [Unit Test Coverage](../diagrams/architecture/unit-test-coverage.mmd)
+- [Cache Strategy](../diagrams/architecture/cache-strategy.mmd)
+- [Integration Architecture](../diagrams/architecture/integration-architecture.mmd)

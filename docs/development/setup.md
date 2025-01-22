@@ -27,9 +27,38 @@ wrangler kv:namespace create CACHE
 
 # Create Queue
 wrangler queues create jobs-queue
+
+# Create Durable Objects
+wrangler durableobject create SaleSession
+wrangler durableobject create InventoryReconciliation
+wrangler durableobject create CommissionCalculation
 ```
 
-### 2. Environment Setup
+### 2. Durable Objects Configuration
+
+Add to wrangler.toml:
+```toml
+[[durable_objects.bindings]]
+name = "SALE_SESSION"
+class_name = "SaleSession"
+
+[[durable_objects.bindings]]
+name = "INVENTORY_RECONCILIATION"
+class_name = "InventoryReconciliation"
+
+[[durable_objects.bindings]]
+name = "COMMISSION_CALCULATION"
+class_name = "CommissionCalculation"
+
+[durable_objects]
+classes = [
+  { name = "SaleSession", script = "src/durable_objects/SaleSession.ts" },
+  { name = "InventoryReconciliation", script = "src/durable_objects/InventoryReconciliation.ts" },
+  { name = "CommissionCalculation", script = "src/durable_objects/CommissionCalculation.ts" }
+]
+```
+
+### 3. Environment Setup
 
 Create necessary secrets in Cloudflare:
 
@@ -142,6 +171,20 @@ D1 provides a local SQLite database for development that mirrors the production 
 
 Wrangler emulates Workers KV locally for development.
 
+### Local Durable Objects
+
+Wrangler provides local Durable Objects support:
+- State persistence between restarts
+- Atomic operations testing
+- Concurrent access simulation
+- Instance management
+
+Configure in wrangler.toml:
+```toml
+[durable_objects]
+local = true
+```
+
 ## Debugging
 
 ### Worker Debugging
@@ -149,6 +192,39 @@ Wrangler emulates Workers KV locally for development.
 1. Use `console.log()` in development
 2. Check Worker logs in Cloudflare dashboard
 3. Use `wrangler tail` for real-time logs
+
+### Durable Objects Debugging
+
+1. Monitor DO state:
+```bash
+wrangler tail --format=json | grep "durable-object"
+```
+
+2. Debug specific DOs:
+```bash
+# View Sale Session DO logs
+wrangler tail --do SaleSession
+
+# View Inventory Reconciliation DO logs
+wrangler tail --do InventoryReconciliation
+
+# View Commission Calculation DO logs
+wrangler tail --do CommissionCalculation
+```
+
+3. Common DO debugging tasks:
+- Check state consistency using the Cloudflare dashboard
+- Monitor DO CPU and memory usage
+- Track DO instance creation and deletion
+- Verify atomic operations through logs
+- Debug state transitions and reconciliation processes
+
+4. Development tips:
+- Use `console.log()` within DO methods (visible in `wrangler tail`)
+- Implement proper error handling for state operations
+- Monitor DO storage limits (128KB per instance)
+- Test concurrent operations locally
+- Use the Durable Objects tab in the Cloudflare dashboard
 
 ### Database Debugging
 

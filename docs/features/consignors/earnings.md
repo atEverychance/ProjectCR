@@ -1,7 +1,7 @@
 # Earnings Management
 
 ## Overview
-Complete earnings calculation and tracking system. See [Earnings Flow](../../diagrams/earnings-flow.mmd) for detailed process.
+Complete earnings calculation and tracking system. See [Earnings Flow](../../diagrams/flows/earnings-flow.mmd) for detailed process.
 
 ## Commission Structure
 

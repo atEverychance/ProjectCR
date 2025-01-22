@@ -1,7 +1,7 @@
 # Administrative Reporting
 
 ## Overview
-Comprehensive reporting system for event management and analysis. See [Reporting Architecture](../../diagrams/reporting-architecture.mmd) for complete structure.
+Comprehensive reporting system for event management and analysis. See [Reporting Architecture](../../diagrams/architecture/reporting-architecture.mmd) for complete structure.
 
 ## Sales Reports
 

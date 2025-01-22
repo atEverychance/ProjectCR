@@ -1,7 +1,7 @@
 # Testing Strategy
 
 ## Overview
-Comprehensive testing approach covering unit tests, integration tests, and end-to-end scenarios for our Cloudflare-first architecture. See [Testing Architecture](/docs/diagrams/testing-architecture.mmd) for complete structure.
+Comprehensive testing approach covering unit tests, integration tests, and end-to-end scenarios for our Cloudflare-first architecture. See [Testing Architecture](/docs/diagrams/architecture/testing-architecture.mmd) for complete structure.
 
 ## Test Categories
 
@@ -11,7 +11,7 @@ Core business logic:
 - Inventory management
 - Schedule validation
 - Payment processing
-See [Unit Test Coverage](../diagrams/unit-test-coverage.mmd) for details.
+See [Unit Test Coverage](../diagrams/architecture/unit-test-coverage.mmd) for details.
 
 ### Integration Tests
 Service integration:

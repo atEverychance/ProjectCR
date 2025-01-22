@@ -1,0 +1,65 @@
+graph TD
+    subgraph "Sale Session DO"
+        SS[Sale Session Controller] --> SSS[Session State]
+        SSS --> IL[Item Locking]
+        SSS --> RT[Real-time Tracking]
+        SSS --> CC[Commission Calc]
+        
+        IL --> LM[Lock Management]
+        RT --> IS[Inventory Status]
+        CC --> RC[Real-time Calculations]
+    end
+    
+    subgraph "Inventory Reconciliation DO"
+        IR[Inventory Controller] --> IRS[Sync State]
+        IRS --> BT[Batch Timer]
+        IRS --> CR[Conflict Resolution]
+        IRS --> DT[Data Tracking]
+        
+        BT --> SP[Sync Process]
+        CR --> MR[Most Recent Wins]
+        DT --> DP[Data Points]
+    end
+    
+    subgraph "Commission Calculation DO"
+        CD[Commission Controller] --> CDS[Calculation State]
+        CDS --> FR[Fixed Rates]
+        CDS --> RTC[Real-time Calc]
+        CDS --> VB[Volunteer Bonus]
+        
+        FR --> ER[Event Rates]
+        RTC --> WH[Webhook Processing]
+        VB --> BA[Bonus Adjustments]
+    end
+    
+    subgraph "External Systems"
+        SH[Shopify]
+        D1[D1 Database]
+        KV[Workers KV]
+        Q[Queue System]
+    end
+    
+    SS --> IR
+    SS --> CD
+    IR --> SH
+    CD --> SH
+    
+    SS -.-> D1
+    IR -.-> D1
+    CD -.-> D1
+    
+    SS -.-> KV
+    IR -.-> KV
+    CD -.-> KV
+    
+    SS -.-> Q
+    IR -.-> Q
+    CD -.-> Q
+    
+    style SS fill:#f9f,stroke:#333,stroke-width:2px
+    style IR fill:#bbf,stroke:#333,stroke-width:2px
+    style CD fill:#bfb,stroke:#333,stroke-width:2px
+    style SH fill:#fbb,stroke:#333,stroke-width:2px
+    style D1 fill:#fbf,stroke:#333,stroke-width:2px
+    style KV fill:#ff9,stroke:#333,stroke-width:2px
+    style Q fill:#f99,stroke:#333,stroke-width:2px

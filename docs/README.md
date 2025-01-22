@@ -24,7 +24,8 @@ See [System Architecture](./diagrams/architecture/system-architecture.mmd) for c
   - Flexible event scheduling
   - Automated sales processing via Shopify
   - Return handling
-  - Commission calculations
+  - Real-time commission calculations
+  - Strong consistency guarantees
   - Final reconciliation and reporting
 
 ## Tech Stack
@@ -33,6 +34,7 @@ See [System Architecture](./diagrams/architecture/system-architecture.mmd) for c
 - Backend: Cloudflare Workers (TypeScript)
 - Database: Cloudflare D1
 - Queue: Cloudflare Queues
+- State Management: Cloudflare Durable Objects
 - Authentication: Clerk.dev
 - E-commerce: Shopify
 - Email: Mailchimp Transactional
@@ -45,6 +47,9 @@ See [System Architecture](./diagrams/architecture/system-architecture.mmd) for c
 - Integration specifications
 - Security implementation
 - Monitoring strategy
+- Durable Objects implementation
+- State management patterns
+- Consistency guarantees
 
 ### /features
 - Consignor management
@@ -52,6 +57,7 @@ See [System Architecture](./diagrams/architecture/system-architecture.mmd) for c
 - Administrative functions
 - Mobile inventory system
 - Financial processing
+- Real-time sales tracking
 
 ### /development
 - Local environment setup
@@ -59,6 +65,7 @@ See [System Architecture](./diagrams/architecture/system-architecture.mmd) for c
 - Deployment guide
 - Code standards
 - Performance optimization
+- State management guidelines
 
 ### /api
 - Endpoint specifications
@@ -66,6 +73,7 @@ See [System Architecture](./diagrams/architecture/system-architecture.mmd) for c
 - Error handling
 - Rate limiting
 - Authentication
+- State consistency APIs
 
 ### /diagrams
 - System architecture
@@ -73,6 +81,8 @@ See [System Architecture](./diagrams/architecture/system-architecture.mmd) for c
 - Process flows
 - Integration patterns
 - Component relationships
+- Durable Objects architecture
+- State management flows
 
 ## Getting Started
 
@@ -88,6 +98,7 @@ See [System Architecture](./diagrams/architecture/system-architecture.mmd) for c
    - See [Development Setup](./development/setup.md)
    - See [Architecture Overview](./architecture/overview.md)
    - See [API Documentation](./api/endpoints.md)
+   - See [Durable Objects Guide](./architecture/durable-objects.md)
 
 ## Integration Points
 
@@ -97,3 +108,4 @@ See [Integration Architecture](./diagrams/architecture/integration-architecture.
 - Clerk.dev Authentication
 - Mailchimp Transactional Email
 - Cloudflare Queues
+- Durable Objects State Management

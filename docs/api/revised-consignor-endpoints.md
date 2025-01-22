@@ -6,7 +6,7 @@ The consignor system separates account registration from event participation. Th
 - Participate in multiple events over time
 - Manage their profile independently from event participation
 
-See [Registration Flow Diagram](/docs/diagrams/registration-flow.mmd) for complete system flow.
+See [Registration Flow Diagram](/docs/diagrams/flows/registration-flow.mmd) for complete system flow.
 
 ## Consignor Registration
 

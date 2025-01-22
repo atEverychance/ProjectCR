@@ -1,7 +1,7 @@
 # Event Reconciliation
 
 ## Overview
-Post-event processing and financial settlement system. See [Reconciliation Flow](../../diagrams/reconciliation-flow.mmd) for complete process.
+Post-event processing and financial settlement system. See [Reconciliation Flow](../../diagrams/flows/reconciliation-flow.mmd) for complete process.
 
 ## Event Closure
 
@@ -18,7 +18,7 @@ Process:
 - Update inventory
 - Adjust earnings
 - Track statistics
-See [Return Processing](../../diagrams/return-processing.mmd) for details.
+See [Return Processing](../../diagrams/flows/return-processing.mmd) for details.
 
 ## Financial Processing
 

@@ -1,7 +1,7 @@
 # Consignor Registration
 
 ## Overview
-Complete registration and event participation flow for consignors. See [Registration Flow](../../diagrams/registration-flow.mmd) for the complete process.
+Complete registration and event participation flow for consignors. See [Registration Flow](../../diagrams/flows/registration-flow.mmd) for the complete process.
 
 ## Registration Process
 

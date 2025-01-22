@@ -1,7 +1,7 @@
 # Background Processing Architecture
 
 ## Overview
-Reliable and scalable background job processing system using Cloudflare Queues and Workers. See [Processing Diagram](../diagrams/processing-architecture.mmd) for complete structure.
+Reliable and scalable background job processing system using Cloudflare Queues and Workers. See [Processing Diagram](../diagrams/architecture/processing-architecture.mmd) for complete structure.
 
 ## Queue Implementation
 

@@ -46,4 +46,4 @@ The registration system has been updated to separate account registration from e
 ## Estimated Total: 36 hrs
 
 ## Updated Flow
-See [Registration Flow Diagram](/docs/diagrams/registration-flow.mmd) for the complete system flow.
+See [Registration Flow Diagram](/docs/diagrams/flows/registration-flow.mmd) for the complete system flow.

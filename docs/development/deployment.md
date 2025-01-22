@@ -1,7 +1,7 @@
 # Deployment Guide
 
 ## Overview
-Production deployment strategy using Netlify with GitHub Actions CI/CD. See [Deployment Architecture](../diagrams/deployment-architecture.mmd) for complete infrastructure.
+Production deployment strategy using Netlify with GitHub Actions CI/CD. See [Deployment Architecture](../diagrams/architecture/deployment-architecture.mmd) for complete infrastructure.
 
 ## CI/CD Pipeline
 

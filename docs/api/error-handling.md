@@ -1,7 +1,7 @@
 # Error Handling
 
 ## Overview
-Standardized error handling and reporting across the application. See [Error Flow](../diagrams/error-flow.mmd) for complete error handling process.
+Standardized error handling and reporting across the application. See [Error Flow](../diagrams/flows/error-flow.mmd) for complete error handling process.
 
 ## Error Categories
 

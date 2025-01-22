@@ -1,7 +1,7 @@
 # Caching Strategy
 
 ## Overview
-Multi-level caching strategy optimizing performance while maintaining data isolation between clients. See [Cache Architecture](../diagrams/cache-strategy.mmd) for complete structure.
+Multi-level caching strategy optimizing performance while maintaining data isolation between clients. See [Cache Architecture](../diagrams/architecture/cache-strategy.mmd) for complete structure.
 
 ## Cache Layers
 

@@ -1,7 +1,7 @@
 # Security Architecture
 
 ## Overview
-Comprehensive security implementation across all system layers. See [Security Architecture](../diagrams/security-layers.mmd) for complete security structure.
+Comprehensive security implementation across all system layers. See [Security Architecture](../diagrams/architecture/security-layers.mmd) for complete security structure.
 
 ## Authentication
 
@@ -10,7 +10,7 @@ Comprehensive security implementation across all system layers. See [Security Ar
 - Email verification
 - Password management
 - Session handling
-See [Auth Flow](../diagrams/auth-flow.mmd) for details.
+See [Auth Flow](../diagrams/flows/auth-flow.mmd) for details.
 
 ### Token Management
 - JWT validation

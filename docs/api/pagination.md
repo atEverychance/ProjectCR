@@ -1,7 +1,7 @@
 # Pagination
 
 ## Overview
-Standard pagination implementation for list endpoints. See [Pagination Flow](../diagrams/pagination-flow.mmd) for complete process.
+Standard pagination implementation for list endpoints. See [Pagination Flow](../diagrams/flows/pagination-flow.mmd) for complete process.
 
 ## Implementation
 

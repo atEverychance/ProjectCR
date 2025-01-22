@@ -1,7 +1,7 @@
 # Inventory Management
 
 ## Overview
-Mobile-first inventory management system optimized for efficient item entry. See [Inventory Flow](../../diagrams/inventory-flow.mmd) for complete process.
+Mobile-first inventory management system optimized for efficient item entry. See [Inventory Flow](../../diagrams/flows/inventory-flow.mmd) for complete process.
 
 ## Item Entry
 

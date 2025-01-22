@@ -118,6 +118,126 @@ GET /api/v1/admin/reports/sales
 GET /api/v1/admin/reports/consignors
 GET /api/v1/admin/reports/inventory
 
+## Durable Objects State Management
+
+### Sale Session Management
+- **POST /api/v1/sales/sessions**
+  - Creates a new sale session.
+  - Request Body:
+    ```typescript
+    interface CreateSaleSessionRequest {
+      event_id: string;
+      start_time: string;
+      end_time: string;
+      commission_rates: {
+        base: number;
+        volunteer: number;
+        super: number;
+      };
+    }
+    ```
+  - Response:
+    ```typescript
+    interface SaleSessionResponse {
+      session_id: string;
+      status: 'active' | 'completed' | 'cancelled';
+      metadata: {
+        total_sales: number;
+        total_commissions: number;
+        item_count: number;
+        sold_count: number;
+      };
+    }
+    ```
+
+- **GET /api/v1/sales/sessions/{session_id}**
+  - Retrieves current sale session state.
+  - Response includes real-time sales data and commission calculations.
+
+- **POST /api/v1/sales/sessions/{session_id}/complete**
+  - Completes a sale session and persists final state.
+  - Triggers commission calculations and inventory updates.
+
+### Inventory Reconciliation
+- **POST /api/v1/inventory/reconciliation**
+  - Initiates inventory reconciliation process.
+  - Request Body:
+    ```typescript
+    interface ReconciliationRequest {
+      event_id: string;
+      sync_type: 'full' | 'incremental';
+      options?: {
+        force_sync: boolean;
+        conflict_resolution: 'most_recent' | 'manual';
+      };
+    }
+    ```
+  - Response:
+    ```typescript
+    interface ReconciliationResponse {
+      reconciliation_id: string;
+      status: 'in_progress' | 'completed' | 'failed';
+      stats: {
+        total_items: number;
+        synced_items: number;
+        conflicts: number;
+      };
+    }
+    ```
+
+- **GET /api/v1/inventory/reconciliation/{reconciliation_id}**
+  - Retrieves reconciliation status and results.
+
+### Commission Calculations
+- **POST /api/v1/commissions/calculate**
+  - Triggers real-time commission calculation.
+  - Request Body:
+    ```typescript
+    interface CalculateCommissionRequest {
+      transaction_id: string;
+      items: Array<{
+        item_id: string;
+        price: number;
+        consignor_id: string;
+      }>;
+      volunteer_status?: {
+        is_volunteer: boolean;
+        hours_worked: number;
+      };
+    }
+    ```
+  - Response:
+    ```typescript
+    interface CommissionCalculationResponse {
+      calculation_id: string;
+      status: 'completed' | 'error';
+      results: {
+        base_amount: number;
+        bonus_amount: number;
+        total_amount: number;
+        items: Array<{
+          item_id: string;
+          commission: number;
+        }>;
+      };
+    }
+    ```
+
+- **GET /api/v1/commissions/{calculation_id}**
+  - Retrieves commission calculation details.
+
+### Error Handling for Durable Objects
+In addition to standard error responses, Durable Objects operations may return:
+- 409: Conflict (concurrent modification)
+- 412: Precondition Failed (state mismatch)
+- 423: Locked (resource temporarily locked)
+
+### Headers for State Management
+Response headers for Durable Objects operations:
+- X-DO-Version: State version number
+- X-DO-Timestamp: Last modification timestamp
+- X-DO-Region: Processing region
+
 ## Shopify Integration Endpoints
 
 ### Sync Products to Shopify

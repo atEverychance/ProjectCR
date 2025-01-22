@@ -1,0 +1,56 @@
+sequenceDiagram
+    participant S as Shopify
+    participant SS as Sale Session DO
+    participant IR as Inventory Reconciliation DO
+    participant CC as Commission Calculation DO
+    participant D1 as D1 Database
+    participant KV as Workers KV
+
+    Note over SS,CC: Sale Event Start
+    
+    SS->>IR: Lock Items for Sale
+    IR->>IR: Set Items to Read-Only
+    IR-->>SS: Items Locked Confirmation
+    
+    loop Every 5 Minutes
+        IR->>S: Sync Inventory Status
+        S-->>IR: Updated Inventory Data
+        IR->>IR: Resolve Conflicts
+    end
+    
+    Note over S,CC: Sale Transaction
+    
+    S->>SS: Sale Webhook
+    SS->>SS: Update Item Status
+    SS->>CC: Calculate Commission
+    CC->>CC: Apply Event Rates
+    CC->>CC: Process Volunteer Bonus
+    CC-->>SS: Commission Result
+    
+    par Persist Sale Data
+        SS->>D1: Store Sale Record
+        CC->>D1: Store Commission Record
+        IR->>D1: Update Inventory Status
+    end
+    
+    Note over SS,D1: Post-Sale Processing
+    
+    alt Item Sold
+        IR->>IR: Mark Item as Sold
+        IR->>S: Update Shopify Status
+    else Item Unsold
+        IR->>IR: Mark for Transfer
+        IR->>KV: Update Item Status
+    end
+    
+    Note over SS,CC: Sale Event End
+    
+    SS->>D1: Persist Final State
+    SS->>IR: Release Item Locks
+    SS->>CC: Finalize Commissions
+    
+    par Cleanup
+        SS->>SS: Archive Session
+        IR->>IR: Reset Sync Timer
+        CC->>CC: Store Final Calculations
+    end
