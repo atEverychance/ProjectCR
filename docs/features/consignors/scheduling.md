@@ -1,7 +1,7 @@
 # Schedule Management
 
 ## Overview
-Comprehensive scheduling system for managing volunteer shifts, item drop-off times, and shopper pickup slots. See [Schedule Management](../../diagrams/schedule-management.mmd) for complete flow.
+Comprehensive scheduling system for managing volunteer shifts, item drop-off times, and shopper pickup slots. See [Schedule Management](../../diagrams/schedule-management.mmd) for complete flow. For cancellation handling, see [Cancellation Management](../events/cancellation-management.md).
 
 ## Volunteer Management
 
@@ -48,12 +48,12 @@ Selection process:
 - Book time slot
 - Receive confirmation
 
-### Schedule Management
-Features:
+### Schedule Features
+Options:
 - Modification allowed
-- Cancellation options
-- Rescheduling tools
+- Schedule adjustments
 - Capacity tracking
+- Status monitoring
 
 ## Pickup Management
 
@@ -73,10 +73,10 @@ See [Pickup Flow](../../diagrams/flows/pickup-schedule-flow.mmd) for details.
 
 ### Schedule Features
 Options:
-- Easy cancellation
-- Automatic slot recovery
+- Schedule modifications
 - Capacity monitoring
 - Invoice verification
+- Status tracking
 
 ## Completion Tracking
 
@@ -99,7 +99,7 @@ Monitoring:
 - Arrival verification
 - Invoice matching
 - Completion status
-- No-show tracking
+- Schedule adherence
 
 ## Communication
 
@@ -108,17 +108,14 @@ Email notifications:
 - Shift booking
 - Drop-off scheduling
 - Pickup slot reservation
-- Reminder messages
-- Change notifications
-- Cancellation updates
+- Schedule changes
 
 ### Reminders
 Timing:
 - 24-hour reminder
 - Day-of reminder
-- Schedule changes
 - Important updates
-- Pickup instructions
+- Special instructions
 
 ## Administrative Tools
 
@@ -128,7 +125,6 @@ Controls:
 - Schedule modification
 - Override capability
 - Emergency changes
-- Slot allocation
 
 ### Volunteer Management
 Features:
@@ -152,7 +148,6 @@ Metrics:
 - Show-up rates
 - Completion rates
 - Capacity utilization
-- Pickup efficiency
 
 ### Volunteer Reports
 Analysis:
@@ -164,9 +159,9 @@ Analysis:
 ### Pickup Reports
 Analysis:
 - Slot utilization
-- Cancellation rates
 - Peak time analysis
-- No-show tracking
+- Completion rates
+- Efficiency metrics
 
 ## User Interface
 
@@ -176,7 +171,6 @@ Components:
 - Time slot display
 - Capacity indicators
 - Booking controls
-- Invoice verification
 
 ### Management Interface
 Features:
@@ -184,4 +178,3 @@ Features:
 - Assignment tracking
 - Status updates
 - Report generation
-- Real-time monitoring
